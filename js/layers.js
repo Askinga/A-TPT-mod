@@ -33,11 +33,23 @@ addLayer("p", {
       },
       12: {
 
-        title: "Something feels off...",
+        title: "An ordinary upgrade",
 
-        description(){ return "x1.5 your point gain?" + (hasUpgrade('p', 12) ? " No. Double it again.") },
+        description(){ return "x2.5 your point gain? No, Triple it." },
 
-        cost: new Decimal(3)
+        cost: new Decimal(3),
+        
+        unlocked(){ return hasUpgrade('p', 11) },
+      },
+      13: {
+
+        title: "3",
+
+        description(){ return "Unlock Automation this early? And unlock a new currency" },
+
+        cost: new Decimal(10),
+
+        unlocked(){ return hasUpgrade('p', 12) },
 
       },
     },
