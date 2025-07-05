@@ -45,7 +45,7 @@ addLayer("p", {
 
         title: "3",
 
-        description(){ return "Unlock Automation this early? And unlock a new currency" },
+        description(){ return "Unlock Automation this early? With something new." },
 
         cost: new Decimal(10),
 
