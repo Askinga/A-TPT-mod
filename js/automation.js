@@ -78,9 +78,19 @@ addLayer("a", {
 
 },
     update(diff) {
+      if (player.a.points.lt(0)) {
+
+          player.a.points = new Decimal(0)
+
+          player.a.auto1 = new Decimal(0)
+
+      }
+      
       let spend = new Decimal(0)
       if (player.a.auto1.eq(1)) spend = spend.add(1)
-      return spend
       
+      spend = spend.times(diff)
+      player.a.points = player.a.points.sub(spend)
+      return spend
     },
 });
