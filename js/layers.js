@@ -70,6 +70,8 @@ addLayer("p", {
 
       "blank",
 
+      "buyables",
+        
       "blank"
 
       ],
@@ -138,4 +140,31 @@ addLayer("p", {
     update(diff) {
         player.p.pPowerGain = player.points.pow(0.25)
     },
+    buyables: {
+
+    11: {
+        title: "b11",
+      
+        cost(x) { return new Decimal(1.1).pow(x.pow(x.div(250).add(1))) },
+
+        display() { return "x1.25 Points per level.<br>Cost: " + format(this.cost()) + " Prestige Power<br>Bought: " + format(getBuyableAmount('p', 11)) + "<br>Effect: x " + format(buyableEffect('p', 11)) + " Points"},
+
+        canAfford() { return player[this.layer].prestigePower.gte(this.cost()) },
+
+        buy() {
+
+            player[this.layer].prestigePower = player[this.layer].prestigePower.sub(this.cost())
+
+            setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+
+        },
+        effect(x) {
+          let base1 = new Decimal(1.25)
+          let base2 = x
+          let expo = new Decimal(1)
+          return base1.pow(Decimal.pow(base2, expo))
+        },
+    },
+
+},
 })
