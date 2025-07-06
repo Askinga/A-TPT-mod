@@ -30,9 +30,10 @@ addLayer("a", {
       "blank",
       "prestige-button",
       "resource-display",
-      []
+      ["display-text", "Automations! Control the automations in this tab. However, all automations cost Automation Power (AP) to operate. Later automations cost more AP per second so start grinding AP!"],
       "blank",
-      "clickables"
+      "clickables",
+      "blank"
       ],
     },
   },
