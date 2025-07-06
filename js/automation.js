@@ -23,6 +23,19 @@ addLayer("a", {
     mult = new Decimal(1);
     return mult;
   },
+  tabFormat: {
+    "Automations": {
+      content: [
+      "main-display",
+      "blank",
+      "prestige-button",
+      "resource-display",
+      []
+      "blank",
+      "clickables"
+      ],
+    },
+  },
   prestigeButtonText() {
 
     return (
