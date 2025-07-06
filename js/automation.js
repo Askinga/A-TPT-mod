@@ -7,6 +7,7 @@ addLayer("a", {
       unlocked: false,
       points: new Decimal(0),
       auto1: new Decimal(0),
+      lost: new Decimal(0),
     };
   },
   color: "#a0a0a0",
@@ -30,7 +31,7 @@ addLayer("a", {
       "blank",
       "prestige-button",
       "resource-display",
-      ["display-text", "Automations! Control the automations in this tab. However, all automations cost Automation Power (AP) to operate. Later automations cost more AP per second so start grinding AP!"],
+      ["display-text", function() { return "You are losing " + format(player.a.lost) + " AP per second<br>Automations! Control the automations in this tab. However, all automations cost Automation Power (AP) to operate. Later automations cost more AP per second so start grinding AP!" }],
       "blank",
       "clickables",
       "blank"
@@ -102,9 +103,8 @@ addLayer("a", {
       
       let spend = new Decimal(0)
       if (player.a.auto1.eq(1)) spend = spend.add(1)
-      
+      player.a.lost = spend
       spend = spend.times(diff)
       player.a.points = player.a.points.sub(spend)
-      return spend
     },
 });

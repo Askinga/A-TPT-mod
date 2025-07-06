@@ -5,11 +5,17 @@ addLayer("p", {
     startData() { return {
         unlocked: true,
 		points: new Decimal(0),
+    prestigePower: new Decimal(0),
     }},
     passiveGeneration(){
       let p = new Decimal(0)
       if (player.a.auto1.eq(1)) p = p.add(tmp.a.auto1.div(100))
       return p
+    },
+    onPrestige(){
+      if (hasUpgrade('p', 15)) {
+        player.p.prestigePower = player.p.prestigePower.add(player.points.pow(0.2))
+      }
     },
     color: "#00aaff",
     requires: new Decimal(10), // Can be a function that takes requirement increases into account
@@ -22,6 +28,54 @@ addLayer("p", {
         mult = new Decimal(1)
         return mult
     },
+    tabFormat: {
+
+    "Main": {
+
+      content: [
+
+      "main-display",
+
+      "blank",
+
+      "prestige-button",
+
+      "resource-display",
+
+      ["display-text", function() { return "Prestige. The first start of the game." }],
+
+      "blank",
+
+      "upgrades",
+
+      "blank"
+
+      ],
+
+    },
+    "Prestige Power": {
+      unlocked(){ return hasUpgrade('p', 15) },
+      content: [
+
+      ["display-text", function() { return "You have <h2>" + format(player.p.prestigepower) + " Prestige Power"]
+
+      "blank",
+
+      "prestige-button",
+
+      "resource-display",
+
+      ["display-text", function() { return "Prestige Power. This new currency can boost other prestige upgrades!" }],
+
+      "blank",
+
+      "blank"
+
+      ],
+
+    },
+
+  },
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
@@ -32,13 +86,13 @@ addLayer("p", {
     layerShown(){return true},
     upgrades: {
       11: {
-        title: "The first upgrade",
+        title: "The first upgrade (1)",
         description: "Basically doubles your point gain.",
         cost: new Decimal(1)
       },
       12: {
 
-        title: "An ordinary upgrade",
+        title: "An ordinary upgrade (2)",
 
         description(){ return "x2.5 your point gain? No, Triple it." },
 
@@ -48,13 +102,35 @@ addLayer("p", {
       },
       13: {
 
-        title: "3",
+        title: "What? (3)",
 
         description(){ return "Unlock Automation this early? With something new." },
 
         cost: new Decimal(10),
 
         unlocked(){ return hasUpgrade('p', 12) },
+
+      },
+      14: {
+
+        title: "Based (4)",
+
+        description(){ return "Add 1 to base point gain." },
+
+        cost: new Decimal(15),
+
+        unlocked(){ return hasUpgrade('p', 13) },
+
+      },
+      15: {
+
+        title: "Prestige power (5)",
+
+        description(){ return "Why do we keep on adding new features this early?" },
+
+        cost: new Decimal(35),
+
+        unlocked(){ return hasUpgrade('p', 14) },
 
       },
     },
