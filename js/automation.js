@@ -28,7 +28,6 @@ addLayer("a", {
     "Automations": {
       content: [
       "main-display",
-      "blank",
       "prestige-button",
       "resource-display",
       ["display-text", function() { return "You are losing " + format(player.a.lost) + " AP per second<br>Automations! Control the automations in this tab. However, all automations cost Automation Power (AP) to operate. Later automations cost more AP per second so start grinding AP!" }],

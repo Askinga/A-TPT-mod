@@ -6,6 +6,7 @@ addLayer("p", {
         unlocked: true,
 		points: new Decimal(0),
     prestigePower: new Decimal(0),
+    pPowerGain: new Decimal(0),
     }},
     passiveGeneration(){
       let p = new Decimal(0)
@@ -13,8 +14,9 @@ addLayer("p", {
       return p
     },
     onPrestige(){
+      let gain = player.points.pow(0.25)
       if (hasUpgrade('p', 15)) {
-        player.p.prestigePower = player.p.prestigePower.add(player.points.pow(0.2))
+        player.p.prestigePower = player.p.prestigePower.add(gain)
       }
     },
     color: "#00aaff",
@@ -36,8 +38,6 @@ addLayer("p", {
 
       "main-display",
 
-      "blank",
-
       "prestige-button",
 
       "resource-display",
@@ -57,15 +57,16 @@ addLayer("p", {
       unlocked(){ return hasUpgrade('p', 15) },
       content: [
 
-      ["display-text", function() { return "You have <h2>" + format(player.p.prestigepower) + " Prestige Power"]
+      ["display-text", function() { return "You have <h2>" + format(player.p.prestigePower) + "</h2> Prestige Power"}],
 
       "blank",
 
       "prestige-button",
 
       "resource-display",
+      ["display-text", function() { return "You will gain " + format(player.p.pPowerGain) + " Prestige Power on reset."}],
 
-      ["display-text", function() { return "Prestige Power. This new currency can boost other prestige upgrades!" }],
+      ["display-text", function() { return "Prestige Power. This new currency can boost other prestige upgrades!"}],
 
       "blank",
 
@@ -133,5 +134,8 @@ addLayer("p", {
         unlocked(){ return hasUpgrade('p', 14) },
 
       },
+    },
+    update(diff) {
+        player.p.pPowerGain = player.points.pow(0.25)
     },
 })
