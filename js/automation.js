@@ -6,6 +6,7 @@ addLayer("a", {
     return {
       unlocked: false,
       points: new Decimal(0),
+      auto1: new Decimal(0),
     };
   },
   color: "#a0a0a0",
@@ -48,5 +49,32 @@ addLayer("a", {
   layerShown() {
     return hasUpgrade("p", 13) || player.a.unlocked;
   },
+  auto1(){
+    return player.a.points.add(1).log10().add(1)
+  },
   branches: ["p"],
+  clickables: {
+
+    11: {
+
+        display() {
+          let or = 'OFF'
+          if (player.a.auto1.eq(0)) {
+            or = 'OFF'
+          } else {
+            or = 'ON'
+          }
+          return format(tmp.a.auto1) + "% PP gain per second.<br>Cost: 1 AP per second.<br><h2>" + or 
+        },
+        canClick(){ return player.a.points.gte(1) },
+        onClick(){
+          if (player.a.auto1.eq(0)) {
+            player.a.auto1 = new Decimal(1)
+          } else {
+            player.a.auto1 = new Decimal(0)
+          }
+        },
+    },
+
+},
 });
