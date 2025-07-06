@@ -7,6 +7,7 @@ addLayer("a", {
       unlocked: false,
       points: new Decimal(0),
       auto1: new Decimal(0),
+      auto2: new Decimal(0),
       lost: new Decimal(0),
     };
   },
@@ -30,7 +31,7 @@ addLayer("a", {
       "main-display",
       "prestige-button",
       "resource-display",
-      ["display-text", function() { return "You are losing " + format(player.a.lost) + " AP per second<br>Automations! Control the automations in this tab. However, all automations cost Automation Power (AP) to operate. Later automations cost more AP per second so start grinding AP!" }],
+      ["display-text", function() { return "You are losing " + format(player.a.lost) + " AP per second. Also all automations are based on AP.<br>Automations! Control the automations in this tab. However, all automations cost Automation Power (AP) to operate. Later automations cost more AP per second so start grinding AP!" }],
       "blank",
       "clickables",
       "blank"
@@ -66,6 +67,11 @@ addLayer("a", {
   auto1(){
     return player.a.points.add(1).log10().add(1)
   },
+  auto2(){
+
+    return player.a.points.add(1).log10().add(1).times(2)
+
+  },
   branches: ["p"],
   clickables: {
 
@@ -89,7 +95,44 @@ addLayer("a", {
           }
         },
     },
+    
+    12: {
 
+        display() {
+
+          let or = 'OFF'
+
+          if (player.a.auto2.eq(0)) {
+
+            or = 'OFF'
+
+          } else {
+
+            or = 'ON'
+
+          }
+
+          return format(tmp.a.auto2) + "% Prestige Power gain per second.<br>Cost: 10 AP per second.<br><h2>" + or 
+
+        },
+
+        canClick(){ return player.a.points.gte(1) },
+
+        onClick(){
+
+          if (player.a.auto2.eq(0)) {
+
+            player.a.auto2 = new Decimal(1)
+
+          } else {
+
+            player.a.auto2 = new Decimal(0)
+
+          }
+
+        },
+
+    },
 },
     update(diff) {
       if (player.a.points.lt(0)) {
@@ -97,11 +140,12 @@ addLayer("a", {
           player.a.points = new Decimal(0)
 
           player.a.auto1 = new Decimal(0)
-
+          player.a.auto2 = new Decimal(0)
       }
       
       let spend = new Decimal(0)
       if (player.a.auto1.eq(1)) spend = spend.add(1)
+      if (player.a.auto2.eq(1)) spend = spend.add(10)
       player.a.lost = spend
       spend = spend.times(diff)
       player.a.points = player.a.points.sub(spend)

@@ -129,7 +129,7 @@ addLayer("p", {
 
         title: "Prestige power (5)",
 
-        description(){ return "Why do we keep on adding new features this early?" },
+        description(){ return "Why do we keep on adding new features this early? And unlock a new automation." },
 
         cost: new Decimal(35),
 
@@ -139,15 +139,18 @@ addLayer("p", {
     },
     update(diff) {
         player.p.pPowerGain = player.points.pow(0.25)
+        if (player.a.auto2.eq(1)) {
+            player.p.prestigePower = player.p.prestigePower.add(player.p.pPowerGain.times(diff).times(tmp.a.auto2).div(100))
+        }
     },
     buyables: {
 
     11: {
         title: "b11",
       
-        cost(x) { return new Decimal(1.1).pow(x.pow(x.div(250).add(1))) },
+        cost(x) { return new Decimal(1.25).pow(x.pow(x.div(250).add(1))) },
 
-        display() { return "x1.25 Points per level.<br>Cost: " + format(this.cost()) + " Prestige Power<br>Bought: " + format(getBuyableAmount('p', 11)) + "<br>Effect: x " + format(buyableEffect('p', 11)) + " Points"},
+        display() { return "x1.25 Points per level.<br>Cost: " + format(this.cost()) + " Prestige Power<br>Bought: " + format(getBuyableAmount('p', 11)) + "<br>Effect: x" + format(buyableEffect('p', 11)) + " Points"},
 
         canAfford() { return player[this.layer].prestigePower.gte(this.cost()) },
 
