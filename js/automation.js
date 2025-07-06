@@ -77,4 +77,10 @@ addLayer("a", {
     },
 
 },
+    update(diff) {
+      let spend = new Decimal(0)
+      if (player.a.auto1.eq(1)) spend = spend.add(1)
+      return spend
+      
+    },
 });
