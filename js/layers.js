@@ -66,7 +66,7 @@ addLayer("p", {
       "resource-display",
       ["display-text", function() { return "You will gain " + format(player.p.pPowerGain) + " Prestige Power on reset."}],
 
-      ["display-text", function() { return "Prestige Power. This new currency can boost other prestige upgrades!"}],
+      ["display-text", function() { return "Prestige Power. This new currency can buy Prestige Buyables, boosting progression!"}],
 
       "blank",
 
@@ -134,6 +134,17 @@ addLayer("p", {
         cost: new Decimal(35),
 
         unlocked(){ return hasUpgrade('p', 14) },
+
+      },
+      21: {
+
+        title: "Based 2 (6)",
+
+        description(){ return "Add 2 to base point gain." },
+
+        cost: new Decimal(300),
+
+        unlocked(){ return hasUpgrade('p', 15) },
 
       },
     },

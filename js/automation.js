@@ -65,12 +65,22 @@ addLayer("a", {
     return hasUpgrade("p", 13) || player.a.unlocked;
   },
   auto1(){
-    return player.a.points.add(1).log10().add(1)
+    if (player.a.points.lt(0)) {
+      return new Decimal(0)
+    } else {
+      return player.a.points.add(1).log10().add(1)
+    }
   },
   auto2(){
+    if (player.a.points.lt(0)) {
 
-    return player.a.points.add(1).log10().add(1).times(2)
+      return new Decimal(0)
 
+    } else {
+
+      return player.a.points.add(1).log10().add(1).times(2)
+
+    }
   },
   branches: ["p"],
   clickables: {
@@ -97,7 +107,7 @@ addLayer("a", {
     },
     
     12: {
-
+        unlocked(){ return hasUpgrade('p', 15) },
         display() {
 
           let or = 'OFF'
