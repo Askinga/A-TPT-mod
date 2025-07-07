@@ -14,7 +14,9 @@ addLayer("p", {
       return p
     },
     onPrestige(){
-      let gain = player.points.pow(0.25)
+      let mult = new Decimal(1)
+      if (hasUpgrade('p', 25)) mult = mult.times(buyableEffect('p', 12))
+      let gain = player.points.pow(0.25).times(mult)
       if (hasUpgrade('p', 15)) {
         player.p.prestigePower = player.p.prestigePower.add(gain)
       }
@@ -28,6 +30,7 @@ addLayer("p", {
     exponent: 0.5, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
+        if (hasUpgrade('p', 33)) mult = mult.times(upgradeEffect('p', 33))
         return mult
     },
     tabFormat: {
@@ -190,9 +193,63 @@ addLayer("p", {
         effectDisplay(){ return "x"+format(upgradeEffect('p', 24)) },
 
       },
+      25: {
+
+        title: "Buyable (10)",
+
+        description(){ return "Unlock a new Prestige Buyable." },
+
+        cost: new Decimal(10000),
+
+        unlocked(){ return hasUpgrade('p', 24) },
+
+      },
+      31: {
+
+        title: "Based 3 (11)",
+
+        description(){ return "Add 5 to base point gain." },
+
+        cost: new Decimal(30000),
+
+        unlocked(){ return hasUpgrade('p', 25) },
+
+      },
+      32: {
+
+        title: "What... (12)",
+
+        description(){ return "Boost points based on prestige power." },
+
+        cost: new Decimal("e5"),
+
+        unlocked(){ return hasUpgrade('p', 31) },
+
+        effect(){ return player.p.prestigePower.add(1).pow(0.15) },
+
+        effectDisplay(){ return "x"+format(upgradeEffect(this.layer, this.id)) },
+
+      },
+      33: {
+
+        title: "Swapped (13)",
+
+        description(){ return "Boost prestige points based on points." },
+
+        cost: new Decimal(500000),
+
+        unlocked(){ return hasUpgrade('p', 32) },
+
+        effect(){ return player.points.add(1).pow(0.04) },
+
+        effectDisplay(){ return "x"+format(upgradeEffect('p', 33)) },
+
+      },
     },
     update(diff) {
-        player.p.pPowerGain = player.points.pow(0.25)
+        let mult = new Decimal(1)
+        if (hasUpgrade('p', 25)) mult = mult.times(buyableEffect('p', 12))
+        player.p.pPowerGain = player.points.pow(0.25).times(mult)
         if (player.a.auto2.eq(1)) {
             player.p.prestigePower = player.p.prestigePower.add(player.p.pPowerGain.times(diff).times(tmp.a.auto2).div(100))
         }
@@ -200,7 +257,7 @@ addLayer("p", {
     buyables: {
 
     11: {
-        title: "b11",
+        title: "p11",
       
         cost(x) { return new Decimal(1.25).pow(x.pow(x.div(250).add(1))) },
 
@@ -222,6 +279,39 @@ addLayer("p", {
           return base1.pow(Decimal.pow(base2, expo))
         },
     },
+    12: {
+        unlocked(){ return hasUpgrade('p', 25) },
+        title: "p12",
 
+      
+
+        cost(x) { return new Decimal(1.3).pow(x.pow(x.div(200).add(1))) },
+
+        display() { return "x1.125 Prestige Power per level.<br>Cost: " + format(this.cost()) + " Prestige Power<br>Bought: " + format(getBuyableAmount(this.layer, this.id)) + "<br>Effect: x" + format(buyableEffect(this.layer, this.id)) + " Prestige Power"},
+
+        canAfford() { return player[this.layer].prestigePower.gte(this.cost()) },
+
+        buy() {
+
+            player[this.layer].prestigePower = player[this.layer].prestigePower.sub(this.cost())
+
+            setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+
+        },
+
+        effect(x) {
+
+          let base1 = new Decimal(1.125)
+
+          let base2 = x
+
+          let expo = new Decimal(1)
+
+          return base1.pow(Decimal.pow(base2, expo))
+
+        },
+
+    },
+      
 },
 })
