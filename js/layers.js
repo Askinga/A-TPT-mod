@@ -57,7 +57,7 @@ addLayer("p", {
       unlocked(){ return hasUpgrade('p', 15) },
       content: [
 
-      ["display-text", function() { return "You have <h2>" + format(player.p.prestigePower) + "</h2> Prestige Power"}],
+      ["display-text", function() { return "You have <span style=\" color: rgb(255, 0, 0); text-shadow: rgb(255, 0, 0) 0px 0px 10px\">" + format(player.p.prestigePower) + "</span> Prestige Power"}],
 
       "blank",
 
@@ -157,8 +157,38 @@ addLayer("p", {
 
         unlocked(){ return hasUpgrade('p', 21) },
 
-        effect(){ return getBuyableAmount('p', 11).pow(0.75) },
+        effect(){ return getBuyableAmount('p', 11).add(1).pow(0.5) },
         effectDisplay(){ return "x"+format(upgradeEffect('p', 22)) },
+      },
+      23: {
+
+        title: "Growing. (8)",
+
+        description(){ return "Boost points based on prestige points." },
+
+        cost: new Decimal(3500),
+
+        unlocked(){ return hasUpgrade('p', 22) },
+
+        effect(){ return player.p.points.add(1).pow(0.2) },
+
+        effectDisplay(){ return "x"+format(upgradeEffect('p', 23)) },
+
+      },
+      24: {
+
+        title: "Growing! (9)",
+
+        description(){ return "Boost points based on points." },
+
+        cost: new Decimal(6000),
+
+        unlocked(){ return hasUpgrade('p', 23) },
+
+        effect(){ return player.points.add(1).pow(0.1) },
+
+        effectDisplay(){ return "x"+format(upgradeEffect('p', 24)) },
+
       },
     },
     update(diff) {
