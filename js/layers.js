@@ -57,7 +57,7 @@ addLayer("p", {
       unlocked(){ return hasUpgrade('p', 15) },
       content: [
 
-      ["display-text", function() { return "You have <span style=\" color: rgb(255, 0, 0); text-shadow: rgb(255, 0, 0) 0px 0px 10px\">" + format(player.p.prestigePower) + "</span> Prestige Power"}],
+      ["display-text", function() { return "You have <span style=\" color: rgb(0, 200, 255); text-shadow: rgb(0, 200, 255) 0px 0px 10px\"><h2>" + format(player.p.prestigePower) + "</h2></span> Prestige Power"}],
 
       "blank",
 
