@@ -18,13 +18,14 @@ addLayer("p", {
   onPrestige() {
     let mult = new Decimal(1);
     if (hasUpgrade("p", 25)) mult = mult.times(buyableEffect("p", 12));
+    if (hasMilestone('p', 0)) mult = mult.times(2.5)
     let gain = player.points.pow(0.25).times(mult);
     if (hasUpgrade("p", 15)) {
       player.p.prestigePower = player.p.prestigePower.add(gain);
     }
   },
   color: "#00aaff",
-  requires: new Decimal(10), // Can be a function that takes requirement increases into accountt
+  requires: new Decimal(10), // Can be a function that takes requirement increases into account
   resource: "prestige points", // Name of prestige currency
   baseResource: "points", // Name of resource prestige is based on
   baseAmount() {
@@ -38,6 +39,7 @@ addLayer("p", {
     if (hasUpgrade("p", 33)) mult = mult.times(upgradeEffect("p", 33));
     if (hasUpgrade("p", 34)) mult = mult.times(upgradeEffect("p", 34));
     if (hasUpgrade("p", 35)) mult = mult.times(buyableEffect("p", 13));
+    if (hasMilestone('p', 0)) mult = mult.times(2.5)
     return mult;
   },
   tabFormat: {
@@ -106,6 +108,25 @@ addLayer("p", {
 
         "buyables",
 
+        "blank",
+      ],
+    },
+    Milestones: {
+      unlocked() {
+        return hasUpgrade("p", 41);
+      },
+      content: [
+        "main-display",
+        "prestige-button",
+        "resource-display",
+        [
+          "display-text",
+          function () {
+            return "Milestones. They give a boost when reached.";
+          },
+        ],
+        "blank",
+        "milestones",
         "blank",
       ],
     },
@@ -345,10 +366,19 @@ addLayer("p", {
         return hasUpgrade("p", 34);
       },
     },
+    41: {
+      title: "Milestones, has been unlocked... (16)",
+      description() {
+        return "Unlock Milestones.";
+      },
+      cost: new Decimal("e8"),
+      unlocked() { return hasUpgrade("p", 35)  },
+    },
   },
   update(diff) {
     let mult = new Decimal(1);
     if (hasUpgrade("p", 25)) mult = mult.times(buyableEffect("p", 12));
+    if (hasMilestone('p', 0)) mult = mult.times(2.5)
     player.p.pPowerGain = player.points.pow(0.25).times(mult);
     if (player.a.auto2.eq(1)) {
       player.p.prestigePower = player.p.prestigePower.add(
@@ -475,6 +505,13 @@ addLayer("p", {
         let expo = new Decimal(1);
         return base1.pow(Decimal.pow(base2, expo));
       },
+    },
+  },
+  milestones: {
+    0: {
+        requirementDescription: "Unlock this tab",
+        effectDescription: "x2.5 Prestige Power, prestige points and points",
+        done() { return hasUpgrade('p', 41) }
     },
   },
 });
