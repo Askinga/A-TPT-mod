@@ -36,6 +36,8 @@ addLayer("p", {
     // Calculate the multiplier for main currency from bonuses
     mult = new Decimal(1);
     if (hasUpgrade("p", 33)) mult = mult.times(upgradeEffect("p", 33));
+    if (hasUpgrade("p", 34)) mult = mult.times(upgradeEffect("p", 34));
+    if (hasUpgrade("p", 35)) mult = mult.times(buyableEffect("p", 13));
     return mult;
   },
   tabFormat: {
@@ -200,7 +202,7 @@ addLayer("p", {
       title: "Growing? (7)",
 
       description() {
-        return "Boost points based on b11 purchases.";
+        return "Boost points based on p11 purchases.";
       },
 
       cost: new Decimal(750),
@@ -223,7 +225,7 @@ addLayer("p", {
         return "Boost points based on prestige points.";
       },
 
-      cost: new Decimal(3500),
+      cost: new Decimal(1750),
 
       unlocked() {
         return hasUpgrade("p", 22);
@@ -244,7 +246,7 @@ addLayer("p", {
         return "Boost points based on points.";
       },
 
-      cost: new Decimal(6000),
+      cost: new Decimal(5000),
 
       unlocked() {
         return hasUpgrade("p", 23);
@@ -278,7 +280,7 @@ addLayer("p", {
         return "Add 5 to base point gain.";
       },
 
-      cost: new Decimal(30000),
+      cost: new Decimal(22500),
 
       unlocked() {
         return hasUpgrade("p", 25);
@@ -307,23 +309,40 @@ addLayer("p", {
     },
     33: {
       title: "Swapped (13)",
-
       description() {
         return "Boost prestige points based on points.";
       },
-
-      cost: new Decimal(500000),
-
-      unlocked() {
-        return hasUpgrade("p", 32);
-      },
-
+      cost: new Decimal(400000),
+      unlocked() { return hasUpgrade("p", 32)  },
       effect() {
         return player.points.add(1).pow(0.04);
       },
-
       effectDisplay() {
         return "x" + format(upgradeEffect("p", 33));
+      },
+    },
+    34: {
+      title: "Okay. (14)",
+      description() {
+        return "Boost prestige points based on prestige power.";
+      },
+      cost: new Decimal(1000000),
+      unlocked() { return hasUpgrade("p", 33)  },
+      effect() {
+        return player.p.prestigePower.add(1).pow(0.1);
+      },
+      effectDisplay() {
+        return "x" + format(upgradeEffect("p", 34));
+      },
+    },
+    35: {
+      title: "Buyable (15)",
+      description() {
+        return "Unlock a new Prestige Buyable.";
+      },
+      cost: new Decimal("3e6"),
+      unlocked() {
+        return hasUpgrade("p", 34);
       },
     },
   },
@@ -384,11 +403,9 @@ addLayer("p", {
         return hasUpgrade("p", 25);
       },
       title: "p12",
-
       cost(x) {
         return new Decimal(1.3).pow(x.pow(x.div(200).add(1)));
       },
-
       display() {
         return (
           "x1.125 Prestige Power per level.<br>Cost: " +
@@ -400,30 +417,62 @@ addLayer("p", {
           " Prestige Power"
         );
       },
-
       canAfford() {
         return player[this.layer].prestigePower.gte(this.cost());
       },
-
       buy() {
         player[this.layer].prestigePower = player[this.layer].prestigePower.sub(
           this.cost()
         );
-
         setBuyableAmount(
           this.layer,
           this.id,
           getBuyableAmount(this.layer, this.id).add(1)
         );
       },
-
       effect(x) {
         let base1 = new Decimal(1.125);
-
         let base2 = x;
-
         let expo = new Decimal(1);
-
+        return base1.pow(Decimal.pow(base2, expo));
+      },
+    },
+    13: {
+      unlocked() {
+        return hasUpgrade("p", 35);
+      },
+      title: "p13",
+      cost(x) {
+        return new Decimal(1.5).pow(x.pow(x.div(175).add(1)));
+      },
+      display() {
+        return (
+          "x1.1 Prestige Points per level.<br>Cost: " +
+          format(this.cost()) +
+          " Prestige Power<br>Bought: " +
+          format(getBuyableAmount(this.layer, this.id)) +
+          "<br>Effect: x" +
+          format(buyableEffect(this.layer, this.id)) +
+          " Prestige Points"
+        );
+      },
+      canAfford() {
+        return player[this.layer].prestigePower.gte(this.cost());
+      },
+      buy() {
+        player[this.layer].prestigePower = player[this.layer].prestigePower.sub(
+          this.cost()
+        );
+        setBuyableAmount(
+          this.layer,
+          this.id,
+          getBuyableAmount(this.layer, this.id).add(1)
+        );
+      },
+      effect(x) {
+        let base1 = new Decimal(1.1);
+        let base2 = x;
+        let expo = new Decimal(1);
         return base1.pow(Decimal.pow(base2, expo));
       },
     },
