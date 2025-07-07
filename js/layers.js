@@ -24,7 +24,7 @@ addLayer("p", {
     }
   },
   color: "#00aaff",
-  requires: new Decimal(10), // Can be a function that takes requirement increases into account
+  requires: new Decimal(10), // Can be a function that takes requirement increases into accountt
   resource: "prestige points", // Name of prestige currency
   baseResource: "points", // Name of resource prestige is based on
   baseAmount() {
