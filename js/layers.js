@@ -147,6 +147,19 @@ addLayer("p", {
         unlocked(){ return hasUpgrade('p', 15) },
 
       },
+      22: {
+
+        title: "Growing? (7)",
+
+        description(){ return "Boost points based on b11 purchases." },
+
+        cost: new Decimal(750),
+
+        unlocked(){ return hasUpgrade('p', 21) },
+
+        effect(){ return getBuyableAmount('p', 11).pow(0.75) },
+        effectDisplay(){ return "x"+format(upgradeEffect('p', 22)) },
+      },
     },
     update(diff) {
         player.p.pPowerGain = player.points.pow(0.25)
