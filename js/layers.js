@@ -40,7 +40,7 @@ addLayer("p", {
     if (hasUpgrade("p", 34)) mult = mult.times(upgradeEffect("p", 34));
     if (hasUpgrade("p", 42)) mult = mult.times(2.5);
     if (hasUpgrade("p", 35)) mult = mult.times(buyableEffect("p", 13));
-    if (hasMilestone('p', 0)) mult = mult.times(2.5)
+    if (hasUpgrade('p', 43)) mult = mult.times(2.5)
     return mult;
   },
   tabFormat: {
