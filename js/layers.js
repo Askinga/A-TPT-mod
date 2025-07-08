@@ -378,9 +378,9 @@ addLayer("p", {
     42: {
       title: "Boost (17)",
       description() {
-        return "x4 Points.";
+        return "x8 Points.";
       },
-      cost: new Decimal("e9"),
+      cost: new Decimal("4e8"),
       unlocked() { return hasUpgrade("p", 41)  },
     },
     43: {
@@ -388,7 +388,7 @@ addLayer("p", {
       description() {
         return "x2.5 prestige points.";
       },
-      cost: new Decimal("2.5e9"),
+      cost: new Decimal("1.25e9"),
       unlocked() { return hasUpgrade("p", 42)  },
     },
   },
