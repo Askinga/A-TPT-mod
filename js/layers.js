@@ -42,6 +42,7 @@ addLayer("p", {
     if (hasUpgrade("p", 42)) mult = mult.times(2.5);
     if (hasUpgrade("p", 35)) mult = mult.times(buyableEffect("p", 13));
     if (hasUpgrade('p', 43)) mult = mult.times(2.5)
+    mult = mult.times(layers.l.effect())
     return mult;
   },
   tabFormat: {
