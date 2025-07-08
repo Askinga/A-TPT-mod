@@ -18,6 +18,7 @@ addLayer("p", {
   onPrestige() {
     let mult = new Decimal(1);
     if (hasUpgrade("p", 25)) mult = mult.times(buyableEffect("p", 12));
+    if (hasUpgrade('p', 44)) mult = mult.times(2.5);
     if (hasMilestone('p', 0)) mult = mult.times(2.5)
     let gain = player.points.pow(0.25).times(mult);
     if (hasUpgrade("p", 15)) {
@@ -391,10 +392,27 @@ addLayer("p", {
       cost: new Decimal("1.25e9"),
       unlocked() { return hasUpgrade("p", 42)  },
     },
+    44: {
+      title: "Almost there (19)",
+      description() {
+        return "x2.5 prestige power.";
+      },
+      cost: new Decimal("5e9"),
+      unlocked() { return hasUpgrade("p", 43)  },
+    },
+    45: {
+      title: "NEXT LAYER! (20)",
+      description() {
+        return "Unlock a new layer.";
+      },
+      cost: new Decimal("e10"),
+      unlocked() { return hasUpgrade("p", 44)  },
+    },
   },
   update(diff) {
     let mult = new Decimal(1);
     if (hasUpgrade("p", 25)) mult = mult.times(buyableEffect("p", 12));
+    if (hasUpgrade('p', 44)) mult = mult.times(2.5);
     if (hasMilestone('p', 0)) mult = mult.times(2.5)
     player.p.pPowerGain = player.points.pow(0.25).times(mult);
     if (player.a.auto2.eq(1)) {
