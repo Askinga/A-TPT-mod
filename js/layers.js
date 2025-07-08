@@ -374,6 +374,14 @@ addLayer("p", {
       cost: new Decimal("e8"),
       unlocked() { return hasUpgrade("p", 35)  },
     },
+    42: {
+      title: "Boost (17)",
+      description() {
+        return "x4 Points.";
+      },
+      cost: new Decimal("e9"),
+      unlocked() { return hasUpgrade("p", 41)  },
+    },
   },
   update(diff) {
     let mult = new Decimal(1);
@@ -509,7 +517,7 @@ addLayer("p", {
   },
   milestones: {
     0: {
-        requirementDescription: "Unlock this tab",
+        requirementDescription: "Unlock this tab (m1)",
         effectDescription: "x2.5 Prestige Power, prestige points and points",
         done() { return hasUpgrade('p', 41) }
     },
