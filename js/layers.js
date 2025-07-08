@@ -38,6 +38,7 @@ addLayer("p", {
     mult = new Decimal(1);
     if (hasUpgrade("p", 33)) mult = mult.times(upgradeEffect("p", 33));
     if (hasUpgrade("p", 34)) mult = mult.times(upgradeEffect("p", 34));
+    if (hasUpgrade("p", 42)) mult = mult.times(2.5);
     if (hasUpgrade("p", 35)) mult = mult.times(buyableEffect("p", 13));
     if (hasMilestone('p', 0)) mult = mult.times(2.5)
     return mult;
@@ -381,6 +382,14 @@ addLayer("p", {
       },
       cost: new Decimal("e9"),
       unlocked() { return hasUpgrade("p", 41)  },
+    },
+    43: {
+      title: "There will be something new... (18)",
+      description() {
+        return "x2.5 prestige points.";
+      },
+      cost: new Decimal("2.5e9"),
+      unlocked() { return hasUpgrade("p", 42)  },
     },
   },
   update(diff) {
