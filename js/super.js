@@ -32,4 +32,31 @@ addLayer("s", {
     effectDescription(){
 	    return "which is boosting Prestige Points by x" + format(layers.s.effect())
     },
+    upgrades: {
+      11: {
+    	  title: "A new upgrade (26)",
+    	  description: "x5 prestige points.",
+    	  cost: new Decimal(1),
+    	  unlocked() {
+      	    return true;
+          },
+      },
+      12: {
+    	  title: "A challenge? (27)",
+    	  description: "Unlock a challenge.",
+    	  cost: new Decimal(2),
+    	  unlocked() {
+      	    return true;
+          },
+      },
+    },
+    challenges: {
+    11: {
+        name: "Unleveled",
+        challengeDescription: "Remove the level effect",
+        canComplete: function() {return player.p.points.gte(1e21)},
+        goalDescription: "1e21 prestige points?",
+	rewardDescription: "x10 prestige points"
+    },
+    },
 })
