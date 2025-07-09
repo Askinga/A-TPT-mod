@@ -32,4 +32,11 @@ addLayer("l", {
     effectDescription(){
 	    return "which is boosting Prestige Points by x" + format(layers.l.effect())
     },
+    milestones: {
+    0: {
+        requirementDescription: "Level 2 (m2)",
+        effectDescription: "x3 points",
+        done() { return player.l.points.gte(2) }
+    },
+  },
 })
