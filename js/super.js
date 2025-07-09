@@ -25,5 +25,11 @@ addLayer("s", {
         {key: "s", description: "S: Reset for super prestige points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     layerShown(){return (hasMilestone("l", 7) || player.s.unlocked)},
-    branches: ["p"]
+    branches: ["p"],
+    effect(){
+        return player.s.points.add(1).pow(0.75)
+    },
+    effectDescription(){
+	    return "which is boosting Prestige Points by x" + format(layers.s.effect())
+    },
 })
