@@ -41,12 +41,20 @@ addLayer("l", {
     1: {
         requirementDescription: "Level 3 (m3)",
         effectDescription: "x1.75 prestige points",
-        done() { return player.l.points.gte(3) }
+        done() { return player.l.points.gte(3) },
+	unlocked(){ return hasMilestone('l', 0) }
     },
     2: {
         requirementDescription: "Level 5 (m4)",
         effectDescription: "x3 prestige points and unlock a new automation!",
-        done() { return player.l.points.gte(5) }
+        done() { return player.l.points.gte(5) },
+	unlocked(){ return hasMilestone('l', 1) }
+    },
+    3: {
+        requirementDescription: "Level 6 (m5)",
+        effectDescription: "x15 prestige power.",
+        done() { return player.l.points.gte(6) },
+	unlocked(){ return hasMilestone('l', 2) }
     },
   },
 })
