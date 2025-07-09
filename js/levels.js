@@ -68,5 +68,11 @@ addLayer("l", {
         done() { return player.l.points.gte(10) },
 	unlocked(){ return hasMilestone('l', 4) }
     },
+    6: {
+        requirementDescription: "Level 12 (m8)",
+        effectDescription: "x100 points. (Big boost!)",
+        done() { return player.l.points.gte(12) },
+	unlocked(){ return hasMilestone('l', 5) }
+    },
   },
 })
