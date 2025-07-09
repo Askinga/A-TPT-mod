@@ -54,6 +54,7 @@ function getPointGen() {
   if (hasMilestone('l', 0)) gain = gain.times(3)
   if (hasUpgrade("p", 42)) gain = gain.times(8);
   if (hasUpgrade("p", 52)) gain = gain.times(10);
+  if (hasUpgrade("p", 55)) gain = gain.times(10);
   gain = gain.times(buyableEffect("p", 11));
   return gain;
 }
