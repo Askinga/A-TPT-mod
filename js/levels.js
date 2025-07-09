@@ -43,5 +43,10 @@ addLayer("l", {
         effectDescription: "x1.75 prestige points",
         done() { return player.l.points.gte(3) }
     },
+    2: {
+        requirementDescription: "Level 5 (m4)",
+        effectDescription: "x3 prestige points and unlock a new automation!",
+        done() { return player.l.points.gte(5) }
+    },
   },
 })
