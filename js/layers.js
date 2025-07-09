@@ -422,6 +422,14 @@ addLayer("p", {
       cost: new Decimal("e15"),
       unlocked() { return (hasMilestone("l", 4) && hasUpgrade('p', 45)) },
     },
+    52: {
+      title: "ExPre2 (22)",
+      description() {
+        return "x10 points.";
+      },
+      cost: new Decimal("e16"),
+      unlocked() { return (hasMilestone("l", 4) && hasUpgrade('p', 51)) },
+    },
   },
   update(diff) {
     let mult = new Decimal(1);
