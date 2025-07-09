@@ -56,5 +56,11 @@ addLayer("l", {
         done() { return player.l.points.gte(6) },
 	unlocked(){ return hasMilestone('l', 2) }
     },
+    4: {
+        requirementDescription: "Level 7 (m6)",
+        effectDescription: "Extend Prestige Upgrades.",
+        done() { return player.l.points.gte(7) },
+	unlocked(){ return hasMilestone('l', 3) }
+    },
   },
 })
