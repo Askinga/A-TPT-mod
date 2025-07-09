@@ -62,5 +62,11 @@ addLayer("l", {
         done() { return player.l.points.gte(7) },
 	unlocked(){ return hasMilestone('l', 3) }
     },
+    5: {
+        requirementDescription: "Level 10 (m7)",
+        effectDescription: "Unlock a new automation.",
+        done() { return player.l.points.gte(10) },
+	unlocked(){ return hasMilestone('l', 4) }
+    },
   },
 })
