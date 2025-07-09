@@ -26,6 +26,19 @@ addLayer("p", {
       player.p.prestigePower = player.p.prestigePower.add(gain);
     }
   },
+  automate() {
+    if (player.a.auto4.eq(1)) {
+      if (canBuyBuyable('p', 11)) {
+        buyBuyable('p', 11)
+      }
+      if (canBuyBuyable('p', 12)) {
+        buyBuyable('p', 12)
+      }
+      if (canBuyBuyable('p', 13)) {
+        buyBuyable('p', 13)
+      }
+    }
+  },
   color: "#00aaff",
   requires: new Decimal(10), // Can be a function that takes requirement increases into account
   resource: "prestige points", // Name of prestige currency
