@@ -74,5 +74,11 @@ addLayer("l", {
         done() { return player.l.points.gte(12) },
 	unlocked(){ return hasMilestone('l', 5) }
     },
+    7: {
+        requirementDescription: "Level 13 (m9)",
+        effectDescription: "x10 prestige points and unlock a new layer.",
+        done() { return player.l.points.gte(13) },
+	unlocked(){ return hasMilestone('l', 6) }
+    },
   },
 })
