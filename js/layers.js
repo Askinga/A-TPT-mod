@@ -420,7 +420,7 @@ addLayer("p", {
         return "x3 prestige points.";
       },
       cost: new Decimal("e15"),
-      unlocked() { return hasMilestone("l", 4)  },
+      unlocked() { return (hasMilestone("l", 4) && hasUpgrade('p', 45)) },
     },
   },
   update(diff) {
