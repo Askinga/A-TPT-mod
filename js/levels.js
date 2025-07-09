@@ -38,5 +38,10 @@ addLayer("l", {
         effectDescription: "x3 points",
         done() { return player.l.points.gte(2) }
     },
+    1: {
+        requirementDescription: "Level 3 (m3)",
+        effectDescription: "x1.75 prestige points",
+        done() { return player.l.points.gte(3) }
+    },
   },
 })
