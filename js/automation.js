@@ -8,6 +8,7 @@ addLayer("a", {
       points: new Decimal(0),
       auto1: new Decimal(0),
       auto2: new Decimal(0),
+      auto3: new Decimal(0),
       lost: new Decimal(0),
     };
   },
@@ -109,39 +110,42 @@ addLayer("a", {
     12: {
         unlocked(){ return hasUpgrade('p', 15) },
         display() {
-
           let or = 'OFF'
-
           if (player.a.auto2.eq(0)) {
-
             or = 'OFF'
-
           } else {
-
             or = 'ON'
-
           }
-
           return format(tmp.a.auto2) + "% Prestige Power gain per second.<br>Cost: 10 AP per second.<br><h2>" + or 
-
         },
-
-        canClick(){ return player.a.points.gte(1) },
-
+        canClick(){ return player.a.points.gte(1) },      
         onClick(){
-
           if (player.a.auto2.eq(0)) {
-
             player.a.auto2 = new Decimal(1)
-
           } else {
-
             player.a.auto2 = new Decimal(0)
-
           }
-
         },
-
+    },
+    13: {
+        unlocked(){ return hasMilestone('l', 2) },
+        display() {
+          let or = 'OFF'
+          if (player.a.auto3.eq(0)) {
+            or = 'OFF'
+          } else {
+            or = 'ON'
+          }
+          return "Automate Prestige Upgrades.<br>Cost: 1e12 AP per second.<br><h2>" + or 
+        },
+        canClick(){ return player.a.points.gte(1e12) },      
+        onClick(){
+          if (player.a.auto3.eq(0)) {
+            player.a.auto3 = new Decimal(1)
+          } else {
+            player.a.auto3 = new Decimal(0)
+          }
+        },
     },
 },
     update(diff) {
@@ -151,11 +155,13 @@ addLayer("a", {
 
           player.a.auto1 = new Decimal(0)
           player.a.auto2 = new Decimal(0)
+          player.a.auto3 = new Decimal(0)
       }
       
       let spend = new Decimal(0)
       if (player.a.auto1.eq(1)) spend = spend.add(1)
       if (player.a.auto2.eq(1)) spend = spend.add(10)
+      if (player.a.auto3.eq(1)) spend = spend.add(1e12)
       player.a.lost = spend
       spend = spend.times(diff)
       player.a.points = player.a.points.sub(spend)
