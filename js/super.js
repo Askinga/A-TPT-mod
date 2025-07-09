@@ -46,17 +46,26 @@ addLayer("s", {
     	  description: "Unlock a challenge.",
     	  cost: new Decimal(2),
     	  unlocked() {
-      	    return true;
+      	    return hasUpgrade('s', 11);
+          },
+      },
+      13: {
+    	  title: "More levels (27)",
+    	  description: "x8 prestige points and ÷1000 level requirement.",
+    	  cost: new Decimal(5),
+    	  unlocked() {
+      	    return (hasUpgrade('s', 11) && hasChallenge('s', 11));
           },
       },
     },
     challenges: {
     11: {
+	unlocked(){ return hasUpgrade('s', 12) },
         name: "Unleveled",
         challengeDescription: "Remove the level effect",
         canComplete: function() {return player.p.points.gte(1e21)},
         goalDescription: "1e21 prestige points?",
-	rewardDescription: "x10 prestige points"
+	rewardDescription: "x10 prestige points and unlock further upgrades"
     },
     },
 })
