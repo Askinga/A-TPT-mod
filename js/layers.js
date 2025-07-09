@@ -59,6 +59,7 @@ addLayer("p", {
     if (hasUpgrade('p', 51)) mult = mult.times(3)
     if (hasUpgrade('p', 53)) mult = mult.times(4)
     if (hasUpgrade('p', 54)) mult = mult.times(10)
+    if (hasUpgrade('s', 11)) mult = mult.times(5)
     if (!inChallenge('s', 11)) mult = mult.times(layers.l.effect())
     if (hasMilestone('l', 1)) mult = mult.times(1.75)
     if (hasMilestone('l', 2)) mult = mult.times(3)
