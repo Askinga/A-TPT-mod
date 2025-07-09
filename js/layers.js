@@ -43,6 +43,7 @@ addLayer("p", {
     if (hasUpgrade("p", 42)) mult = mult.times(2.5);
     if (hasUpgrade("p", 35)) mult = mult.times(buyableEffect("p", 13));
     if (hasUpgrade('p', 43)) mult = mult.times(2.5)
+    if (hasUpgrade('p', 51)) mult = mult.times(3)
     mult = mult.times(layers.l.effect())
     if (hasMilestone('l', 1)) mult = mult.times(1.75)
     if (hasMilestone('l', 2)) mult = mult.times(3)
@@ -412,6 +413,14 @@ addLayer("p", {
       },
       cost: new Decimal("e10"),
       unlocked() { return hasUpgrade("p", 44)  },
+    },
+    51: {
+      title: "ExPre1 (21)",
+      description() {
+        return "x3 prestige points.";
+      },
+      cost: new Decimal("e15"),
+      unlocked() { return hasMilestone("l", 4)  },
     },
   },
   update(diff) {
