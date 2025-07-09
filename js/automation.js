@@ -9,6 +9,7 @@ addLayer("a", {
       auto1: new Decimal(0),
       auto2: new Decimal(0),
       auto3: new Decimal(0),
+      auto4: new Decimal(0),
       lost: new Decimal(0),
     };
   },
@@ -147,6 +148,26 @@ addLayer("a", {
           }
         },
     },
+    14: {
+        unlocked(){ return hasMilestone('l', 5) },
+        display() {
+          let or = 'OFF'
+          if (player.a.auto4.eq(0)) {
+            or = 'OFF'
+          } else {
+            or = 'ON'
+          }
+          return "Automate first 3 Prestige Buyables.<br>Cost: 1e20 AP per second.<br><h2>" + or 
+        },
+        canClick(){ return player.a.points.gte(1e20) },      
+        onClick(){
+          if (player.a.auto4.eq(0)) {
+            player.a.auto4 = new Decimal(1)
+          } else {
+            player.a.auto4 = new Decimal(0)
+          }
+        },
+    },
 },
     update(diff) {
       if (player.a.points.lt(0)) {
@@ -156,12 +177,14 @@ addLayer("a", {
           player.a.auto1 = new Decimal(0)
           player.a.auto2 = new Decimal(0)
           player.a.auto3 = new Decimal(0)
+          player.a.auto4 = new Decimal(0)
       }
       
       let spend = new Decimal(0)
       if (player.a.auto1.eq(1)) spend = spend.add(1)
       if (player.a.auto2.eq(1)) spend = spend.add(10)
       if (player.a.auto3.eq(1)) spend = spend.add(1e12)
+      if (player.a.auto4.eq(1)) spend = spend.add(1e20)
       player.a.lost = spend
       spend = spend.times(diff)
       player.a.points = player.a.points.sub(spend)
