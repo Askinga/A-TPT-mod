@@ -63,6 +63,7 @@ addLayer("p", {
     if (hasMilestone('l', 1)) mult = mult.times(1.75)
     if (hasMilestone('l', 2)) mult = mult.times(3)
     if (hasMilestone('l', 7)) mult = mult.times(10)
+    if (hasChallenge('s', 11)) mult = mult.times(10)
     mult = mult.times(layers.s.effect())
     return mult;
   },
