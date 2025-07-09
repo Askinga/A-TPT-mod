@@ -44,8 +44,10 @@ addLayer("p", {
     if (hasUpgrade('p', 43)) mult = mult.times(2.5)
     mult = mult.times(layers.l.effect())
     if (hasMilestone('l', 1)) mult = mult.times(1.75)
+    if (hasMilestone('l', 2)) mult = mult.times(3)
     return mult;
   },
+  autoUpgrade(){ return player.a.auto3.eq(1) },
   tabFormat: {
     Main: {
       content: [
