@@ -20,6 +20,7 @@ addLayer("p", {
     if (hasUpgrade("p", 25)) mult = mult.times(buyableEffect("p", 12));
     if (hasUpgrade('p', 44)) mult = mult.times(2.5);
     if (hasMilestone('p', 0)) mult = mult.times(2.5)
+    if (hasMilestone('l', 3)) mult = mult.times(15)
     let gain = player.points.pow(0.25).times(mult);
     if (hasUpgrade("p", 15)) {
       player.p.prestigePower = player.p.prestigePower.add(gain);
@@ -418,6 +419,7 @@ addLayer("p", {
     if (hasUpgrade("p", 25)) mult = mult.times(buyableEffect("p", 12));
     if (hasUpgrade('p', 44)) mult = mult.times(2.5);
     if (hasMilestone('p', 0)) mult = mult.times(2.5)
+    if (hasMilestone('l', 3)) mult = mult.times(15)
     player.p.pPowerGain = player.points.pow(0.25).times(mult);
     if (player.a.auto2.eq(1)) {
       player.p.prestigePower = player.p.prestigePower.add(
