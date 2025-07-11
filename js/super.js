@@ -59,16 +59,16 @@ addLayer("s", {
       },
       14: {
     	  title: "A log effect",
-    	  description: "Boost the level base effect based on super prestige points.",
+    	  description: "Boost the level base effect based on super prestige points. (Starts at +0.2)",
     	  cost: new Decimal(10),
     	  unlocked() {
       	    return (hasUpgrade('s', 13));
           },
 	  effect(){
-	    return player.s.points.add(1).log(25).add(1).div(5).sub(1)
+	    return player.s.points.add(1).log(25).add(1).div(5)
 	  },
 	  tooltip(){
-	    return "log<sub>25</sub>(((SP+1)+1)/5)-1"
+	    return "log<sub>25</sub>(((SP+1)+1)/5"
 	  },
 	  effectDisplay(){
 	      return "+"+format(upgradeEffect('s', 14))
