@@ -68,7 +68,7 @@ addLayer("s", {
 	    return player.s.points.add(1).log(25).add(1).div(5)
 	  },
 	  tooltip(){
-	    return "log<sub>25</sub>(((SP+1)+1)/5"
+	    return "log<sub>25</sub>((SP+1)+1)/5"
 	  },
 	  effectDisplay(){
 	      return "+"+format(upgradeEffect('s', 14))
