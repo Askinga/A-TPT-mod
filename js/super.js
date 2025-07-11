@@ -50,12 +50,29 @@ addLayer("s", {
           },
       },
       13: {
-    	  title: "More levels (27)",
+    	  title: "More levels (28)",
     	  description: "x8 prestige points and ÷1000 level requirement.",
     	  cost: new Decimal(5),
     	  unlocked() {
-      	    return (hasUpgrade('s', 11) && hasChallenge('s', 11));
+      	    return (hasUpgrade('s', 12) && hasChallenge('s', 11));
           },
+      },
+      14: {
+    	  title: "A log effect",
+    	  description: "Boost the level base effect based on super prestige points.",
+    	  cost: new Decimal(10),
+    	  unlocked() {
+      	    return (hasUpgrade('s', 13));
+          },
+	  effect(){
+	    return player.s.points.add(1).log(25).add(1).div(5).sub(1)
+	  },
+	  tooltip(){
+	    return "log<sub>25</sub>(((SP+1)+1)/5)-1"
+	  },
+	  effectDisplay(){
+	      return "+"+format(upgradeEffect('s', 14))
+	  },
       },
     },
     challenges: {
