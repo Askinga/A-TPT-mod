@@ -28,7 +28,9 @@ addLayer("l", {
     layerShown(){return (hasUpgrade('p', 45) || player.l.unlocked)},
     branches: ["p"],
     effect(){
-        return new Decimal(2).pow(player.l.points)
+	let base = new Decimal(2)
+	if (hasUpgrade("s", 14)) base = base.add(upgradeEffect('s', 14))
+        return new Decimal(base).pow(player.l.points)
     },
     effectDescription(){
 	    return "which is boosting Prestige Points by x" + format(layers.l.effect())
