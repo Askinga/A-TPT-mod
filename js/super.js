@@ -103,7 +103,7 @@ addLayer("s", {
       },
       22: {
     	  title: "A challenge, again? (32)",
-    	  description: "Unlock another challenge.",
+    	  description: "Unlock another challenge and something new.",
     	  cost: new Decimal(500),
     	  unlocked() {
       	    return hasUpgrade('s', 21);
