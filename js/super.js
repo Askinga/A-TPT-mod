@@ -101,6 +101,14 @@ addLayer("s", {
 	      return "x"+format(upgradeEffect('s', 21))
 	  },
       },
+      22: {
+    	  title: "A challenge, again? (32)",
+    	  description: "Unlock another challenge.",
+    	  cost: new Decimal(500),
+    	  unlocked() {
+      	    return hasUpgrade('s', 21);
+          },
+      },
     },
     challenges: {
     11: {
@@ -110,6 +118,14 @@ addLayer("s", {
         canComplete: function() {return player.p.points.gte(1e20)},
         goalDescription: "1e20 prestige points",
 	rewardDescription: "x10 prestige points and unlock further upgrades"
+    },
+    12: {
+	unlocked(){ return hasUpgrade('s', 22) },
+        name: "Prestige Debuff",
+        challengeDescription: "^0.5 points and ^0.75 prestige points",
+        canComplete: function() {return player.p.points.gte(1e25)},
+        goalDescription: "1e25 prestige points",
+	rewardDescription: "+0.3 level effect base and unlock further upgrades"
     },
     },
 })
