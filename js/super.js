@@ -95,10 +95,10 @@ addLayer("s", {
 	    return player.points.add(1).log(10).add(20).div(20)
 	  },
 	  tooltip(){
-	    return "log<sub>10</sub>((SP+1)+20)/20"
+	    return "log<sub>10</sub>((points+1)+20)/20"
 	  },
 	  effectDisplay(){
-	      return "+"+format(upgradeEffect('s', 21))
+	      return "x"+format(upgradeEffect('s', 21))
 	  },
       },
     },
