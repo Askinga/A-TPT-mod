@@ -14,7 +14,11 @@ addLayer("f", {
     coinGet: new Decimal(0),
     }},
     color: "#cc0000",
-    requires: new Decimal("10^^1e300"), // Can be a function that takes requirement increases into account
+    requires() {
+	let r = new Decimal("e30"), 
+	if (player.f.points.gte(1)) req = new Decimal("10^^e300")
+	return r
+    }, // Can be a function that takes requirement increases into account
     resource: "???", // Name of prestige currency
     baseResource: "points", // Name of resource prestige is based on
     baseAmount() {return player.points}, // Get the current amount of baseResource
@@ -29,11 +33,12 @@ addLayer("f", {
       c = c.times(new Decimal(1.25).pow(player.f.stage))
       return c
     },
+    prestigeButtonText(){ return "Unlock Fighting: 1.00e30 points" },
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
     row: 2, // Row the layer is in on the tree (0 is the first row
-    layerShown(){return hasUpgrade('s', 22)},
+    layerShown(){return (hasUpgrade('s', 22) || player.f.unlocked) },
     damage(){
       let d = new Decimal(1)
       return d
@@ -46,6 +51,8 @@ addLayer("f", {
         "blank",
         "clickables",
         "buyables",
+	"blank",
+	"prestige-button",
     ],
     bars: {
     hpBar: {
@@ -76,7 +83,7 @@ addLayer("f", {
     12: {
         title: "Attack!",
         display() {return "Deals Damage to the Enemy"},
-        canClick(){ return true },
+        canClick(){ return player.f.unlocked },
         onClick(){ 
           player.f.enemyHP = player.f.enemyHP.sub(player.f.damage)
         },
