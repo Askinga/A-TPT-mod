@@ -74,7 +74,7 @@ addLayer("f", {
         canClick(){ return player.f.stage.gte(1) },
         onClick(){ 
           player.f.stage = player.f.stage.sub(1)
-          player.f.enemyStartHP = new Decimal(1.1).pow(player.f.stage.pow(1.2))
+          player.f.enemyStartHP = new Decimal(1.1).pow(player.f.stage.pow(1.2)).times(100)
           player.f.enemyHP = player.f.enemyStartHP
         },
     },
@@ -92,13 +92,13 @@ addLayer("f", {
         canClick(){ return true },
         onClick(){ 
           player.f.stage = player.f.stage.add(1)
-          player.f.enemyStartHP = new Decimal(1.1).pow(player.f.stage.pow(1.2))
+          player.f.enemyStartHP = new Decimal(1.1).pow(player.f.stage.pow(1.2)).times(100)
           player.f.enemyHP = player.f.enemyStartHP
         },
     },
     },
     update(diff) {
-      player.f.enemyStartHP = new Decimal(1.1).pow(player.f.stage.pow(1.2)) 
+      player.f.enemyStartHP = new Decimal(1.1).pow(player.f.stage.pow(1.2)).times(100)
       player.f.damage = tmp.f.damage
       player.f.coinGet = tmp.f.coin
 
