@@ -13,6 +13,7 @@ addLayer("f", {
     stage: new Decimal(0),
     coinGet: new Decimal(0),
     }},
+    resetsNothing(){ return true },
     color: "#cc0000",
     requires() {
 	let r = new Decimal("e30"), 
