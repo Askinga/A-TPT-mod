@@ -122,7 +122,7 @@ addLayer("s", {
     12: {
 	unlocked(){ return hasUpgrade('s', 22) },
         name: "Prestige Debuff",
-        challengeDescription: "^0.5 points and ^0.8 prestige points",
+        challengeDescription: "^0.5 points and ^0.775 prestige points",
         canComplete: function() {return player.p.points.gte(1e20)},
         goalDescription: "1e20 prestige points",
 	rewardDescription: "+0.3 level effect base and unlock further upgrades"
