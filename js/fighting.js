@@ -17,7 +17,7 @@ addLayer("f", {
     color: "#cc0000",
     requires() {
 	let r = new Decimal("e30");
-	if (player.f.points.gte(1)) req = new Decimal("10^^e300");
+	if (player.f.points.gte(1)) r = new Decimal("10^^e300");
 	return r;
     }, // Can be a function that takes requirement increases into account
     resource: "???", // Name of prestige currency
