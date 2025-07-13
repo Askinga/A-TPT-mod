@@ -30,6 +30,7 @@ addLayer("l", {
     effect(){
 	let base = new Decimal(2)
 	if (hasUpgrade("s", 14)) base = base.add(upgradeEffect('s', 14))
+	if (hasChallenge('s', 12)) base = base.add(0.3)
         return new Decimal(base).pow(player.l.points)
     },
     effectDescription(){
