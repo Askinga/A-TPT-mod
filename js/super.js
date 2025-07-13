@@ -15,6 +15,7 @@ addLayer("s", {
     exponent: 0.1, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
+	if (hasUpgrade('s', 15)) mult = mult.times(3)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -58,7 +59,7 @@ addLayer("s", {
           },
       },
       14: {
-    	  title: "A log effect",
+    	  title: "A log effect (29)",
     	  description: "Boost the level base effect based on super prestige points. (Starts at +0.2)",
     	  cost: new Decimal(10),
     	  unlocked() {
@@ -73,6 +74,14 @@ addLayer("s", {
 	  effectDisplay(){
 	      return "+"+format(upgradeEffect('s', 14))
 	  },
+      },
+      15: {
+    	  title: "SP gain buff (30)",
+    	  description: "x10 prestige points and x3 SP.",
+    	  cost: new Decimal(20),
+    	  unlocked() {
+      	    return (hasUpgrade('s', 12) && hasChallenge('s', 14));
+          },
       },
     },
     challenges: {
