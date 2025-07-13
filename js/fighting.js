@@ -46,9 +46,10 @@ addLayer("f", {
     },
     branches: ["s", "l", "p"],
     tabFormat: [
-        ["display-text", function(){ return "You have " + format(player.f.coins) + " Coins" }],
+        ["display-text", function(){ return "You have <span style=" color: rgb(255, 255, 153); text-shadow: rgb(255, 255, 153) 0px 0px 10px"><h2>" + format(player.f.coins) + "</h2></span> Coins.<br>And you will gain " + format(player.f.coinGet) + " <span style=" color: rgb(255, 255, 153); text-shadow: rgb(255, 255, 153) 0px 0px 10px"><h3>Coins</h3></span> on enemy kill" }],
         "blank",
         ["bar", "hpBar"],
+	["display-text", function(){ return "You will deal <span style=" color: rgb(255, 0, 0); text-shadow: rgb(255, 0, 0) 0px 0px 10px"><h2>" + format(player.f.damage) + "</h2></span> Damage on attack" }],
         "blank",
         "clickables",
         "buyables",
