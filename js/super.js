@@ -16,6 +16,7 @@ addLayer("s", {
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
 	if (hasUpgrade('s', 15)) mult = mult.times(3)
+	if (hasUpgrade('s', 21)) mult = mult.times(upgradeEffect('s', 21))
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -82,6 +83,23 @@ addLayer("s", {
     	  unlocked() {
       	    return (hasUpgrade('s', 14) && hasChallenge('s', 11));
           },
+      },
+      21: {
+    	  title: "Log effect 2 (31)",
+    	  description: "Boost SP based on points",
+    	  cost: new Decimal(200),
+    	  unlocked() {
+      	    return (hasUpgrade('s', 15));
+          },
+	  effect(){
+	    return player.points.add(1).log(50).add(20).div(20)
+	  },
+	  tooltip(){
+	    return "log<sub>50</sub>((SP+1)+20)/20"
+	  },
+	  effectDisplay(){
+	      return "+"+format(upgradeEffect('s', 21))
+	  },
       },
     },
     challenges: {
