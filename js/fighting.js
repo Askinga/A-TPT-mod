@@ -58,12 +58,8 @@ addLayer("f", {
     bars: {
     hpBar: {
         direction: RIGHT,
-        baseStyle(){ return {
-          "color": "red"
-        }},
-        fillStyle(){ return {
-          "color": "green"
-        }},
+        fillStyle: { 'background-color': "#00ff00" },
+        baseStyle: { 'background-color': "#ff0000" },
         width: 300,
         height: 70,
         progress() { return player.f.enemyHP.div(player.f.enemyStartHP) },
