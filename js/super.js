@@ -92,10 +92,10 @@ addLayer("s", {
       	    return (hasUpgrade('s', 15));
           },
 	  effect(){
-	    return player.points.add(1).log(50).add(20).div(20)
+	    return player.points.add(1).log(10).add(20).div(20)
 	  },
 	  tooltip(){
-	    return "log<sub>50</sub>((SP+1)+20)/20"
+	    return "log<sub>10</sub>((SP+1)+20)/20"
 	  },
 	  effectDisplay(){
 	      return "+"+format(upgradeEffect('s', 21))
