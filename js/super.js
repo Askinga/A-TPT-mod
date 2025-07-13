@@ -80,7 +80,7 @@ addLayer("s", {
     	  description: "x10 prestige points and x3 SP.",
     	  cost: new Decimal(20),
     	  unlocked() {
-      	    return (hasUpgrade('s', 12) && hasChallenge('s', 14));
+      	    return (hasUpgrade('s', 14) && hasChallenge('s', 11));
           },
       },
     },
