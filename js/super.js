@@ -80,8 +80,8 @@ addLayer("s", {
 	unlocked(){ return hasUpgrade('s', 12) },
         name: "Unleveled",
         challengeDescription: "Remove the level effect",
-        canComplete: function() {return player.p.points.gte(1e21)},
-        goalDescription: "1e21 prestige points?",
+        canComplete: function() {return player.p.points.gte(1e20)},
+        goalDescription: "1e20 prestige points",
 	rewardDescription: "x10 prestige points and unlock further upgrades"
     },
     },
