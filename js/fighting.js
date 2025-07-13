@@ -46,7 +46,7 @@ addLayer("f", {
     },
     branches: ["s", "l", "p"],
     tabFormat: [
-        ["display-text", function(){ return "You have " + format(player.f.coins) + "Coins" }],
+        ["display-text", function(){ return "You have " + format(player.f.coins) + " Coins" }],
         "blank",
         ["bar", "hpBar"],
         "blank",
@@ -60,6 +60,7 @@ addLayer("f", {
         direction: RIGHT,
         fillStyle: { 'background-color': "#00ff00" },
         baseStyle: { 'background-color': "#ff0000" },
+	textStyle: { 'background-color': "#000000" },
         width: 300,
         height: 70,
         progress() { return player.f.enemyHP.div(player.f.enemyStartHP) },
