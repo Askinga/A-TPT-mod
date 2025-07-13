@@ -163,7 +163,9 @@ addLayer("p", {
   },
   gainExp() {
     // Calculate the exponent on main currency from bonuses
-    return new Decimal(1);
+    exp = new Decimal(1);
+    if (inChallenge('s', 12)) exp = exp.times(0.75)
+    return exp
   },
   row: 0, // Row the layer is in on the tree (0 is the first row)
   hotkeys: [
