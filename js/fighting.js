@@ -14,7 +14,7 @@ addLayer("f", {
     coinGet: new Decimal(0),
     }},
     tooltip(){
-	return "<h3>" format(player.f.coins) + "</h3> Coins"
+	return "<h3>" + format(player.f.coins) + "</h3> Coins"
     },
     resetsNothing(){ return true },
     color: "#cc0000",
