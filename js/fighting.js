@@ -44,8 +44,9 @@ addLayer("f", {
     row: 2, // Row the layer is in on the tree (0 is the first row
     layerShown(){return (hasUpgrade('s', 22) || player.f.unlocked) },
     damage(){
-      let d = new Decimal(1)
-      return d
+      let dmg = new Decimal(1)
+      if (hasUpgrade("f", 11)) dmg = dmg.times(2)
+      return dmg
     },
     branches: ["s", "l", "p"],
     tabFormat: [
@@ -55,7 +56,7 @@ addLayer("f", {
 	["display-text", function(){ return 'You will deal <span style=" color: rgb(255, 0, 0); text-shadow: rgb(255, 0, 0) 0px 0px 10px"><h2>' + format(player.f.damage) + '</h2></span> Damage on attack<br>Stage <h3>' + format(player.f.stage) + "</h3>" }],
         "blank",
         "clickables",
-        "buyables",
+        "upgrades",
 	"blank",
 	"prestige-button",
     ],
@@ -100,6 +101,16 @@ addLayer("f", {
           player.f.enemyHP = player.f.enemyStartHP
         },
     },
+    },
+    upgrades: {
+	11: {
+	  title: "Fighting? (36)",
+	  description: "Double your damage",
+	  cost: new Decimal(1),
+	  currencyDisplayName: "Coins",
+	  currencyInternalName: "coins",
+	  currencyLayer: "f"
+	},
     },
     update(diff) {
       player.f.enemyStartHP = new Decimal(1.1).pow(player.f.stage.pow(1.2)).times(100)
