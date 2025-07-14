@@ -34,6 +34,7 @@ addLayer("f", {
     coin(){
       let c = new Decimal(1)
       c = c.times(new Decimal(1.25).pow(player.f.stage))
+      if (hasUpgrade('f', 12)) c = c.times(2)
       return c
     },
     prestigeButtonText(){ return "Unlock Fighting: 1.00e30 points" },
@@ -109,6 +110,15 @@ addLayer("f", {
 	  currencyDisplayName: "Coins",
 	  currencyInternalName: "coins",
 	  currencyLayer: "f"
+	},
+	12: {
+	  title: "This is cool. (37)",
+	  description: "Double your coin gain",
+	  cost: new Decimal(3),
+	  currencyDisplayName: "Coins",
+	  currencyInternalName: "coins",
+	  currencyLayer: "f",
+	  unlocked(){ return hasUpgrade('f', 11) }
 	},
     },
     update(diff) {
