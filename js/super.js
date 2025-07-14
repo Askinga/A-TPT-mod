@@ -114,7 +114,7 @@ addLayer("s", {
     	  description: "x2 points.",
     	  cost: new Decimal(750),
     	  unlocked() {
-      	    return hasUpgrade('s', 22);
+      	    return (hasUpgrade('s', 22) && hasChallenge('s', 12));
           },
       },
       24: {
