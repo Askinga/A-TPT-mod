@@ -33,7 +33,7 @@ addLayer("f", {
     },
     coin(){
       let c = new Decimal(1)
-      c = c.times(new Decimal(1.25).pow(player.f.stage))
+      c = c.times(new Decimal(1.075).pow(player.f.stage))
       if (hasUpgrade('f', 12)) c = c.times(2)
       return c
     },
@@ -46,6 +46,7 @@ addLayer("f", {
     damage(){
       let dmg = new Decimal(1)
       if (hasUpgrade("f", 11)) dmg = dmg.times(2)
+      if (hasUpgrade("f", 13)) dmg = dmg.times(upgradeEffect('f', 13))
       return dmg
     },
     branches: ["s", "l", "p"],
@@ -119,6 +120,17 @@ addLayer("f", {
 	  currencyInternalName: "coins",
 	  currencyLayer: "f",
 	  unlocked(){ return hasUpgrade('f', 11) }
+	},
+	13: {
+	  title: "Rich is better. (38)",
+	  description: "Boost damage based on coins",
+	  cost: new Decimal(6),
+	  currencyDisplayName: "Coins",
+	  currencyInternalName: "coins",
+	  currencyLayer: "f",
+	  effect(){ return player.f.coins.add(1).pow(0.35) },
+	  effectDisplay(){ return "x"+format(upgradeEffect('f', 13)) },
+	  unlocked(){ return hasUpgrade('f', 12) }
 	},
     },
     update(diff) {
