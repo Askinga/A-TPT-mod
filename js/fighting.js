@@ -47,6 +47,7 @@ addLayer("f", {
       let dmg = new Decimal(1)
       if (hasUpgrade("f", 11)) dmg = dmg.times(2)
       if (hasUpgrade("f", 13)) dmg = dmg.times(upgradeEffect('f', 13))
+      if (hasUpgrade("f", 14)) dmg = dmg.times(3)
       return dmg
     },
     branches: ["s", "l", "p"],
@@ -131,6 +132,15 @@ addLayer("f", {
 	  effect(){ return player.f.coins.add(1).pow(0.35) },
 	  effectDisplay(){ return "x"+format(upgradeEffect('f', 13)) },
 	  unlocked(){ return hasUpgrade('f', 12) }
+	},
+	14: {
+	  title: "player.f.damage = player.f.damage.times(3). (38)",
+	  description: "x3 damage",
+	  cost: new Decimal(50),
+	  currencyDisplayName: "Coins",
+	  currencyInternalName: "coins",
+	  currencyLayer: "f",
+	  unlocked(){ return hasUpgrade('f', 13) }
 	},
     },
     update(diff) {
