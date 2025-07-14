@@ -42,7 +42,7 @@ addLayer("f", {
         return new Decimal(1)
     },
     row: 2, // Row the layer is in on the tree (0 is the first row
-    layerShown(){return (hasUpgrade('s', 22) || player.f.unlocked) },
+    layerShown(){return (hasUpgrade('s', 25) || player.f.unlocked) },
     damage(){
       let dmg = new Decimal(1)
       if (hasUpgrade("f", 11)) dmg = dmg.times(2)
