@@ -103,10 +103,34 @@ addLayer("s", {
       },
       22: {
     	  title: "A challenge, again? (32)",
-    	  description: "Unlock another challenge and something new.",
+    	  description: "Unlock another challenge.",
     	  cost: new Decimal(500),
     	  unlocked() {
       	    return hasUpgrade('s', 21);
+          },
+      },
+      23: {
+    	  title: "Push to a new layer (33)",
+    	  description: "x2 points.",
+    	  cost: new Decimal(750),
+    	  unlocked() {
+      	    return hasUpgrade('s', 22);
+          },
+      },
+      24: {
+    	  title: "Push to a new layer (34)",
+    	  description: "x2 points, again?",
+    	  cost: new Decimal(800),
+    	  unlocked() {
+      	    return hasUpgrade('s', 23);
+          },
+      },
+      25: {
+    	  title: "Push to a new layer (35)",
+    	  description: "x2 points, AGAIN??? And unlock a new layer.",
+    	  cost: new Decimal(1000),
+    	  unlocked() {
+      	    return hasUpgrade('s', 24);
           },
       },
     },
