@@ -36,6 +36,7 @@ addLayer("f", {
       let c = new Decimal(1)
       c = c.times(new Decimal(1.075).pow(player.f.stage))
       if (hasUpgrade('f', 12)) c = c.times(2)
+      if (hasUpgrade('f', 22)) c = c.times(upgradeEffect('f', 22))
       return c
     },
     prestigeButtonText(){ return "Unlock Fighting: 1.00e30 points" },
@@ -166,6 +167,17 @@ addLayer("f", {
 	  effect(){ return player.s.points.add(1).pow(0.3) },
 	  effectDisplay(){ return "x"+format(upgradeEffect('f', 21)) },
 	  unlocked(){ return hasUpgrade('f', 15) }
+	},
+	22: {
+	  title: "Coin boost 1 (42)",
+	  description: "Boost coins based on points",
+	  cost: new Decimal(2500),
+	  currencyDisplayName: "Coins",
+	  currencyInternalName: "coins",
+	  currencyLayer: "f",
+	  effect(){ return player.points.add(1).pow(0.015) },
+	  effectDisplay(){ return "x"+format(upgradeEffect('f', 22)) },
+	  unlocked(){ return hasUpgrade('f', 21) }
 	},
     },
     update(diff) {
