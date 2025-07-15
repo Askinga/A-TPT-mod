@@ -1,3 +1,4 @@
+
 addLayer("f", {
     name: "fighting", // This is optional, only used in a few places, If absent it just uses the layer id.
     symbol: "F", // This appears on the layer's node. Default is the id with the first letter capitalized
@@ -48,6 +49,7 @@ addLayer("f", {
       if (hasUpgrade("f", 11)) dmg = dmg.times(2)
       if (hasUpgrade("f", 13)) dmg = dmg.times(upgradeEffect('f', 13))
       if (hasUpgrade("f", 15)) dmg = dmg.times(upgradeEffect('f', 15))
+      if (hasUpgrade("f", 21)) dmg = dmg.times(upgradeEffect('f', 21))
       if (hasUpgrade("f", 14)) dmg = dmg.times(3)
       return dmg
     },
@@ -135,7 +137,7 @@ addLayer("f", {
 	  unlocked(){ return hasUpgrade('f', 12) }
 	},
 	14: {
-	  title: "player.f.damage = player.f.damage.times(3). (38)",
+	  title: "player.f.damage = player.f.damage.times(3). (39)",
 	  description: "x3 damage",
 	  cost: new Decimal(50),
 	  currencyDisplayName: "Coins",
@@ -153,6 +155,17 @@ addLayer("f", {
 	  effect(){ return player.l.points.add(1).pow(0.5) },
 	  effectDisplay(){ return "x"+format(upgradeEffect('f', 15)) },
 	  unlocked(){ return hasUpgrade('f', 14) }
+	},
+	21: {
+	  title: "Damage boost 2 (41)",
+	  description: "Boost damage based on super prestige points",
+	  cost: new Decimal(1000),
+	  currencyDisplayName: "Coins",
+	  currencyInternalName: "coins",
+	  currencyLayer: "f",
+	  effect(){ return player.s.points.add(1).pow(0.3) },
+	  effectDisplay(){ return "x"+format(upgradeEffect('f', 21)) },
+	  unlocked(){ return hasUpgrade('f', 15) }
 	},
     },
     update(diff) {
