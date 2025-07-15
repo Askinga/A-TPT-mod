@@ -47,6 +47,7 @@ addLayer("f", {
       let dmg = new Decimal(1)
       if (hasUpgrade("f", 11)) dmg = dmg.times(2)
       if (hasUpgrade("f", 13)) dmg = dmg.times(upgradeEffect('f', 13))
+      if (hasUpgrade("f", 15)) dmg = dmg.times(upgradeEffect('f', 15))
       if (hasUpgrade("f", 14)) dmg = dmg.times(3)
       return dmg
     },
@@ -141,6 +142,17 @@ addLayer("f", {
 	  currencyInternalName: "coins",
 	  currencyLayer: "f",
 	  unlocked(){ return hasUpgrade('f', 13) }
+	},
+	15: {
+	  title: "Damage boost 1 (40)",
+	  description: "Boost damage based on levels",
+	  cost: new Decimal(150),
+	  currencyDisplayName: "Coins",
+	  currencyInternalName: "coins",
+	  currencyLayer: "f",
+	  effect(){ return player.l.points.add(1).pow(0.5) },
+	  effectDisplay(){ return "x"+format(upgradeEffect('f', 15)) },
+	  unlocked(){ return hasUpgrade('f', 14) }
 	},
     },
     update(diff) {
