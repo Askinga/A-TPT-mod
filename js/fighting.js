@@ -235,7 +235,7 @@ addLayer("f", {
       },
       title: "f11",
       cost(x) {
-        return new Decimal(25000).times(new Decimal(1.15).pow(x.pow(x.div(150))));
+        return new Decimal(25000).times(new Decimal(1.15).pow(x.pow(x.div(150).add(1))));
       },
       display() {
         return (
