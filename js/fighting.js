@@ -67,6 +67,7 @@ addLayer("f", {
         "clickables",
         "upgrades",
 	"blank",
+	"buyables",
 	"prestige-button",
     ],
     bars: {
