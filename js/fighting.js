@@ -51,6 +51,7 @@ addLayer("f", {
       if (hasUpgrade("f", 13)) dmg = dmg.times(upgradeEffect('f', 13))
       if (hasUpgrade("f", 15)) dmg = dmg.times(upgradeEffect('f', 15))
       if (hasUpgrade("f", 21)) dmg = dmg.times(upgradeEffect('f', 21))
+      if (hasUpgrade("f", 23)) dmg = dmg.times(upgradeEffect('f', 23))
       if (hasUpgrade("f", 14)) dmg = dmg.times(3)
       return dmg
     },
@@ -178,6 +179,17 @@ addLayer("f", {
 	  effect(){ return player.points.add(1).pow(0.015) },
 	  effectDisplay(){ return "x"+format(upgradeEffect('f', 22)) },
 	  unlocked(){ return hasUpgrade('f', 21) }
+	},
+	23: {
+	  title: "Damage boost 3 (43)",
+	  description: "Boost damage based on points",
+	  cost: new Decimal(15000),
+	  currencyDisplayName: "Coins",
+	  currencyInternalName: "coins",
+	  currencyLayer: "f",
+	  effect(){ return player.points.add(1).pow(0.01) },
+	  effectDisplay(){ return "x"+format(upgradeEffect('f', 23)) },
+	  unlocked(){ return hasUpgrade('f', 22) }
 	},
     },
     update(diff) {
