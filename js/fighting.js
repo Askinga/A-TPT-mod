@@ -60,7 +60,7 @@ addLayer("f", {
         ["display-text", function(){ return 'You have <span style=" color: rgb(255, 255, 153); text-shadow: rgb(255, 255, 153) 0px 0px 10px"><h2>' + format(player.f.coins) + '</h2></span> Coins.<br>And you will gain <span style=" color: rgb(255, 255, 153); text-shadow: rgb(255, 255, 153) 0px 0px 10px"><h3>' + format(player.f.coinGet) + ' Coins</h3></span> on enemy kill' }],
         "blank",
         ["bar", "hpBar"],
-	["display-text", function(){ return 'You will deal <span style=" color: rgb(255, 0, 0); text-shadow: rgb(255, 0, 0) 0px 0px 10px"><h2>' + format(player.f.damage) + '</h2></span> Damage on attack<br>Stage <h3>' + format(player.f.stage) + "</h3>" }],
+	["display-text", function(){ return 'You will deal <span style=" color: rgb(255, 0, 0); text-shadow: rgb(255, 0, 0) 0px 0px 10px"><h2>' + format(player.f.damage) + '</h2></span> Damage on attack<br>Stage <h3>' + format(player.f.stage) + "</h3><br>You can hold the attack clickable! :)" }],
         "blank",
         "clickables",
         "upgrades",
@@ -95,6 +95,9 @@ addLayer("f", {
         display() {return "Deals Damage to the Enemy"},
         canClick(){ return player.f.unlocked },
         onClick(){ 
+          player.f.enemyHP = player.f.enemyHP.sub(player.f.damage)
+        },
+	onHold(){ 
           player.f.enemyHP = player.f.enemyHP.sub(player.f.damage)
         },
     },
@@ -190,6 +193,17 @@ addLayer("f", {
 	  effect(){ return player.points.add(1).pow(0.01) },
 	  effectDisplay(){ return "x"+format(upgradeEffect('f', 23)) },
 	  unlocked(){ return hasUpgrade('f', 22) }
+	},
+	24: {
+	  title: "Damage boost 4 (44)",
+	  description: "Boost damage based on prestige points",
+	  cost: new Decimal(30000),
+	  currencyDisplayName: "Coins",
+	  currencyInternalName: "coins",
+	  currencyLayer: "f",
+	  effect(){ return player.p.points.add(1).pow(0.0075) },
+	  effectDisplay(){ return "x"+format(upgradeEffect('f', 24)) },
+	  unlocked(){ return hasUpgrade('f', 23) }
 	},
     },
     update(diff) {
