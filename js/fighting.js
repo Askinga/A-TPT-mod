@@ -52,6 +52,7 @@ addLayer("f", {
       if (hasUpgrade("f", 15)) dmg = dmg.times(upgradeEffect('f', 15))
       if (hasUpgrade("f", 21)) dmg = dmg.times(upgradeEffect('f', 21))
       if (hasUpgrade("f", 23)) dmg = dmg.times(upgradeEffect('f', 23))
+      if (hasUpgrade("f", 24)) dmg = dmg.times(upgradeEffect('f', 24))
       if (hasUpgrade("f", 14)) dmg = dmg.times(3)
       return dmg
     },
