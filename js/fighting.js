@@ -20,7 +20,7 @@ addLayer("f", {
     color: "#cc0000",
     requires() {
 	let req = new Decimal("e30");
-	if (player.f.points.gte(1)) req = new Decimal("10^^e300");
+	if (player.f.points.gte(1)) req = req.times("10^^e300");
 	return req;
     }, // Can be a function that takes requirement increases into account
     resource: "???", // Name of prestige currency
@@ -54,6 +54,7 @@ addLayer("f", {
       if (hasUpgrade("f", 23)) dmg = dmg.times(upgradeEffect('f', 23))
       if (hasUpgrade("f", 24)) dmg = dmg.times(upgradeEffect('f', 24))
       if (hasUpgrade("f", 14)) dmg = dmg.times(3)
+      dmg = dmg.times(buyableEffect('f', 11))
       return dmg
     },
     branches: ["s", "l", "p"],
@@ -206,6 +207,15 @@ addLayer("f", {
 	  effectDisplay(){ return "x"+format(upgradeEffect('f', 24)) },
 	  unlocked(){ return hasUpgrade('f', 23) }
 	},
+	25: {
+	  title: "Buyable (45)",
+	  description: "Unlock a new Fighting Buyable.",
+	  cost: new Decimal(50000),
+	  currencyDisplayName: "Coins",
+	  currencyInternalName: "coins",
+	  currencyLayer: "f",
+	  unlocked(){ return hasUpgrade('f', 24) }
+	},
     },
     update(diff) {
       player.f.enemyStartHP = new Decimal(1.1).pow(player.f.stage.pow(1.2)).times(100)
@@ -216,5 +226,46 @@ addLayer("f", {
         player.f.enemyHP = player.f.enemyStartHP
         player.f.coins = player.f.coins.add(player.f.coinGet)
       }
+    },
+    buyables: {
+    11: {
+      unlocked() {
+        return hasUpgrade("f", 25);
+      },
+      title: "f11",
+      cost(x) {
+        return new Decimal(25000).times(new Decimal(1.15).pow(x.pow(x.div(150))));
+      },
+      display() {
+        return (
+          "x1.125 Damage per level.<br>Cost: " +
+          format(this.cost()) +
+          " Coins<br>Bought: " +
+          format(getBuyableAmount(this.layer, this.id)) +
+          "<br>Effect: x" +
+          format(buyableEffect(this.layer, this.id)) +
+          " Damage"
+        );
+      },
+      canAfford() {
+        return player[this.layer].coins.gte(this.cost());
+      },
+      buy() {
+        player[this.layer].coins = player[this.layer].coins.sub(
+          this.cost()
+        );
+        setBuyableAmount(
+          this.layer,
+          this.id,
+          getBuyableAmount(this.layer, this.id).add(1)
+        );
+      },
+      effect(x) {
+        let base1 = new Decimal(1.125);
+        let base2 = x;
+        let expo = new Decimal(1);
+        return base1.pow(Decimal.pow(base2, expo));
+      },
+    },
     },
 })
