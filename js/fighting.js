@@ -39,10 +39,14 @@ addLayer("f", {
       if (hasUpgrade('f', 22)) c = c.times(upgradeEffect('f', 22))
       if (hasUpgrade('f', 31)) c = c.times(upgradeEffect('f', 31))
       if (hasUpgrade('f', 32)) c = c.times(upgradeEffect('f', 32))
+      if (hasUpgrade('f', 33)) c = c.times(upgradeEffect('f', 33))
       return c
     },
     syn1() {
 	return player.f.coins.add(1).pow(0.75)
+    },
+    syn2() {
+	return player.f.coins.add(1).pow(0.5)
     },
     prestigeButtonText(){ return "Unlock Fighting: 1.00e30 points" },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -241,8 +245,19 @@ addLayer("f", {
 	  currencyInternalName: "coins",
 	  currencyLayer: "f",
 	  effect(){ return player.points.add(1).pow(0.01) },
-	  effectDisplay(){ return "x"+format(upgradeEffect('f', 22))+", x"+format(tmp.f.syn1) },
+	  effectDisplay(){ return "x"+format(upgradeEffect('f', 32))+", x"+format(tmp.f.syn1) },
 	  unlocked(){ return hasUpgrade('f', 31) }
+	},
+	33: {
+	  title: "Synergy 2 (48)",
+	  description: "Boost coins based on PP, and boost PP based on coins",
+	  cost: new Decimal(2000000),
+	  currencyDisplayName: "Coins",
+	  currencyInternalName: "coins",
+	  currencyLayer: "f",
+	  effect(){ return player.p.points.add(1).pow(0.0075) },
+	  effectDisplay(){ return "x"+format(upgradeEffect('f', 33))+", x"+format(tmp.f.syn2) },
+	  unlocked(){ return hasUpgrade('f', 32) }
 	},
     },
     update(diff) {
