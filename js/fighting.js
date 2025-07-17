@@ -40,6 +40,7 @@ addLayer("f", {
       if (hasUpgrade('f', 31)) c = c.times(upgradeEffect('f', 31))
       if (hasUpgrade('f', 32)) c = c.times(upgradeEffect('f', 32))
       if (hasUpgrade('f', 33)) c = c.times(upgradeEffect('f', 33))
+      if (hasUpgrade('f', 34)) c = c.times(upgradeEffect('f', 34))
       return c
     },
     syn1() {
@@ -258,6 +259,17 @@ addLayer("f", {
 	  effect(){ return player.p.points.add(1).pow(0.0075) },
 	  effectDisplay(){ return "x"+format(upgradeEffect('f', 33))+", x"+format(tmp.f.syn2) },
 	  unlocked(){ return hasUpgrade('f', 32) }
+	},
+	34: {
+	  title: "Coin Coin (49)",
+	  description: "Boost coins based on coins",
+	  cost: new Decimal(10000000),
+	  currencyDisplayName: "Coins",
+	  currencyInternalName: "coins",
+	  currencyLayer: "f",
+	  effect(){ return player.f.coins.add(1).pow(0.05) },
+	  effectDisplay(){ return "x"+format(upgradeEffect('f', 34)) },
+	  unlocked(){ return hasUpgrade('f', 33) }
 	},
     },
     update(diff) {
