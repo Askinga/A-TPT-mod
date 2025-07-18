@@ -271,6 +271,15 @@ addLayer("f", {
 	  effectDisplay(){ return "x"+format(upgradeEffect('f', 34)) },
 	  unlocked(){ return hasUpgrade('f', 33) }
 	},
+	35: {
+	  title: "New Layer (50)",
+	  description: "Unlock a new layer",
+	  cost: new Decimal(100000000),
+	  currencyDisplayName: "Coins",
+	  currencyInternalName: "coins",
+	  currencyLayer: "f",
+	  unlocked(){ return hasUpgrade('f', 34) }
+	},
     },
     update(diff) {
       player.f.enemyStartHP = new Decimal(1.1).pow(player.f.stage.pow(1.2)).times(100)
