@@ -60,6 +60,7 @@ function getPointGen() {
   if (hasUpgrade("s", 24)) gain = gain.times(2);
   if (hasUpgrade("s", 25)) gain = gain.times(2);
   if (hasUpgrade("f", 32)) gain = gain.times(tmp.f.syn1);
+  if (hasUpgrade('u', 11)) gain = gain.times(10)
   gain = gain.times(buyableEffect("p", 11));
   if (inChallenge('s', 12)) gain = gain.pow(0.5)
   return gain;
