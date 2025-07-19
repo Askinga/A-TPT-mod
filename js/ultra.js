@@ -29,7 +29,7 @@ addLayer("u", {
     upgrades: {
 	11: {
 	  title: "Oh no...",
-	  desciption: "x10 points, prestige points and x5 super prestige points",
+	  description: "x10 points, prestige points and x5 super prestige points",
 	  cost: new Decimal(1)
 	},
     },
