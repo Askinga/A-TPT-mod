@@ -34,5 +34,10 @@ addLayer("u", {
 	  description: "x1e5 points, x10 prestige points and x5 super prestige points",
 	  cost: new Decimal(1)
 	},
+	12: {
+	  title: "Automations are needed",
+	  description: "Unlock 2 new automations",
+	  cost: new Decimal(2)
+	},
     },
 })
