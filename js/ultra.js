@@ -16,6 +16,7 @@ addLayer("u", {
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
 	if (hasUpgrade('u', 13)) mult = mult.times(upgradeEffect('u', 13))
+	if (hasUpgrade('u', 14)) mult = mult.times(upgradeEffect('u', 14))
         return mult
     },
     syn3() {
@@ -51,6 +52,14 @@ addLayer("u", {
 	  effect(){ return player.p.points.add(1).pow(0.0025) },
 	  effectDisplay(){ return "x"+format(upgradeEffect('u', 13))+", x"+format(tmp.u.syn3) },
 	  unlocked() { return hasUpgrade('u', 12) },
+	},
+	14: {
+	  title: "Coin boost? (54)",
+	  description: "Boost UP based on coins.",
+	  cost: new Decimal(25),
+	  effect(){ return player.f.coins.add(1).pow(0.04) },
+	  effectDisplay(){ return "x"+format(upgradeEffect('u', 13)) },
+	  unlocked() { return hasUpgrade('u', 13) },
 	},
     },
 })
