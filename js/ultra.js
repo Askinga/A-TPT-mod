@@ -66,9 +66,17 @@ addLayer("u", {
 	  title: "Level Insanity (55)",
 	  description: "Boost UP based on levels and +0.2 level effect base.",
 	  cost: new Decimal(250),
-	  effect(){ return player.l.points.add(1).pow(0.05) },
+	  effect(){ return player.l.points.add(1).pow(0.2) },
 	  effectDisplay(){ return "x"+format(upgradeEffect('u', 15)) },
 	  unlocked() { return hasUpgrade('u', 14) },
+	},
+	21: {
+	  title: "Fighting Buff (56)",
+	  description: "Boost damage based on UP.",
+	  cost: new Decimal(500),
+	  effect(){ return player.u.points.add(1).pow(0.6) },
+	  effectDisplay(){ return "x"+format(upgradeEffect('u', 21)) },
+	  unlocked() { return hasUpgrade('u', 15) },
 	},
     },
 })
