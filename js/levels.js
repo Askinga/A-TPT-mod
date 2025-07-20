@@ -6,6 +6,9 @@ addLayer("l", {
         unlocked: false,
 		points: new Decimal(0),
     }},
+    autoPrestige(){ return player.a.auto5.eq(1) },
+    resetsNothing(){ return player.a.auto5.eq(1) },
+    canBuyMax(){ return player.a.auto5.eq(1) },
     color: "#3ACB02",
     requires: new Decimal("1e10"), // Can be a function that takes requirement increases into account
     resource: "levels", // Name of prestige currency
