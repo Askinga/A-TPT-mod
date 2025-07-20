@@ -12,10 +12,14 @@ addLayer("u", {
     baseResource: "super prestige points", // Name of resource prestige is based on
     baseAmount() {return player.s.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-    exponent: 0.2, // Prestige currency exponent
+    exponent: 0.075, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
+	if (hasUpgrade('u', 13)) mult = mult.times(upgradeEffect('u', 13))
         return mult
+    },
+    syn3() {
+	return player.u.points.add(1).pow(2.5)
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
@@ -30,14 +34,23 @@ addLayer("u", {
     effectDescription(){ return "which is boosting Points by x"+format(layers.u.effect()) },
     upgrades: {
 	11: {
-	  title: "Oh no...",
+	  title: "Oh no... (51)",
 	  description: "x1e5 points, x10 prestige points and x5 super prestige points",
 	  cost: new Decimal(1)
 	},
 	12: {
-	  title: "Automations are needed",
+	  title: "Automations are needed (52)",
 	  description: "Unlock 2 new automations",
-	  cost: new Decimal(2)
+	  cost: new Decimal(2),
+	  unlocked() { return hasUpgrade('u', 11) },
+	},
+	13: {
+	  title: "Synergy 3 (53)",
+	  description: "Boost UP based on prestige points, and boost prestige points based on UP.",
+	  cost: new Decimal(10),
+	  effect(){ return player.p.points.add(1).pow(0.0025) },
+	  effectDisplay(){ return "x"+format(upgradeEffect('u', 13))+", x"+format(tmp.u.syn3) },
+	  unlocked() { return hasUpgrade('u', 12) },
 	},
     },
 })
