@@ -26,10 +26,12 @@ addLayer("u", {
     ],
     layerShown(){return (hasUpgrade('f', 35) || player.u.unlocked)},
     branches: ["l", "s"],
+    effect(){ return player.u.points.add(1).pow(10) },
+    effectDescription(){ return "which is boosting Points by x"+format(layers.u.effect()) },
     upgrades: {
 	11: {
 	  title: "Oh no...",
-	  description: "x10 points, prestige points and x5 super prestige points",
+	  description: "x1e5 points, x10 prestige points and x5 super prestige points",
 	  cost: new Decimal(1)
 	},
     },
