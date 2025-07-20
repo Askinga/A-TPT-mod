@@ -70,6 +70,7 @@ addLayer("p", {
     if (hasChallenge('s', 11)) mult = mult.times(10)
     if (hasUpgrade("f", 33)) mult = mult.times(tmp.f.syn2);
     if (hasUpgrade("u", 11)) mult = mult.times(10)
+    if (hasUpgrade("u", 13)) mult = mult.times(tmp.u.syn3)
     mult = mult.times(layers.s.effect())
     return mult;
   },
