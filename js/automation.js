@@ -10,6 +10,8 @@ addLayer("a", {
       auto2: new Decimal(0),
       auto3: new Decimal(0),
       auto4: new Decimal(0),
+      auto5: new Decimal(0),
+      auto6: new Decimal(0),
       lost: new Decimal(0),
     };
   },
@@ -71,6 +73,13 @@ addLayer("a", {
       return new Decimal(0)
     } else {
       return player.a.points.add(1).log10().add(1)
+    }
+  },
+  auto3(){
+    if (player.a.points.lt(0)) {
+      return new Decimal(0)
+    } else {
+      return player.a.points.add(1).log10().add(1).times(0.2)
     }
   },
   auto2(){
@@ -168,6 +177,46 @@ addLayer("a", {
           }
         },
     },
+    21: {
+        unlocked(){ return hasUpgrade('u', 12) },
+        display() {
+          let or = 'OFF'
+          if (player.a.auto5.eq(0)) {
+            or = 'OFF'
+          } else {
+            or = 'ON'
+          }
+          return "Automate Levels, they reset nothing and you can buy max them.<br>Cost: 1e45 AP per second.<br><h2>" + or 
+        },
+        canClick(){ return player.a.points.gte(1e45) },      
+        onClick(){
+          if (player.a.auto5.eq(0)) {
+            player.a.auto5 = new Decimal(1)
+          } else {
+            player.a.auto5 = new Decimal(0)
+          }
+        },
+    },
+    22: {
+        unlocked(){ return hasUpgrade('u', 12) },
+        display() {
+          let or = 'OFF'
+          if (player.a.auto6.eq(0)) {
+            or = 'OFF'
+          } else {
+            or = 'ON'
+          }
+          return format(tmp.a.auto3) + "% SP gain per second, and autobuy SP upgrades and keep its challenges.<br>Cost: 1e50 AP per second.<br><h2>" + or 
+        },
+        canClick(){ return player.a.points.gte(1e50) },      
+        onClick(){
+          if (player.a.auto6.eq(0)) {
+            player.a.auto6 = new Decimal(1)
+          } else {
+            player.a.auto6 = new Decimal(0)
+          }
+        },
+    },
 },
     update(diff) {
       if (player.a.points.lt(0)) {
@@ -178,6 +227,8 @@ addLayer("a", {
           player.a.auto2 = new Decimal(0)
           player.a.auto3 = new Decimal(0)
           player.a.auto4 = new Decimal(0)
+          player.a.auto5 = new Decimal(0)
+          player.a.auto6 = new Decimal(0)
       }
       
       let spend = new Decimal(0)
@@ -185,6 +236,8 @@ addLayer("a", {
       if (player.a.auto2.eq(1)) spend = spend.add(10)
       if (player.a.auto3.eq(1)) spend = spend.add(1e12)
       if (player.a.auto4.eq(1)) spend = spend.add(1e20)
+      if (player.a.auto5.eq(1)) spend = spend.add(1e45)
+      if (player.a.auto6.eq(1)) spend = spend.add(1e50)
       player.a.lost = spend
       spend = spend.times(diff)
       player.a.points = player.a.points.sub(spend)
