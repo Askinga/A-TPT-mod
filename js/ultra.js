@@ -17,6 +17,7 @@ addLayer("u", {
         mult = new Decimal(1)
 	if (hasUpgrade('u', 13)) mult = mult.times(upgradeEffect('u', 13))
 	if (hasUpgrade('u', 14)) mult = mult.times(upgradeEffect('u', 14))
+	if (hasUpgrade('u', 15)) mult = mult.times(upgradeEffect('u', 15))
         return mult
     },
     syn3() {
@@ -60,6 +61,14 @@ addLayer("u", {
 	  effect(){ return player.f.coins.add(1).pow(0.04) },
 	  effectDisplay(){ return "x"+format(upgradeEffect('u', 14)) },
 	  unlocked() { return hasUpgrade('u', 13) },
+	},
+	15: {
+	  title: "Level Insanity (55)",
+	  description: "Boost UP based on levels and +0.2 level effect base.",
+	  cost: new Decimal(250),
+	  effect(){ return player.l.points.add(1).pow(0.05) },
+	  effectDisplay(){ return "x"+format(upgradeEffect('u', 15)) },
+	  unlocked() { return hasUpgrade('u', 14) },
 	},
     },
 })
