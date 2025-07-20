@@ -78,5 +78,13 @@ addLayer("u", {
 	  effectDisplay(){ return "x"+format(upgradeEffect('u', 21)) },
 	  unlocked() { return hasUpgrade('u', 15) },
 	},
+	22: {
+	  title: "SP boost (57)",
+	  description: "Boost SP based on UP.",
+	  cost: new Decimal(1000),
+	  effect(){ return player.u.points.add(1).pow(0.4) },
+	  effectDisplay(){ return "x"+format(upgradeEffect('u', 22)) },
+	  unlocked() { return hasUpgrade('u', 21) },
+	},
     },
 })
