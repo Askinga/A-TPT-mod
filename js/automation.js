@@ -35,7 +35,7 @@ addLayer("a", {
       "main-display",
       "prestige-button",
       "resource-display",
-      ["display-text", function() { return "You are losing " + format(player.a.lost) + " AP per second. Also all automations are based on AP.<br>Automations! Control the automations in this tab. However, all automations cost Automation Power (AP) to operate. Later automations cost more AP per second so start grinding AP!" }],
+      ["display-text", function() { return "You are losing " + format(player.a.lost) + " AP per second. Also (almost) all automations are based on AP.<br>Automations! Control the automations in this tab. However, all automations cost Automation Power (AP) to operate. Later automations cost more AP per second so start grinding AP!" }],
       "blank",
       "clickables",
       "blank"
