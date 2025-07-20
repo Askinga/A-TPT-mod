@@ -287,11 +287,18 @@ addLayer("p", {
       },
 
       effect() {
-        return player.p.points.add(1).pow(0.2);
+        let eff = player.p.points.add(1).pow(0.2);
+        eff = softcap(eff, new Decimal("1e20"), 0.5)
+        return eff
       },
 
       effectDisplay() {
-        return "x" + format(upgradeEffect("p", 23));
+        let s = ""
+        let upgEffect = upgradeEffect(this.layer, this.id)
+        if (upgEffect.gte(new Decimal("1e20")) ) {
+            s = " (Softcapped)"
+        }
+        return "x" + format(upgradeEffect("p", 23)) + s;
       },
     },
     24: {
