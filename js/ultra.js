@@ -58,7 +58,7 @@ addLayer("u", {
 	  description: "Boost UP based on coins.",
 	  cost: new Decimal(25),
 	  effect(){ return player.f.coins.add(1).pow(0.04) },
-	  effectDisplay(){ return "x"+format(upgradeEffect('u', 13)) },
+	  effectDisplay(){ return "x"+format(upgradeEffect('u', 14)) },
 	  unlocked() { return hasUpgrade('u', 13) },
 	},
     },
