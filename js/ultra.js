@@ -18,6 +18,7 @@ addLayer("u", {
 	if (hasUpgrade('u', 13)) mult = mult.times(upgradeEffect('u', 13))
 	if (hasUpgrade('u', 14)) mult = mult.times(upgradeEffect('u', 14))
 	if (hasUpgrade('u', 15)) mult = mult.times(upgradeEffect('u', 15))
+	if (hasUpgrade('u', 23)) mult = mult.times(upgradeEffect('u', 23))
         return mult
     },
     syn3() {
@@ -85,6 +86,14 @@ addLayer("u", {
 	  effect(){ return player.u.points.add(1).pow(0.4) },
 	  effectDisplay(){ return "x"+format(upgradeEffect('u', 22)) },
 	  unlocked() { return hasUpgrade('u', 21) },
+	},
+	23: {
+	  title: "UP boost (58)",
+	  description: "Boost UP based on UP.",
+	  cost: new Decimal(2000),
+	  effect(){ return player.u.points.add(1).pow(0.1) },
+	  effectDisplay(){ return "x"+format(upgradeEffect('u', 23)) },
+	  unlocked() { return hasUpgrade('u', 22) },
 	},
     },
 })
