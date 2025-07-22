@@ -52,11 +52,9 @@ addLayer("fo", {
         return "<h2>Formula Stage " + format(player.fo.stage) + "</h2><br>The formula is (x+1)^0.5, boosting points by x" + format(tmp.fo.stage1) + "<br>where x is your f points";
     else if (player.fo.stage.eq(1))
         return "<h2>Formula Stage " + format(player.fo.stage) + "</h2><br>The formula is (x+1)^y, boosting points by x" + format(tmp.fo.stage0) + "<br>where x is your f points" + "<br>y = " + format(player.fo.y); 
-    else
-        return "<h2>Formula Stage " + format(player.fo.stage) + "</h2><br>The formula is 2^((log<sub>10</sub>(x+1)+1)^2), boosting points by x" + format(tmp.fo.stage2) + "<br>where x is your f points" + "<br>y = " + format(player.fo.y); }],     
-        
-        }],  
-        
+    else if (player.fo.stage.eq(2))
+        return "<h2>Formula Stage " + format(player.fo.stage) + "</h2><br>The formula is 2^((log<sub>10</sub>(x+1)+1)^2), boosting points by x" + format(tmp.fo.stage2) + "<br>where x is your f points" + "<br>y = " + format(player.fo.y); 
+        }],     
         "prestige-button",
         "clickables",
         "buyables",
