@@ -3,7 +3,7 @@ addLayer("fo", {
     symbol: "F",
     position: 1,
     startData() { return {
-        unlocked: true,
+        unlocked: false,
         points: new Decimal(0),
         stage: new Decimal(0),
         y: new Decimal(0),
@@ -36,7 +36,7 @@ addLayer("fo", {
     hotkeys: [
         {key: "f", description: "F: Reset for f points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
-    layerShown(){return true},
+    layerShown(){return (hasUpgrade('u', 25) || player.fo.unlocked)},
     branches: ["l", "s"],
     tabFormat: [
         "main-display",
