@@ -37,7 +37,7 @@ addLayer("fo", {
         return player.fo.points.add(1).pow(player.fo.y)
     },
     stage2(){
-        return new Decimal(2).pow(player.fo.points.add(1).log10().add(1).pow(2))
+        return new Decimal(2).pow(player.fo.points.add(1).log10().add(1).pow(2)).times(player.fo.y)
     },
     row: 2,
     hotkeys: [
