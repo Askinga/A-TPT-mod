@@ -43,17 +43,22 @@ addLayer("fo", {
     branches: ["l", "s"],
     tabFormat: [
         "main-display",
-        ["display-text", function() { return "<h2>Formula Stage " + format(player.fo.stage) + (player.fo.stage.eq(0))?"</h2><br>The formula is (x+1)^0.5, boosting points by x" + (player.fo.stage.eq(1))?"</h2><br>The formula is (x+1)^y, boosting points by x" + (player.fo.stage.eq(0))?format(tmp.fo.stage1) + (player.fo.stage.eq(1))?format(tmp.fo.stage0) + "<br>where x is your f points<br>" + "y = " + format(player.fo.y); }],
+        ["display-text", function() { 
+    if (player.fo.stage.eq(0)) 
+        return "<h2>Formula Stage " + format(player.fo.stage) + "</h2><br>The formula is (x+1)^0.5, boosting points by x" + format(tmp.fo.stage1) + "where x is your f points";
+    else 
+        return "<h2>Formula Stage " + format(player.fo.stage) + "</h2><br>The formula is (x+1)^y, boosting points by x" + format(tmp.fo.stage0) + "where x is your f points" + "<br>y = " + format(player.fo.y); }],     
         "prestige-button"
     ],
     clickables: {
         11: {
         title: "Improve the Formula",
-        display() { return "Makes the Formula better. Next Formula will be x^y y > 1<br>Need 5 f points" },
+        display() { return "Makes the Formula better. Next Formula will be x^y. y > 1<br>Need 5 f points" },
         canClick(){ return player.fo.points.gte(5) },
         onClick(){ 
             player.fo.stage = player.fo.stage.add(1)
             player.fo.points = new Decimal(0)
+            player.fo.y = new Decimal(1)
         },
         unlocked(){ return player.fo.stage.eq(0) },
         },
