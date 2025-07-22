@@ -6,8 +6,8 @@ addLayer("fo", {
         unlocked: false,
         points: new Decimal(0),
         stage: new Decimal(0),
-        y: new Decimal(0),
-        z: new Decimal(0),
+        y: new Decimal(1),
+        z: new Decimal(1),
     }},
     tooltip(){
         return "The Formula"
@@ -32,6 +32,9 @@ addLayer("fo", {
     stage1(){
         return player.fo.points.add(1).pow(0.5)
     },
+    stage0(){
+        return player.fo.points.add(1).pow(player.fo.y)
+    },
     row: 2,
     hotkeys: [
         {key: "f", description: "F: Reset for f points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
@@ -40,7 +43,19 @@ addLayer("fo", {
     branches: ["l", "s"],
     tabFormat: [
         "main-display",
-        ["display-text", function() { return "<h2>Formula Stage " + format(player.fo.stage) + "</h2><br>The formula is (x+1)^0.5, boosting points by x" + format(tmp.fo.stage1) + "<br>where x is your f points"; }],
+        ["display-text", function() { return "<h2>Formula Stage " + format(player.fo.stage) + (player.fo.stage.eq(0))?"</h2><br>The formula is (x+1)^0.5, boosting points by x" + (player.fo.stage.eq(1))?"</h2><br>The formula is (x+1)^y, boosting points by x" + (player.fo.stage.eq(0))?format(tmp.fo.stage1) + (player.fo.stage.eq(1))?format(tmp.fo.stage0) + "<br>where x is your f points<br>" + "y = " + format(player.fo.y); }],
         "prestige-button"
     ],
+    clickables: {
+        11: {
+        title: "Improve the Formula",
+        display() { return "Makes the Formula better. Next Formula will be x^y y > 1<br>Need 5 f points" },
+        canClick(){ return player.fo.points.gte(5) },
+        onClick(){ 
+            player.fo.stage = player.fo.stage.add(1)
+            player.fo.points = new Decimal(0)
+        },
+        unlocked(){ return player.fo.stage.eq(0) },
+        },
+    },
 })
