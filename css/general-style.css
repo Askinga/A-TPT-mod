@@ -39,3 +39,20 @@ h1, h2, h3, b, input {
 	color: var(--points);
 	text-shadow: 0 0 10px var(--points);
 }
+
+.f:not(.locked):not(.bought) {
+	background: rgb(0, 0, 255);
+	animation: formula 5s linear infinite;
+}
+
+@keyframes formula {
+	0% {
+		background: rgb(0, 0, 255);
+	}
+	50% {
+		background: rgb(0, 0, 175);
+	}
+	100% {
+		background: rgb(0, 0, 255);
+	}
+}
