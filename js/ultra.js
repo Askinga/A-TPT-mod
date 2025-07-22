@@ -19,6 +19,7 @@ addLayer("u", {
 	if (hasUpgrade('u', 14)) mult = mult.times(upgradeEffect('u', 14))
 	if (hasUpgrade('u', 15)) mult = mult.times(upgradeEffect('u', 15))
 	if (hasUpgrade('u', 23)) mult = mult.times(upgradeEffect('u', 23))
+	if (hasUpgrade('u', 24)) mult = mult.times(5)
         return mult
     },
     syn3() {
@@ -95,5 +96,17 @@ addLayer("u", {
 	  effectDisplay(){ return "x"+format(upgradeEffect('u', 23)) },
 	  unlocked() { return hasUpgrade('u', 22) },
 	},
+	24: {
+	  title: "thats crazy (59)",
+	  description: "x5 UP",
+	  cost: new Decimal(3000),
+	  unlocked() { return hasUpgrade('u', 23) },
+	},
+	25: {
+	  title: "x+y+z (60)",
+	  description: "Unlock the Formula",
+	  cost: new Decimal(5000),
+	  unlocked() { return hasUpgrade('u', 24) },
+	},    
     },
 })
