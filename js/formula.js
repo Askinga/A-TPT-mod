@@ -24,6 +24,7 @@ addLayer("fo", {
     exponent: 0.05,
     gainMult() {
         let mult = new Decimal(1)
+        if (hasUpgrade('fo', 12)) mult = mult.times(3)
         return mult
     },
     gainExp() {
@@ -93,6 +94,12 @@ addLayer("fo", {
             description: "x5 UP",
             cost: new Decimal(3),
             unlocked(){ return player.fo.stage.gte(1) },
+        },
+        12: {
+            title: "Formula Formula Points",
+            description: "x3 f points and unlock a new automation",
+            cost: new Decimal(5),
+            unlocked(){ return (player.fo.stage.gte(1) && hasUpgrade('fo', 11)) },
         },
     },
 })
