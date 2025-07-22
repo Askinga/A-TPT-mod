@@ -36,6 +36,9 @@ addLayer("fo", {
     stage0(){
         return player.fo.points.add(1).pow(player.fo.y)
     },
+    stage2(){
+        return new Decimal(2).pow(player.fo.points.add(1).log10().add(1).pow(2))
+    },
     row: 2,
     hotkeys: [
         {key: "f", description: "F: Reset for f points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
@@ -47,8 +50,13 @@ addLayer("fo", {
         ["display-text", function() { 
     if (player.fo.stage.eq(0)) 
         return "<h2>Formula Stage " + format(player.fo.stage) + "</h2><br>The formula is (x+1)^0.5, boosting points by x" + format(tmp.fo.stage1) + "<br>where x is your f points";
-    else 
-        return "<h2>Formula Stage " + format(player.fo.stage) + "</h2><br>The formula is (x+1)^y, boosting points by x" + format(tmp.fo.stage0) + "<br>where x is your f points" + "<br>y = " + format(player.fo.y); }],     
+    else if (player.fo.stage.eq(1))
+        return "<h2>Formula Stage " + format(player.fo.stage) + "</h2><br>The formula is (x+1)^y, boosting points by x" + format(tmp.fo.stage0) + "<br>where x is your f points" + "<br>y = " + format(player.fo.y); 
+    else
+        return "<h2>Formula Stage " + format(player.fo.stage) + "</h2><br>The formula is 2^((log<sub>10</sub>(x+1)+1)^2), boosting points by x" + format(tmp.fo.stage2) + "<br>where x is your f points" + "<br>y = " + format(player.fo.y); }],     
+        
+        }],  
+        
         "prestige-button",
         "clickables",
         "buyables",
@@ -66,11 +74,23 @@ addLayer("fo", {
         },
         unlocked(){ return player.fo.stage.eq(0) },
         },
+        12: {
+        title: "Improve the Formula",
+        display() { return "Makes the Formula better. Next Formula will be 2^((log<sub>10</sub>(x+1)+1)^2)y<br>Need 100 f points" },
+        canClick(){ return player.fo.points.gte(100) },
+        onClick(){ 
+            player.fo.stage = player.fo.stage.add(1)
+            player.fo.points = new Decimal(0)
+            player.fo.y = new Decimal(1)
+            setBuyableAmount('fo', 11, new Decimal(0))
+        },
+        unlocked(){ return player.fo.stage.eq(1) },
+        },
     },
     buyables: {
     11: {
         title: "y increaser",
-        unlocked(){ return player.fo.stage.gte(1) },
+        unlocked(){ return (player.fo.stage.gte(1)) },
         cost(x) { return new Decimal(2).pow(x) },
         display() { return "Increases y by +0.02.<br>Cost:" + format(this.cost()) + " f points<br>Bought: " + format(getBuyableAmount('fo', 11)) + "<br>Effect: +" + format(buyableEffect('fo', 11)) + " y" },
         canAfford() { return player[this.layer].points.gte(this.cost()) },
