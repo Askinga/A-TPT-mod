@@ -6,6 +6,11 @@ addLayer("u", {
         unlocked: false,
 		points: new Decimal(0),
     }},
+    passiveGeneration(){
+	let p = new Decimal(0)
+	if (player.a.auto7.eq(1)) p = p.add(tmp.a.auto4.div(100))
+	return p
+    },
     color: "#7b63ff", 
     requires: new Decimal(25000), // Can be a function that takes requirement increases into account
     resource: "ultra prestige points", // Name of prestige currency
