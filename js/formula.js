@@ -55,7 +55,7 @@ addLayer("fo", {
     clickables: {
         11: {
         title: "Improve the Formula",
-        display() { return "Makes the Formula better. Next Formula will be x^y. y > 1<br>Need 5 f points" },
+        display() { return "Makes the Formula better. Next Formula will be (x+1)^y. y > 1<br>Need 5 f points" },
         canClick(){ return player.fo.points.gte(5) },
         onClick(){ 
             player.fo.stage = player.fo.stage.add(1)
