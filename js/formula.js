@@ -25,6 +25,7 @@ addLayer("fo", {
     gainMult() {
         let mult = new Decimal(1)
         if (hasUpgrade('fo', 12)) mult = mult.times(3)
+        if (hasUpgrade('fo', 13)) mult = mult.times(2)
         return mult
     },
     gainExp() {
@@ -118,6 +119,12 @@ addLayer("fo", {
             description: "x3 f points and unlock a new automation",
             cost: new Decimal(5),
             unlocked(){ return (player.fo.stage.gte(1) && hasUpgrade('fo', 11)) },
+        },
+        13: {
+            title: "FP boost",
+            description: "x2 f points",
+            cost: new Decimal(20),
+            unlocked(){ return (player.fo.stage.gte(1) && hasUpgrade('fo', 12)) },
         },
     },
 })
