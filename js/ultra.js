@@ -20,6 +20,7 @@ addLayer("u", {
 	if (hasUpgrade('u', 15)) mult = mult.times(upgradeEffect('u', 15))
 	if (hasUpgrade('u', 23)) mult = mult.times(upgradeEffect('u', 23))
 	if (hasUpgrade('u', 24)) mult = mult.times(5)
+	if (hasUpgrade('fo', 11)) mult = mult.times(5)
         return mult
     },
     syn3() {
