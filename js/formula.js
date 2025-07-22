@@ -45,10 +45,12 @@ addLayer("fo", {
         "main-display",
         ["display-text", function() { 
     if (player.fo.stage.eq(0)) 
-        return "<h2>Formula Stage " + format(player.fo.stage) + "</h2><br>The formula is (x+1)^0.5, boosting points by x" + format(tmp.fo.stage1) + "where x is your f points";
+        return "<h2>Formula Stage " + format(player.fo.stage) + "</h2><br>The formula is (x+1)^0.5, boosting points by x" + format(tmp.fo.stage1) + " where x is your f points";
     else 
-        return "<h2>Formula Stage " + format(player.fo.stage) + "</h2><br>The formula is (x+1)^y, boosting points by x" + format(tmp.fo.stage0) + "where x is your f points" + "<br>y = " + format(player.fo.y); }],     
-        "prestige-button"
+        return "<h2>Formula Stage " + format(player.fo.stage) + "</h2><br>The formula is (x+1)^y, boosting points by x" + format(tmp.fo.stage0) + " where x is your f points" + "<br>y = " + format(player.fo.y); }],     
+        "prestige-button",
+        "clickables",
+        "buyables",
     ],
     clickables: {
         11: {
