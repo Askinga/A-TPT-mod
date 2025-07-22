@@ -6,7 +6,12 @@ addLayer("fo", {
         unlocked: true,
         points: new Decimal(0),
         stage: new Decimal(0),
+        y: new Decimal(0),
+        z: new Decimal(0),
     }},
+    tooltip(){
+        return "The Formula"
+    },
     onPrestige(){
         player.u.points = new Decimal(0)
     },
@@ -35,7 +40,6 @@ addLayer("fo", {
     branches: ["l", "s"],
     tabFormat: [
         "main-display",
-        "blank",
         ["display-text", function() { return "<h2>Formula Stage " + format(player.fo.stage) + "</h2><br>The formula is (x+1)^0.5, boosting points by x" + format(tmp.fo.stage1) + "<br>where x is your f points"; }],
         "prestige-button"
     ],
