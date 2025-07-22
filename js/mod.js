@@ -63,6 +63,7 @@ function getPointGen() {
   if (hasUpgrade('u', 11)) gain = gain.times(1e5)
   gain = gain.times(layers.u.effect())
   gain = gain.times(buyableEffect("p", 11));
+  if (player.fo.stage.eq(0)) gain = gain.times(tmp.fo.stage1)
   if (inChallenge('s', 12)) gain = gain.pow(0.5)
   return gain;
 }
