@@ -40,7 +40,7 @@ h1, h2, h3, b, input {
 	text-shadow: 0 0 10px var(--points);
 }
 
-.f:not(.locked):not(.bought) {
+.fo:not(.locked):not(.bought) {
 	background: rgb(0, 0, 255);
 	animation: formula 5s linear infinite;
 }
