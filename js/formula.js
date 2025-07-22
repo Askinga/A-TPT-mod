@@ -51,6 +51,7 @@ addLayer("fo", {
         "prestige-button",
         "clickables",
         "buyables",
+        "upgrades",
     ],
     clickables: {
         11: {
@@ -85,5 +86,13 @@ addLayer("fo", {
     },
     update(diff) {
         player.fo.y = new Decimal(1).add(buyableEffect('fo', 11))
+    },
+    upgrades: {
+        11: {
+            title: "UP Boost",
+            description: "x5 UP",
+            cost: new Decimal(3),
+            unlocked(){ return player.fo.stage.gte(1) },
+        },
     },
 })
