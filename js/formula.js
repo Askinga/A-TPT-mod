@@ -65,4 +65,25 @@ addLayer("fo", {
         unlocked(){ return player.fo.stage.eq(0) },
         },
     },
+    buyables: {
+    11: {
+        title: "y increaser",
+        unlocked(){ return player.fo.stage.gte(1) },
+        cost(x) { return new Decimal(2).pow(x) },
+        display() { return "Increases y by +0.02.<br>Cost:" + format(this.cost()) + " f points<br>Bought: " + format(getBuyableAmount('fo', 11)) + "<br>Effect: +" + format(buyableEffect('fo', 11)) + " y" },
+        canAfford() { return player[this.layer].points.gte(this.cost()) },
+        buy() {
+            player[this.layer].points = player[this.layer].points.sub(this.cost())
+            setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+        },
+        effect(x) {
+            let base1 = new Decimal(0.02)
+            let base2 = x
+            return base1.times(base2)
+        },
+    },
+    },
+    update(diff) {
+        player.fo.y = new Decimal(1).add(buyableEffect('fo', 11))
+    },
 })
