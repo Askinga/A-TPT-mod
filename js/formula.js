@@ -241,12 +241,18 @@ addLayer("fo", {
             unlocked(){ return (player.fo.stage.gte(3) && hasUpgrade('fo', 32)) },
         },
         34: {
-            title: "I though it is used for automations! (74)",
+            title: "I thought it is used for automations! (74)",
             description: "Boost FP based on AP",
             cost: new Decimal("1e10"),
             unlocked(){ return (player.fo.stage.gte(3) && hasUpgrade('fo', 33)) },
             effect(){ return player.a.points.add(1).pow(0.0025) },
             effectDisplay(){ return "x"+format(upgradeEffect(this.layer, this.id)) },
+        },
+        35: {
+            title: "Spicing it up (75)",
+            description: "Unlock a new layer",
+            cost: new Decimal("2.5e11"),
+            unlocked(){ return (player.fo.stage.gte(3) && hasUpgrade('fo', 34)) },
         },
     },
 })
