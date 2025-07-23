@@ -65,6 +65,7 @@ addLayer("f", {
       if (hasUpgrade("f", 24)) dmg = dmg.times(upgradeEffect('f', 24))
       if (hasUpgrade("u", 21)) dmg = dmg.times(upgradeEffect('u', 21))
       if (hasUpgrade("f", 14)) dmg = dmg.times(3)
+      if (hasMilestone('i', 0)) dmg = dmg.times(10000)
       dmg = dmg.times(buyableEffect('f', 11))
       return dmg
     },
@@ -295,7 +296,7 @@ addLayer("f", {
 	}
       }
       if (player.a.auto8.eq(1)) {
-	player.f.enemyHP = player.f.enemyHP.sub(player.f.damage.div(100).times(player.a.auto5).times(diff))
+	player.f.enemyHP = player.f.enemyHP.sub(player.f.damage.times(diff).div(100).times(player.a.auto5))
       }
     },
     buyables: {
