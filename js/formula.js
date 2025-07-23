@@ -31,6 +31,7 @@ addLayer("fo", {
         if (hasUpgrade('fo', 22)) mult = mult.times(upgradeEffect('fo', 22))
         if (hasUpgrade('fo', 23)) mult = mult.times(upgradeEffect('fo', 23))
         if (hasUpgrade('fo', 25)) mult = mult.times(upgradeEffect('fo', 25))
+        if (hasUpgrade('fo', 31)) mult = mult.times(upgradeEffect('fo', 31))
         return mult
     },
     gainExp() {
@@ -169,7 +170,7 @@ addLayer("fo", {
             title: "UP mega boost (64)",
             description: "x10 UP",
             cost: new Decimal(30),
-            unlocked(){ return (player.fo.stage.gte(2) && hasUpgrade('fo', 13)) },
+            unlocked(){ return (player.fo.stage.gte(1) && hasUpgrade('fo', 13)) },
         },
         15: {
             title: "FP mega boost (65)",
@@ -213,6 +214,14 @@ addLayer("fo", {
             cost: new Decimal("100000"),
             unlocked(){ return (player.fo.stage.gte(2) && hasUpgrade('fo', 24)) },
             effect(){ return player.s.points.add(1).pow(0.0375) },
+            effectDisplay(){ return "x"+format(upgradeEffect(this.layer, this.id)) },
+        },
+        31: {
+            title: "More FP! (71)",
+            description: "Boost FP based on ultra prestige points",
+            cost: new Decimal("2.5e6"),
+            unlocked(){ return (player.fo.stage.gte(3) && hasUpgrade('fo', 26)) },
+            effect(){ return player.u.points.add(1).pow(0.09) },
             effectDisplay(){ return "x"+format(upgradeEffect(this.layer, this.id)) },
         },
     },
