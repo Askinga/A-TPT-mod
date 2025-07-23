@@ -29,6 +29,7 @@ addLayer("fo", {
         if (hasUpgrade('fo', 15)) mult = mult.times(10)
         if (hasUpgrade('fo', 21)) mult = mult.times(4)
         if (hasUpgrade('fo', 22)) mult = mult.times(upgradeEffect('fo', 22))
+        if (hasUpgrade('fo', 23)) mult = mult.times(upgradeEffect('fo', 23))
         return mult
     },
     gainExp() {
@@ -153,6 +154,14 @@ addLayer("fo", {
             cost: new Decimal("5000"),
             unlocked(){ return (player.fo.stage.gte(2) && hasUpgrade('fo', 21)) },
             effect(){ return player.points.add(1).pow(0.004) },
+            effectDisplay(){ return "x"+format(upgradeEffect(this.layer, this.id)) },
+        },
+        23: {
+            title: "FP boost 4",
+            description: "Boost FP based on points",
+            cost: new Decimal("20000"),
+            unlocked(){ return (player.fo.stage.gte(2) && hasUpgrade('fo', 22)) },
+            effect(){ return player.points.add(1).pow(0.003) },
             effectDisplay(){ return "x"+format(upgradeEffect(this.layer, this.id)) },
         },
     },
