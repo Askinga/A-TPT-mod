@@ -26,6 +26,7 @@ addLayer("fo", {
         let mult = new Decimal(1)
         if (hasUpgrade('fo', 12)) mult = mult.times(3)
         if (hasUpgrade('fo', 13)) mult = mult.times(2)
+        if (hasUpgrade('fo', 15)) mult = mult.times(10)
         return mult
     },
     gainExp() {
@@ -131,6 +132,12 @@ addLayer("fo", {
             description: "x10 UP",
             cost: new Decimal(30),
             unlocked(){ return (player.fo.stage.gte(2) && hasUpgrade('fo', 13)) },
+        },
+        15: {
+            title: "FP mega boost",
+            description: "x10 FP",
+            cost: new Decimal(200),
+            unlocked(){ return (player.fo.stage.gte(2) && hasUpgrade('fo', 14)) },
         },
     },
 })
