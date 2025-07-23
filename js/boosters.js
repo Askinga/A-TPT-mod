@@ -6,11 +6,11 @@ addLayer("i", {
         unlocked: false,
 		points: new Decimal(0),
     }},
-    color: "#96c8c8",
+    color: "#ff0000",
     requires: new Decimal("1e12"), // Can be a function that takes requirement increases into account
     resource: "formula boosters", // Name of prestige currency
     baseResource: "f points", // Name of resource prestige is based on
-    baseAmount() {return player.f.points}, // Get the current amount of baseResource
+    baseAmount() {return player.fo.points}, // Get the current amount of baseResource
     type: "normal", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
     exponent: 0.075, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
