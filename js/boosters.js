@@ -28,4 +28,11 @@ addLayer("i", {
     effect(){ return player.i.points.add(1).pow(2) },
     effectDescription(){ return "which is boosting f points by x" + format(layers.i.effect()) },
     branches: ["u", "f", "fo"],
+    milestones: {
+    0: {
+        requirementDescription: "I HATE FIGHTING! (1 FB) (m10)",
+        effectDescription: "x10000 Damage",
+        done() { return player.i.points.gte(1) }
+    },
+    },
 })
