@@ -290,7 +290,13 @@ addLayer("f", {
       if (player.f.enemyHP.lte(0)) {
         player.f.enemyHP = player.f.enemyStartHP
         player.f.coins = player.f.coins.add(player.f.coinGet)
+	if (player.a.auto8.eq(1)) {
+	    player.f.stage = player.f.stage.add(1)
+	}
       }
+      if (player.a.auto8.eq(1)) {
+	player.f.enemyHP = player.f.enemyHP.sub(player.f.damage.div(100).times(player.a.auto5).times(diff))
+      },
     },
     buyables: {
     11: {
