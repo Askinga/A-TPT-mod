@@ -2,7 +2,7 @@ let modInfo = {
   name: "A TPT mod?",
   author: "Askinga/Sanas",
   pointsName: "points",
-  modFiles: ["layers.js", "tree.js", "automation.js", "levels.js", "super.js", "fighting.js", "ultra.js", "formula.js"],
+  modFiles: ["layers.js", "tree.js", "automation.js", "levels.js", "super.js", "fighting.js", "ultra.js", "formula.js", "boosters.js"],
 
   discordName: "",
   discordLink: "",
