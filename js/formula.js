@@ -45,6 +45,9 @@ addLayer("fo", {
     stage2(){
         return new Decimal(2).pow(player.fo.points.add(1).log10().add(1).pow(2)).times(player.fo.y)
     },
+    stage3(){
+        return new Decimal(2).pow(player.fo.points.add(1).log(2).add(player.fo.y).pow(player.fo.z))
+    },
     row: 2,
     hotkeys: [
         {key: "f", description: "F: Reset for f points", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
@@ -60,6 +63,8 @@ addLayer("fo", {
         return "<h2>Formula Stage " + format(player.fo.stage) + "</h2><br>The formula is (x+1)^y, boosting points by x" + format(tmp.fo.stage0) + "<br>where x is your f points" + "<br>y = " + format(player.fo.y); 
     else if (player.fo.stage.eq(2))
         return "<h2>Formula Stage " + format(player.fo.stage) + "</h2><br>The formula is (2^((log<sub>10</sub>(x+1)+1)^2))y, boosting points by x" + format(tmp.fo.stage2) + "<br>where x is your f points" + "<br>y = " + format(player.fo.y); 
+    else if (player.fo.stage.eq(3))
+        return "<h2>Formula Stage " + format(player.fo.stage) + "</h2><br>The formula is (2^((log<sub>2</sub>(x+1)+y)^z)), boosting points by x" + format(tmp.fo.stage3) + "<br>where x is your f points" + "<br>y = " + format(player.fo.y) + "<br>z = " + format(player.fo.z); 
         }],     
         "prestige-button",
         "clickables",
@@ -80,7 +85,7 @@ addLayer("fo", {
         },
         12: {
         title: "Improve the Formula",
-        display() { return "Makes the Formula better. Next Formula will be (2^((log<sub>10</sub>(x+1)+1)^2))y<br>Need 100 f points" },
+        display() { return "Makes the Formula better. Next Formula will be (2^((log<sub>10</sub>(x+1)+1)^2))<br>Need 100 f points" },
         canClick(){ return player.fo.points.gte(100) },
         onClick(){ 
             player.fo.stage = player.fo.stage.add(1)
@@ -90,13 +95,25 @@ addLayer("fo", {
         },
         unlocked(){ return player.fo.stage.eq(1) },
         },
+        13: {
+        title: "Improve the Formula",
+        display() { return "Makes the Formula better. Next Formula will be (2^((log<sub>2</sub>(x+1)+y)^z)) z > 1.5<br>Need 1.00e6 f points" },
+        canClick(){ return player.fo.points.gte(1e6) },
+        onClick(){ 
+            player.fo.stage = player.fo.stage.add(1)
+            player.fo.points = new Decimal(0)
+            player.fo.y = new Decimal(1)
+            setBuyableAmount('fo', 11, new Decimal(0))
+        },
+        unlocked(){ return player.fo.stage.eq(2) },
+        },
     },
     buyables: {
     11: {
         title: "y increaser",
         unlocked(){ return (player.fo.stage.gte(1)) },
         cost(x) { return new Decimal(2).pow(x) },
-        display() { return "Increases y by +0.02.<br>Cost:" + format(this.cost()) + " f points<br>Bought: " + format(getBuyableAmount('fo', 11)) + "<br>Effect: +" + format(buyableEffect('fo', 11)) + " y" },
+        display() { return "Increases y by +0.02.<br>Cost: " + format(this.cost()) + " f points<br>Bought: " + format(getBuyableAmount('fo', 11)) + "<br>Effect: +" + format(buyableEffect('fo', 11)) + " y" },
         canAfford() { return player[this.layer].points.gte(this.cost()) },
         buy() {
             player[this.layer].points = player[this.layer].points.sub(this.cost())
@@ -108,9 +125,26 @@ addLayer("fo", {
             return base1.times(base2)
         },
     },
+    12: {
+        title: "z increaser",
+        unlocked(){ return (player.fo.stage.gte(3)) },
+        cost(x) { return new Decimal(3).pow(x.pow(x.div(150).add(1))) },
+        display() { return "Increases z by +0.01.<br>Cost: " + format(this.cost()) + " f points<br>Bought: " + format(getBuyableAmount('fo', 12)) + "<br>Effect: +" + format(buyableEffect('fo', 12)) + " z" },
+        canAfford() { return player[this.layer].points.gte(this.cost()) },
+        buy() {
+            player[this.layer].points = player[this.layer].points.sub(this.cost())
+            setBuyableAmount(this.layer, this.id, getBuyableAmount(this.layer, this.id).add(1))
+        },
+        effect(x) {
+            let base1 = new Decimal(0.01)
+            let base2 = x
+            return base1.times(base2)
+        },
+    },
     },
     update(diff) {
         player.fo.y = new Decimal(1).add(buyableEffect('fo', 11))
+        player.fo.z = new Decimal(1.5).add(buyableEffect('fo', 12))
     },
     upgrades: {
         11: {
