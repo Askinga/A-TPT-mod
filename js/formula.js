@@ -34,6 +34,7 @@ addLayer("fo", {
         if (hasUpgrade('fo', 31)) mult = mult.times(upgradeEffect('fo', 31))
         if (hasUpgrade('fo', 32)) mult = mult.times(upgradeEffect('fo', 32))
         if (hasUpgrade('fo', 34)) mult = mult.times(upgradeEffect('fo', 34))
+        mult = mult.times(layers.i.effect())
         return mult
     },
     gainExp() {
