@@ -126,5 +126,11 @@ addLayer("fo", {
             cost: new Decimal(20),
             unlocked(){ return (player.fo.stage.gte(1) && hasUpgrade('fo', 12)) },
         },
+        14: {
+            title: "UP mega boost",
+            description: "x10 UP",
+            cost: new Decimal(30),
+            unlocked(){ return (player.fo.stage.gte(2) && hasUpgrade('fo', 13)) },
+        },
     },
 })
