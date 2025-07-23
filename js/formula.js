@@ -220,7 +220,7 @@ addLayer("fo", {
             title: "More FP! (71)",
             description: "Boost FP based on ultra prestige points",
             cost: new Decimal("2.5e6"),
-            unlocked(){ return (player.fo.stage.gte(3) && hasUpgrade('fo', 26)) },
+            unlocked(){ return (player.fo.stage.gte(3) && hasUpgrade('fo', 25)) },
             effect(){ return player.u.points.add(1).pow(0.09) },
             effectDisplay(){ return "x"+format(upgradeEffect(this.layer, this.id)) },
         },
