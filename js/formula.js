@@ -178,7 +178,7 @@ addLayer("fo", {
             description: "Boost FP based on super prestige points",
             cost: new Decimal("100000"),
             unlocked(){ return (player.fo.stage.gte(2) && hasUpgrade('fo', 24)) },
-            effect(){ return player.s.points.add(1).pow(0.03) },
+            effect(){ return player.s.points.add(1).pow(0.0375) },
             effectDisplay(){ return "x"+format(upgradeEffect(this.layer, this.id)) },
         },
     },
