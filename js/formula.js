@@ -158,10 +158,10 @@ addLayer("fo", {
         },
         23: {
             title: "FP boost 4",
-            description: "Boost FP based on points",
+            description: "Boost FP based on prestige points",
             cost: new Decimal("20000"),
             unlocked(){ return (player.fo.stage.gte(2) && hasUpgrade('fo', 22)) },
-            effect(){ return player.points.add(1).pow(0.003) },
+            effect(){ return player.p.points.add(1).pow(0.003) },
             effectDisplay(){ return "x"+format(upgradeEffect(this.layer, this.id)) },
         },
     },
