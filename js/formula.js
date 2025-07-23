@@ -64,7 +64,7 @@ addLayer("fo", {
     else if (player.fo.stage.eq(2))
         return "<h2>Formula Stage " + format(player.fo.stage) + "</h2><br>The formula is (2^((log<sub>10</sub>(x+1)+1)^2))y, boosting points by x" + format(tmp.fo.stage2) + "<br>where x is your f points" + "<br>y = " + format(player.fo.y); 
     else if (player.fo.stage.eq(3))
-        return "<h2>Formula Stage " + format(player.fo.stage) + "</h2><br>The formula is (2^((log<sub>2</sub>(x+1)+y)^z)), boosting points by x" + format(tmp.fo.stage3) + "<br>where x is your f points" + "<br>y = " + format(player.fo.y) + "<br>z = " + format(player.fo.z); 
+        return "<h2>Formula Stage " + format(player.fo.stage) + "</h2><br>The formula is (2^(log<sub>2</sub>(x+1)+y)^z), boosting points by x" + format(tmp.fo.stage3) + "<br>where x is your f points" + "<br>y = " + format(player.fo.y) + "<br>z = " + format(player.fo.z); 
         }],     
         "prestige-button",
         "clickables",
@@ -97,7 +97,7 @@ addLayer("fo", {
         },
         13: {
         title: "Improve the Formula",
-        display() { return "Makes the Formula better. Next Formula will be (2^((log<sub>2</sub>(x+1)+y)^z)) z > 1.5<br>Need 1.00e6 f points" },
+        display() { return "Makes the Formula better. Next Formula will be (2^(log<sub>2</sub>(x+1)+y)^z) z > 1.5<br>Need 1.00e6 f points" },
         canClick(){ return player.fo.points.gte(1e6) },
         onClick(){ 
             player.fo.stage = player.fo.stage.add(1)
