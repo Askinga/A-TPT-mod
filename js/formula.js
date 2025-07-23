@@ -33,6 +33,7 @@ addLayer("fo", {
         if (hasUpgrade('fo', 25)) mult = mult.times(upgradeEffect('fo', 25))
         if (hasUpgrade('fo', 31)) mult = mult.times(upgradeEffect('fo', 31))
         if (hasUpgrade('fo', 32)) mult = mult.times(upgradeEffect('fo', 32))
+        if (hasUpgrade('fo', 34)) mult = mult.times(upgradeEffect('fo', 34))
         return mult
     },
     gainExp() {
@@ -238,6 +239,14 @@ addLayer("fo", {
             description: "Unlock a new automation",
             cost: new Decimal("2.5e9"),
             unlocked(){ return (player.fo.stage.gte(3) && hasUpgrade('fo', 32)) },
+        },
+        34: {
+            title: "I though it is used for automations! (74)",
+            description: "Boost FP based on AP",
+            cost: new Decimal("1e10"),
+            unlocked(){ return (player.fo.stage.gte(3) && hasUpgrade('fo', 33)) },
+            effect(){ return player.a.points.add(1).pow(0.0025) },
+            effectDisplay(){ return "x"+format(upgradeEffect(this.layer, this.id)) },
         },
     },
 })
