@@ -266,10 +266,10 @@ addLayer("a", {
         },
         canClick(){ return player.a.points.gte("e400") },      
         onClick(){
-          if (player.a.auto7.eq(0)) {
-            player.a.auto7 = new Decimal(1)
+          if (player.a.aut8.eq(0)) {
+            player.a.auto8 = new Decimal(1)
           } else {
-            player.a.auto7 = new Decimal(0)
+            player.a.auto8 = new Decimal(0)
           }
         },
     },
