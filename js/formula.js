@@ -32,6 +32,7 @@ addLayer("fo", {
         if (hasUpgrade('fo', 23)) mult = mult.times(upgradeEffect('fo', 23))
         if (hasUpgrade('fo', 25)) mult = mult.times(upgradeEffect('fo', 25))
         if (hasUpgrade('fo', 31)) mult = mult.times(upgradeEffect('fo', 31))
+        if (hasUpgrade('fo', 32)) mult = mult.times(upgradeEffect('fo', 32))
         return mult
     },
     gainExp() {
@@ -222,6 +223,14 @@ addLayer("fo", {
             cost: new Decimal("2.5e6"),
             unlocked(){ return (player.fo.stage.gte(3) && hasUpgrade('fo', 25)) },
             effect(){ return player.u.points.add(1).pow(0.09) },
+            effectDisplay(){ return "x"+format(upgradeEffect(this.layer, this.id)) },
+        },
+        32: {
+            title: "Too boring to keep the FP boosts. (72)",
+            description: "Boost FP based on levels",
+            cost: new Decimal("1e8"),
+            unlocked(){ return (player.fo.stage.gte(3) && hasUpgrade('fo', 31)) },
+            effect(){ return player.l.points.add(1).pow(0.4) },
             effectDisplay(){ return "x"+format(upgradeEffect(this.layer, this.id)) },
         },
     },
