@@ -233,5 +233,11 @@ addLayer("fo", {
             effect(){ return player.l.points.add(1).pow(0.4) },
             effectDisplay(){ return "x"+format(upgradeEffect(this.layer, this.id)) },
         },
+        33: {
+            title: "Fighting Automation plz! (73)",
+            description: "Unlock a new automation",
+            cost: new Decimal("2.5e9"),
+            unlocked(){ return (player.fo.stage.gte(3) && hasUpgrade('fo', 32)) },
+        },
     },
 })
