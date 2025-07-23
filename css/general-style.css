@@ -44,6 +44,10 @@ h1, h2, h3, b, input {
 	background: rgb(0, 0, 255);
 	animation: formula 5s linear infinite;
 }
+.i:not(.locked):not(.bought) {
+	background: rgb(0, 0, 255);
+	animation: boost 10s linear infinite;
+}
 
 @keyframes formula {
 	0% {
@@ -54,5 +58,29 @@ h1, h2, h3, b, input {
 	}
 	100% {
 		background: rgb(0, 0, 255);
+	}
+}
+
+@keyframes boost {
+	14.2857142857% {
+		background: rgb(255, 0, 0);
+	}
+	28.5714285714% {
+		background: rgb(255, 165, 0);
+	}
+	42.8571428571% {
+		background: rgb(255, 255, 0);
+	}
+	57.1428571429% {
+		background: rgb(0, 255, 0);
+	}
+	71.4285714286% {
+		background: rgb(0, 0, 255);
+	}
+	85.7142857143% {
+		background: rgb(157, 0, 255);
+	}
+	100% {
+		background: rgb(255, 0, 0);
 	}
 }
