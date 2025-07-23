@@ -66,6 +66,7 @@ function getPointGen() {
   if (player.fo.stage.eq(0)) gain = gain.times(tmp.fo.stage1)
   if (player.fo.stage.eq(1)) gain = gain.times(tmp.fo.stage0)
   if (player.fo.stage.eq(2)) gain = gain.times(tmp.fo.stage2)
+  if (player.fo.stage.eq(3)) gain = gain.times(tmp.fo.stage3)
   if (inChallenge('s', 12)) gain = gain.pow(0.5)
   return gain;
 }
