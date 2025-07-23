@@ -143,7 +143,7 @@ addLayer("fo", {
         21: {
             title: "FP boost 2",
             description: "x4 FP",
-            cost: new Decimal("2^10"),
+            cost: new Decimal("1024"),
             unlocked(){ return (player.fo.stage.gte(2) && hasUpgrade('fo', 15)) },
         },
     },
