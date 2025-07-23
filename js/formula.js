@@ -30,6 +30,7 @@ addLayer("fo", {
         if (hasUpgrade('fo', 21)) mult = mult.times(4)
         if (hasUpgrade('fo', 22)) mult = mult.times(upgradeEffect('fo', 22))
         if (hasUpgrade('fo', 23)) mult = mult.times(upgradeEffect('fo', 23))
+        if (hasUpgrade('fo', 25)) mult = mult.times(upgradeEffect('fo', 25))
         return mult
     },
     gainExp() {
@@ -113,43 +114,43 @@ addLayer("fo", {
     },
     upgrades: {
         11: {
-            title: "UP Boost",
+            title: "UP Boost (61)",
             description: "x5 UP",
             cost: new Decimal(3),
             unlocked(){ return player.fo.stage.gte(1) },
         },
         12: {
-            title: "Formula Formula Points",
+            title: "Formula Formula Points (62)",
             description: "x3 f points and unlock a new automation",
             cost: new Decimal(5),
             unlocked(){ return (player.fo.stage.gte(1) && hasUpgrade('fo', 11)) },
         },
         13: {
-            title: "FP boost",
+            title: "FP boost (63)",
             description: "x2 f points",
             cost: new Decimal(20),
             unlocked(){ return (player.fo.stage.gte(1) && hasUpgrade('fo', 12)) },
         },
         14: {
-            title: "UP mega boost",
+            title: "UP mega boost (64)",
             description: "x10 UP",
             cost: new Decimal(30),
             unlocked(){ return (player.fo.stage.gte(2) && hasUpgrade('fo', 13)) },
         },
         15: {
-            title: "FP mega boost",
+            title: "FP mega boost (65)",
             description: "x10 FP",
             cost: new Decimal(200),
             unlocked(){ return (player.fo.stage.gte(2) && hasUpgrade('fo', 14)) },
         },
         21: {
-            title: "FP boost 2",
+            title: "FP boost 2 (66)",
             description: "x4 FP",
             cost: new Decimal("1024"),
             unlocked(){ return (player.fo.stage.gte(2) && hasUpgrade('fo', 15)) },
         },
         22: {
-            title: "FP boost 3",
+            title: "FP boost 3 (67)",
             description: "Boost FP based on points",
             cost: new Decimal("5000"),
             unlocked(){ return (player.fo.stage.gte(2) && hasUpgrade('fo', 21)) },
@@ -157,11 +158,27 @@ addLayer("fo", {
             effectDisplay(){ return "x"+format(upgradeEffect(this.layer, this.id)) },
         },
         23: {
-            title: "FP boost 4",
+            title: "FP boost 4 (68)",
             description: "Boost FP based on prestige points",
             cost: new Decimal("20000"),
             unlocked(){ return (player.fo.stage.gte(2) && hasUpgrade('fo', 22)) },
             effect(){ return player.p.points.add(1).pow(0.003) },
+            effectDisplay(){ return "x"+format(upgradeEffect(this.layer, this.id)) },
+        },
+        24: {
+            title: "Nice number (69)",
+            description: "Nice number! Boost UP based on f points",
+            cost: new Decimal("60000"),
+            unlocked(){ return (player.fo.stage.gte(2) && hasUpgrade('fo', 23)) },
+            effect(){ return player.fo.points.add(1).pow(0.15) },
+            effectDisplay(){ return "x"+format(upgradeEffect(this.layer, this.id)) },
+        },
+        25: {
+            title: "Final Push to the next Stage (70)",
+            description: "Boost FP based on super prestige points",
+            cost: new Decimal("100000"),
+            unlocked(){ return (player.fo.stage.gte(2) && hasUpgrade('fo', 24)) },
+            effect(){ return player.p.points.add(1).pow(0.075) },
             effectDisplay(){ return "x"+format(upgradeEffect(this.layer, this.id)) },
         },
     },
