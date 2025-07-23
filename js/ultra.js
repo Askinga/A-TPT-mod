@@ -42,8 +42,20 @@ addLayer("u", {
     ],
     layerShown(){return (hasUpgrade('f', 35) || player.u.unlocked)},
     branches: ["l", "s"],
-    effect(){ return player.u.points.add(1).pow(10) },
-    effectDescription(){ return "which is boosting Points by x"+format(layers.u.effect()) },
+    effect(){
+	let sc = 0.2
+	let eff = player.u.points.add(1).pow(10);
+        softcappedEffect = softcap(eff, new Decimal("e100"), new Decimal(sc))
+        return softcappedEffect
+    },
+    effectDescription(){ 
+	let s = ""
+        let lyrEffect = tmp[this.layer].effect
+        if (lyrEffect.gte(new Decimal("1e100")) ) {
+            s = " (Softcapped)"
+	}
+	return "which is boosting Points by x"+format(layers.u.effect()) + s
+    },
     upgrades: {
 	11: {
 	  title: "Oh no... (51)",
