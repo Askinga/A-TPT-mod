@@ -28,6 +28,7 @@ addLayer("u", {
 	if (hasUpgrade('fo', 11)) mult = mult.times(5)
 	if (hasUpgrade('fo', 14)) mult = mult.times(10)
 	if (hasUpgrade('fo', 24)) mult = mult.times(upgradeEffect('fo', 24))
+	if (hasMilestone('i', 2)) mult = mult.times(7)
         return mult
     },
     syn3() {
