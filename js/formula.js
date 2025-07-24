@@ -9,6 +9,7 @@ addLayer("fo", {
         y: new Decimal(1),
         z: new Decimal(1),
     }},
+    autoUpgrade() { return hasUpgrade('i', 12) },
     passiveGeneration() {
         let p = new Decimal(0)
         if (hasMilestone('i', 1)) p = p.add(0.15)
@@ -40,6 +41,7 @@ addLayer("fo", {
         if (hasUpgrade('fo', 32)) mult = mult.times(upgradeEffect('fo', 32))
         if (hasUpgrade('fo', 34)) mult = mult.times(upgradeEffect('fo', 34))
 	if (hasUpgrade('i', 11)) mult = mult.times(3)
+	if (hasUpgrade('i', 12)) mult = mult.times(5)
         mult = mult.times(layers.i.effect())
         return mult
     },
