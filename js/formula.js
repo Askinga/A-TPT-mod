@@ -263,14 +263,14 @@ addLayer("fo", {
             unlocked(){ return (player.fo.stage.gte(3) && hasUpgrade('fo', 33)) },
             effect(){
                 let expu3 = 0.0025
-                let eff = player.fo.points.add(1).pow(expu3)
-                eff = softcap(eff, new Decimal("1e3"), 0.1)
+                let eff = player.a.points.add(1).pow(expu3)
+                eff = softcap(eff, new Decimal("1e2"), 0.1)
                 return eff
 	    },
             effectDisplay() { // Add formatting to the effect
                 let softcapDescription = ""
                 let upgEffect = upgradeEffect(this.layer, this.id)
-                if (upgEffect.gte(new Decimal("1e3")) ) {
+                if (upgEffect.gte(new Decimal("1e2")) ) {
                     softcapDescription = " (Softcapped)"
 		}
 	        return "x" + format(upgEffect) + softcapDescription
