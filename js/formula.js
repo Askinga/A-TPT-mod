@@ -82,7 +82,7 @@ addLayer("fo", {
         }],     
         ["display-text", function() { 
     if (player.fo.points.gte("2^67"))
-        return '<span style=\"color: rgb(255, 255, 255); text-shadow: rgb(255, 255, 255) 0px 0px 10px;\">Due to Softcap, FP gain is raised by ' + format(tmp.fo.debuff) + '!</span>'
+        return '<span style=\"color: rgb(255, 0, 0); text-shadow: rgb(255, 0, 0) 0px 0px 10px;\">Due to Softcap, FP gain is raised by ' + format(tmp.fo.debuff) + '!</span>'
         }],
         "prestige-button",
         "clickables",
@@ -158,7 +158,7 @@ addLayer("fo", {
             let base2 = x
             return base1.times(base2)
         },
-        purchaseLimit: 25
+        purchaseLimit: 20
     },
     },
     update(diff) {
