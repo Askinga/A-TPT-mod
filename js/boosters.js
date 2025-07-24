@@ -45,4 +45,12 @@ addLayer("i", {
         done() { return player.i.points.gte(5) }
     },
     },
+    upgrades: {
+	11: {
+	  title: "Grindy? (76)",
+	  description: "x10 SP, x5 Coins and x3 UP and FP",
+	  cost: new Decimal(10),
+	  unlocked(){ return true },
+	},
+    },
 })
