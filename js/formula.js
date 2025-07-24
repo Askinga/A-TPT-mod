@@ -43,10 +43,15 @@ addLayer("fo", {
         return mult
     },
     gainExp() {
-        return new Decimal(1)
+        let exp = new Decimal(1)
+        if (player.fo.points.gte("2^67")) exp = exp.times(tmp.fo.debuff)
+        return exp
     },
     stage1(){
         return player.fo.points.add(1).pow(0.5)
+    },
+    debuff() {
+        return new Decimal(0.99).sub(Decimal.log(player.fo.points.slog().minus(new Decimal(2).pow(67).slog()).add(1),2).div(2))
     },
     stage0(){
         return player.fo.points.add(1).pow(player.fo.y)
@@ -75,6 +80,10 @@ addLayer("fo", {
     else if (player.fo.stage.eq(3))
         return "<h2>Formula Stage " + format(player.fo.stage) + "</h2><br>The formula is (2^(log<sub>2</sub>(x+1)+y)^z), boosting points by x" + format(tmp.fo.stage3) + "<br>where x is your f points" + "<br>y = " + format(player.fo.y) + "<br>z = " + format(player.fo.z); 
         }],     
+        ["display-text", function() { 
+    if (player.fo.points.gte("2^67"))
+        return '<span style=\"color: rgb(255, 255, 255); text-shadow: rgb(255, 255, 255) 0px 0px 10px;\">Due to Softcap, FP gain is raised by ' + format(tmp.fo.debuff) + '!</span>'
+        }],
         "prestige-button",
         "clickables",
         "buyables",
