@@ -52,5 +52,11 @@ addLayer("i", {
 	  cost: new Decimal(10),
 	  unlocked(){ return true },
 	},
+	12: {
+	  title: "Not in Automation Layer? (77)",
+	  description: "Autobuy ALL third row upgrades and x5 FP",
+	  cost: new Decimal(20),
+	  unlocked(){ return hasUpgrade('i', 11) },
+	},
     },
 })
