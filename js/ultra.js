@@ -6,6 +6,7 @@ addLayer("u", {
         unlocked: false,
 		points: new Decimal(0),
     }},
+    autoUpgrade() { return hasUpgrade('i', 12) },
     passiveGeneration(){
 	let p = new Decimal(0)
 	if (player.a.auto7.eq(1)) p = p.add(tmp.a.auto4.div(100))
