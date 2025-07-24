@@ -9,6 +9,11 @@ addLayer("fo", {
         y: new Decimal(1),
         z: new Decimal(1),
     }},
+    passiveGeneration() {
+        let p = new Decimal(0)
+        if (hasMilestone('i', 1)) p = p.add(0.15)
+        return p
+    },
     tooltip(){
         return "The Formula"
     },
