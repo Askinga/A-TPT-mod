@@ -149,6 +149,7 @@ addLayer("fo", {
             let base2 = x
             return base1.times(base2)
         },
+        purchaseLimit: 25
     },
     },
     update(diff) {
