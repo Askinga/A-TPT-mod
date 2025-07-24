@@ -39,7 +39,7 @@ addLayer("i", {
         effectDescription: "15% F points per second",
         done() { return player.i.points.gte(2) }
     },
-    2 {
+    2: {
         requirementDescription: "UP boost (5 FB) (m12)",
         effectDescription: "x7 UP",
         done() { return player.i.points.gte(5) }
