@@ -264,7 +264,7 @@ addLayer("fo", {
             effect(){
                 let expu3 = 0.0025
                 let eff = player.fo.points.add(1).pow(expu3)
-                eff = softcap(eff, new Decimal("1e10"), 0.1)
+                eff = softcap(eff, new Decimal("1e3"), 0.1)
                 return eff
 	    },
             effectDisplay() { // Add formatting to the effect
