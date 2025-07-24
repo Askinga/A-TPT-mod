@@ -261,8 +261,20 @@ addLayer("fo", {
             description: "Boost FP based on AP",
             cost: new Decimal("1e10"),
             unlocked(){ return (player.fo.stage.gte(3) && hasUpgrade('fo', 33)) },
-            effect(){ return player.a.points.add(1).pow(0.0025) },
-            effectDisplay(){ return "x"+format(upgradeEffect(this.layer, this.id)) },
+            effect(){
+                let expu3 = 0.0025
+                let eff = player.fo.points.add(1).pow(expu3)
+                eff = softcap(eff, new Decimal("1e10"), 0.1)
+                return eff
+	    },
+            effectDisplay() { // Add formatting to the effect
+                let softcapDescription = ""
+                let upgEffect = upgradeEffect(this.layer, this.id)
+                if (upgEffect.gte(new Decimal("1e3")) ) {
+                    softcapDescription = " (Softcapped)"
+		}
+	        return "x" + format(upgEffect) + softcapDescription
+	    },
         },
         35: {
             title: "Spicing it up (75)",
