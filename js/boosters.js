@@ -34,5 +34,10 @@ addLayer("i", {
         effectDescription: "x10000 Damage",
         done() { return player.i.points.gte(1) }
     },
+    1: {
+        requirementDescription: "Non-Automation Generation (2 FB) (m11)",
+        effectDescription: "15% F points per second",
+        done() { return player.i.points.gte(2) }
+    },
     },
 })
