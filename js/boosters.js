@@ -6,6 +6,11 @@ addLayer("i", {
         unlocked: false,
 		points: new Decimal(0),
     }},
+    passiveGeneration(){
+	let p = new Decimal(0)
+	if (hasUpgrade('i', 13)) p = p.add(0.1)
+	return p
+    },
     color: "#ff0000",
     requires: new Decimal("1e12"), // Can be a function that takes requirement increases into account
     resource: "formula boosters", // Name of prestige currency
@@ -57,6 +62,12 @@ addLayer("i", {
 	  description: "Autobuy ALL third row upgrades and x5 FP",
 	  cost: new Decimal(20),
 	  unlocked(){ return hasUpgrade('i', 11) },
+	},
+	13: {
+	  title: "Not in Automation Layer 2? (78)",
+	  description: "(OP) 10% FB per second.",
+	  cost: new Decimal(30),
+	  unlocked(){ return hasUpgrade('i', 12) },
 	},
     },
 })
