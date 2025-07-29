@@ -23,6 +23,7 @@ addLayer("i", {
         mult = new Decimal(1)
 	if (hasUpgrade('i', 14)) mult = mult.times(3)
 	if (hasUpgrade('i', 15)) mult = mult.times(5)
+	if (hasUpgrade('i', 22)) mult = mult.times(15)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -89,6 +90,12 @@ addLayer("i", {
 	  description: "x10 FB passive gen.",
 	  cost: new Decimal(5000),
 	  unlocked(){ return hasUpgrade('i', 15) },
+	},
+	22: {
+	  title: "Super Boosters (82)",
+	  description: "x15 FB.",
+	  cost: new Decimal(100000),
+	  unlocked(){ return hasUpgrade('i', 21) },
 	},
     },
 })
