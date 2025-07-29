@@ -20,6 +20,8 @@ addLayer("i", {
     exponent: 0.075, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
+	if (hasUpgrade('i', 14)) mult = mult.times(3)
+	if (hasUpgrade('i', 15)) mult = mult.times(5)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -68,6 +70,18 @@ addLayer("i", {
 	  description: "(OP) 10% FB per second.",
 	  cost: new Decimal(30),
 	  unlocked(){ return hasUpgrade('i', 12) },
+	},
+	14: {
+	  title: "It starts again (79)",
+	  description: "x3 FB.",
+	  cost: new Decimal(100),
+	  unlocked(){ return hasUpgrade('i', 13) },
+	},
+	15: {
+	  title: "... (80)",
+	  description: "x5 FB.",
+	  cost: new Decimal(500),
+	  unlocked(){ return hasUpgrade('i', 14) },
 	},
     },
 })
