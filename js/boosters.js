@@ -9,6 +9,7 @@ addLayer("i", {
     passiveGeneration(){
 	let p = new Decimal(0)
 	if (hasUpgrade('i', 13)) p = p.add(0.1)
+	if (hasUpgrade('i', 21)) p = p.times(10)
 	return p
     },
     color: "#ff0000",
@@ -82,6 +83,12 @@ addLayer("i", {
 	  description: "x5 FB.",
 	  cost: new Decimal(500),
 	  unlocked(){ return hasUpgrade('i', 14) },
+	},
+	21: {
+	  title: "Inflation era (81)",
+	  description: "x10 FB passive gen.",
+	  cost: new Decimal(5000),
+	  unlocked(){ return hasUpgrade('i', 15) },
 	},
     },
 })
