@@ -85,7 +85,7 @@ addLayer("fo", {
         }],     
         ["display-text", function() { 
     if (player.fo.points.gte("2^67"))
-        return '<span style=\"color: rgb(255, 0, 0); text-shadow: rgb(255, 0, 0) 0px 0px 10px;\">Due to Softcap, FP gain is raised by ' + format(tmp.fo.debuff) + '!</span>'
+        return '<span style=\"color: rgb(255, 0, 0); text-shadow: rgb(255, 0, 0) 0px 0px 10px;\">Due to Softcap, FP gain is raised by ' + format(tmp.fo.debuff, 5) + '!</span><br>Your gain would be ' + format(getResetGain('fo').root(tmp.fo.debuff)) + " if the softcap didn't exist."
         }],
         "prestige-button",
         "clickables",
