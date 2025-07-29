@@ -98,9 +98,11 @@ addLayer("fo", {
         display() { return "Makes the Formula better. Next Formula will be (x+1)^y. y > 1<br>Need 5 f points" },
         canClick(){ return player.fo.points.gte(5) },
         onClick(){ 
+	    if (!hasMilestone('i', 0)) {
             player.fo.stage = player.fo.stage.add(1)
             player.fo.points = new Decimal(0)
             player.fo.y = new Decimal(1)
+	    }
         },
         unlocked(){ return player.fo.stage.eq(0) },
         },
@@ -109,10 +111,12 @@ addLayer("fo", {
         display() { return "Makes the Formula better. Next Formula will be (2^((log<sub>10</sub>(x+1)+1)^2))<br>Need 100 f points" },
         canClick(){ return player.fo.points.gte(100) },
         onClick(){ 
+            if (!hasMilestone('i', 0)) {
             player.fo.stage = player.fo.stage.add(1)
             player.fo.points = new Decimal(0)
             player.fo.y = new Decimal(1)
             setBuyableAmount('fo', 11, new Decimal(0))
+	    }
         },
         unlocked(){ return player.fo.stage.eq(1) },
         },
@@ -121,10 +125,12 @@ addLayer("fo", {
         display() { return "Makes the Formula better. Next Formula will be (2^(log<sub>2</sub>(x+1)+y)^z) z > 1.5<br>Need 1.00e6 f points" },
         canClick(){ return player.fo.points.gte(1e6) },
         onClick(){ 
+            if (!hasMilestone('i', 0)) {
             player.fo.stage = player.fo.stage.add(1)
             player.fo.points = new Decimal(0)
             player.fo.y = new Decimal(1)
             setBuyableAmount('fo', 11, new Decimal(0))
+	    }
         },
         unlocked(){ return player.fo.stage.eq(2) },
         },
