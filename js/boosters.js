@@ -39,7 +39,7 @@ addLayer("i", {
     milestones: {
     0: {
         requirementDescription: "I HATE FIGHTING! (1 FB) (m10)",
-        effectDescription: "x10000 Damage",
+        effectDescription: "x10000 Damage and improving the formula doesn't reset anything.",
         done() { return player.i.points.gte(1) }
     },
     1: {
