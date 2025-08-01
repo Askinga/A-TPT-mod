@@ -171,9 +171,7 @@ addLayer("fo", {
     },
     },
     update(diff) {
-	if (!player.fo.stage.gte(4)) {
         player.fo.y = new Decimal(1).add(buyableEffect('fo', 11))
-	} else {
         player.fo.z = new Decimal(1.5).add(buyableEffect('fo', 12))
     },
     upgrades: {
