@@ -66,7 +66,12 @@ addLayer("fo", {
         return new Decimal(2).pow(player.fo.points.add(1).log10().add(1).pow(2)).times(player.fo.y)
     },
     stage3(){
-        return new Decimal(2).pow(player.fo.points.add(1).log(2).add(player.fo.y).pow(player.fo.z))
+	if (player.fo.points.gte("2^333")) {
+            return new Decimal(2).pow(player.fo.points.add(1).log(2).add(player.fo.y).pow(player.fo.z)).pow(tmp.fo.debuff2)
+	}
+	else {
+	    return new Decimal(2).pow(player.fo.points.add(1).log(2).add(player.fo.y).pow(player.fo.z))
+	}
     },
     row: 2,
     hotkeys: [
