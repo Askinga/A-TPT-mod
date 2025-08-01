@@ -8,6 +8,7 @@ addLayer("fo", {
         stage: new Decimal(0),
         y: new Decimal(1),
         z: new Decimal(1),
+	fos: new Decimal(0),
     }},
     autoUpgrade() { return hasUpgrade('i', 12) },
     passiveGeneration() {
