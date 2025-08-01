@@ -187,7 +187,6 @@ addLayer("fo", {
     update(diff) {
         player.fo.y = new Decimal(1).add(buyableEffect('fo', 11))
         player.fo.z = new Decimal(1.5).add(buyableEffect('fo', 12))
-	player.fo.fos = tmp.fo.debuff2
     },
     upgrades: {
         11: {
