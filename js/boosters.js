@@ -27,6 +27,7 @@ addLayer("i", {
 	if (hasUpgrade('i', 23)) mult = mult.times(10)
 	if (hasUpgrade('i', 24)) mult = mult.times(20)
 	if (hasUpgrade('i', 25)) mult = mult.times(50)
+	if (hasUpgrade('i', 31)) mult = mult.times(100)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -103,20 +104,26 @@ addLayer("i", {
 	23: {
           title: "Something bad is coming in the formula. (83)",
 	  description: "x10 FB.",
-	  cost: new Decimal("5e7"),
+	  cost: new Decimal("2e7"),
 	  unlocked(){ return hasUpgrade('i', 22) },
 	},
 	24: {
 	  title: "A supercap (84)",
 	  description: "x20 FB.",
-	  cost: new Decimal("2.5e9"),
+	  cost: new Decimal("1e9"),
 	  unlocked(){ return hasUpgrade('i', 23) },
 	},
 	25: {
 	  title: "Maybe a hypercap? (85)",
 	  description: "x50 FB.",
-	  cost: new Decimal("5e12"),
+	  cost: new Decimal("1e13"),
 	  unlocked(){ return hasUpgrade('i', 24) },
+	},
+	31: {
+	  title: "Man. (86)",
+	  description: "x100 FB.",
+	  cost: new Decimal("e20"),
+	  unlocked(){ return hasUpgrade('i', 25) },
 	},
     },
 })
