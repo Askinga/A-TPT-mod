@@ -60,6 +60,9 @@ addLayer("fo", {
     debuff2() {
         return new Decimal(0.99).sub(Decimal.log(player.fo.points.slog().minus(new Decimal(2).pow(333).slog()).add(1),2).div(0.75))
     },
+    debuffZ() {
+        return new Decimal(0.99).sub(Decimal.log(player.fo.points.slog().minus(new Decimal(2).pow(512).slog()).add(1),2).div(2.5))
+    },
     stage0(){
         return player.fo.points.add(1).pow(player.fo.y)
     },
@@ -97,9 +100,13 @@ addLayer("fo", {
         return '<span style=\"color: rgb(255, 0, 0); text-shadow: rgb(255, 0, 0) 0px 0px 10px;\">Due to Softcap, FP gain is raised to the power of ' + format(tmp.fo.debuff, 5) + '!</span><br>Your gain would be ' + format(getResetGain('fo').root(tmp.fo.debuff)) + " if the softcap didn't exist."
     		
         }],
-	["display-text", function(){
+        ["display-text", function(){
 	    if (player.fo.points.gte("2^333") && player.fo.stage.gte(3))
         return '<span style=\"color: rgb(255, 0, 0); text-shadow: rgb(255, 0, 0) 0px 0px 10px;\">Due to Supercap, The Formula is raised to the power of ' + format(tmp.fo.debuff2, 5) + '!</span><br>Your formula boost would be x' + format(tmp.fo.stage3.root(tmp.fo.debuff2)) + " if the supercap didn't exist."
+	}],
+	["display-text", function(){
+	    if (player.fo.points.gte("2^512") && player.fo.stage.gte(3))
+        return '<span style=\"color: rgb(255, 0, 0); text-shadow: rgb(255, 0, 0) 0px 0px 10px;\">Due to Hypercap, z is subtracted by ' + format(tmp.fo.debuffZ, 5) + '!'
 	}],
         "prestige-button",
         "clickables",
@@ -186,7 +193,11 @@ addLayer("fo", {
     },
     update(diff) {
         player.fo.y = new Decimal(1).add(buyableEffect('fo', 11))
-        player.fo.z = new Decimal(1.5).add(buyableEffect('fo', 12))
+	if (player.fo.points.gte("2^512")) {
+        player.fo.z = new Decimal(1.5).add(buyableEffect('fo', 12)).sub(tmp.fo.debuffZ)
+	} else {
+	player.fo.z = new Decimal(1.5).add(buyableEffect('fo', 12))
+	}
     },
     upgrades: {
         11: {
