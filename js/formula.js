@@ -61,7 +61,7 @@ addLayer("fo", {
         return new Decimal(0.99).sub(Decimal.log(player.fo.points.slog().minus(new Decimal(2).pow(333).slog()).add(1),2).div(0.75))
     },
     debuffZ() {
-        return new Decimal(0.99).sub(Decimal.log(player.fo.points.slog().minus(new Decimal(2).pow(512).slog()).add(1),2).div(2.5))
+        return new Decimal(0).add(Decimal.log(player.fo.points.slog().minus(new Decimal(2).pow(512).slog()).add(1),2).div(2.5))
     },
     stage0(){
         return player.fo.points.add(1).pow(player.fo.y)
