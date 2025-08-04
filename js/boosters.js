@@ -31,6 +31,7 @@ addLayer("i", {
 	if (hasUpgrade('i', 33)) mult = mult.times(1000)
 	if (hasUpgrade('i', 34)) mult = mult.times(10000)
 	if (hasUpgrade('st', 11)) mult = mult.times(100)
+	mult = mult.times(tmp.st.secBoost)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
