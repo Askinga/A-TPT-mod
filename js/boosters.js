@@ -28,6 +28,7 @@ addLayer("i", {
 	if (hasUpgrade('i', 24)) mult = mult.times(20)
 	if (hasUpgrade('i', 25)) mult = mult.times(50)
 	if (hasUpgrade('i', 31)) mult = mult.times(100)
+	if (hasUpgrade('i', 33)) mult = mult.times(1000)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -36,6 +37,7 @@ addLayer("i", {
     row: 3, // Row the layer is in on the tree (0 is the first row)
     hotkeys: [
         {key: "i", description: "I: Reset for formula boosters", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+    
     ],
     layerShown(){return (hasUpgrade('fo', 35) || player.i.unlocked)},
     effect(){ return player.i.points.add(1).pow(2) },
@@ -130,6 +132,12 @@ addLayer("i", {
 	  description: "^1.002 points.",
 	  cost: new Decimal("2.5e23"),
 	  unlocked(){ return hasUpgrade('i', 31) },
+	},
+	33: {
+	  title: "yay. (88)",
+	  description: "x1000 FB.",
+	  cost: new Decimal("5e23"),
+	  unlocked(){ return hasUpgrade('i', 32) },
 	},
     },
 })
