@@ -57,7 +57,7 @@ addLayer("st", {
     },
     upgrades: {
         11: {
-            title: "Lets grow a star!",
+            title: "Lets grow a star! (91)",
             description: "xe300 points and x100 FB<br>Req: 1.075 km",
             cost: new Decimal(1.075),
             pay(){ return 0 },
