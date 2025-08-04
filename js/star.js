@@ -37,7 +37,7 @@ addLayer("star", {
         return Decimal.log10(player.points.add(1)).div(29000).pow(1.25)
     },
     branches: ["u", "f", "fo"],
-    layerShown() { return true },
+    layerShown() { return (hasUpgrade('i', 35) || player.star.unlocked) },
     clickables: {
         11: {
             display() { return "Feed the star " + format(player.points) + " points." },
