@@ -24,7 +24,6 @@ addLayer("star", {
     },
     effect() { return player.star.points.add(1).pow(5) },
     row: 3, // Row the layer is in on the tree (0 is the first row)
-    layerShown(){return (hasUpgrade('i', 35) || player.star.unlocked) },
     resetsNothing() { return true },
     canReset() { return !player.star.unlocked },
     tabFormat: [
@@ -52,5 +51,4 @@ addLayer("star", {
     update(diff) {
         player.star.points = player.star.pointSize
     },
-})
 })
