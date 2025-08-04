@@ -8,6 +8,9 @@ addLayer("st", {
         pointReq: new Decimal("e29000"),
         pointSize: new Decimal(0),
     }},
+    tooltip(){
+        return "The Star"
+    },
     color: "#ffff00",
     requires: new Decimal("e29000"), // Can be a function that takes requirement increases into account
     resource: "star size", // Name of prestige currency
