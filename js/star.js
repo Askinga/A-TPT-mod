@@ -25,7 +25,7 @@ addLayer("st", {
     effect() { return player.st.points.add(1).pow(5) },
     row: 3, // Row the layer is in on the tree (0 is the first row)
     resetsNothing() { return true },
-    canReset() { return !player.st.unlocked },
+    canReset() { return (player.points.gte("e29000") && !player.st.unlocked) },
     tabFormat: [
         ["display-text", function() { return "The star is " + format(player.st.points) + "km big, giving a x" + format(layers.st.effect()) + " boost to FP" }],
         "blank",
