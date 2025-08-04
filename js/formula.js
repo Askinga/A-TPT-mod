@@ -44,6 +44,7 @@ addLayer("fo", {
 	if (hasUpgrade('i', 11)) mult = mult.times(3)
 	if (hasUpgrade('i', 12)) mult = mult.times(5)
         mult = mult.times(layers.i.effect())
+	mult = mult.times(layers.star.effect())
         return mult
     },
     gainExp() {
@@ -52,7 +53,8 @@ addLayer("fo", {
         return exp
     },
     stage1(){
-        return player.fo.points.add(1).pow(0.5)
+        return player.fo
+		.points.add(1).pow(0.5)
     },
     debuff() {
         return new Decimal(0.99).sub(Decimal.log(player.fo.points.slog().minus(new Decimal(2).pow(67).slog()).add(1),2).div(1))
