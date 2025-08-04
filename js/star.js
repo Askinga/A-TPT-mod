@@ -42,7 +42,7 @@ addLayer("star", {
         11: {
             display() { return "Feed the star " + format(player.points) + " points." },
             onClick() { 
-                player.star.pointSize = tmp.star.Points()
+                player.star.pointSize = tmp.star.Points
                 player.star.pointReq = player.points
             },
             canClick() { return player.points.gte(player.star.pointReq) },
