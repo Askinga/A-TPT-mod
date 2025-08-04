@@ -25,12 +25,13 @@ addLayer("st", {
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
+    secBoost() { return player.st.points.add(1).pow(4) },
     effect() { return player.st.points.add(1).pow(5) },
     row: 3, // Row the layer is in on the tree (0 is the first row)
     resetsNothing() { return true },
     canReset() { return (player.points.gte("e29000") && !player.st.unlocked) },
     tabFormat: [
-        ["display-text", function() { return "The star is " + format(player.st.points) + "km big, giving a x" + format(layers.st.effect()) + " boost to FP" }],
+        ["display-text", function() { return "The star is " + format(player.st.points, 3) + "km big, giving a x" + format(layers.st.effect()) + " boost to FP and a x" + format(tmp.st.secBoost) + " boost to FB" }],
         ["display-text", function() { return "You have gotten " + format(player.st.pointSize, 5) + " star size from points" }],
         "blank",
         "clickables",
