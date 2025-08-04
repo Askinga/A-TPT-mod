@@ -2,8 +2,9 @@ let modInfo = {
   name: "A TPT mod?",
   author: "Askinga/Sanas",
   pointsName: "points",
-  modFiles: ["layers.js", "tree.js", "automation.js", "levels.js", "super.js", "fighting.js", "ultra.js", "formula.js", "boosters.js"],
-
+  modFiles: ["layers.js", "tree.js", "automation.js", "levels.js", "super.js", "fighting.js", "ultra.js", "formula.js", "boosters.js",
+  "star.js"
+  ],
   discordName: "",
   discordLink: "",
   initialStartPoints: new Decimal(0), // Used for hard resets and new players
