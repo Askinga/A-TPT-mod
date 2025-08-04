@@ -58,15 +58,15 @@ addLayer("fo", {
     },
     debuff() {
 	if (player.fo.points.gte("2^66"))
-        return new Decimal(0.99).sub(Decimal.log(player.fo.points.slog().minus(new Decimal(2).pow(67).slog()).add(1),2).div(1).max(0.989))
+        return new Decimal(0.99).sub(Decimal.log(player.fo.points.slog().minus(new Decimal(2).pow(67).slog()).add(1),2).div(1).min(0.989))
     },
     debuff2() {
 	if (player.fo.points.gte("2^333"))
-        return new Decimal(0.99).sub(Decimal.log(player.fo.points.slog().minus(new Decimal(2).pow(333).slog()).add(1),2).div(0.75).max(0.989))
+        return new Decimal(0.99).sub(Decimal.log(player.fo.points.slog().minus(new Decimal(2).pow(333).slog()).add(1),2).div(0.75).min(0.989))
     },
     debuffZ() {
 	if (player.fo.points.gte("2^512"))
-        return new Decimal(0).add(Decimal.log(player.fo.points.slog().minus(new Decimal(2).pow(512).slog()).add(1),2).div(2.5).max(0.7))
+        return new Decimal(0).add(Decimal.log(player.fo.points.slog().minus(new Decimal(2).pow(512).slog()).add(1),2).div(2.5).min(0.7))
     },
     stage0(){
         return player.fo.points.add(1).pow(player.fo.y)
