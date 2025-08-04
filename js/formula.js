@@ -99,12 +99,12 @@ addLayer("fo", {
         }],     
         ["display-text", function() { 
     if (player.fo.points.gte("2^67"))
-        return '<span style=\"color: rgb(255, 0, 0); text-shadow: rgb(255, 0, 0) 0px 0px 10px;\">Due to Softcap, FP gain is raised to the power of ' + format(tmp.fo.debuff, 5) + '!</span><br>Your gain would be ' + format(getResetGain('fo').root(tmp.fo.debuff)) + " if the softcap didn't exist."
+        return '<span style=\"color: rgb(255, 0, 0); text-shadow: rgb(255, 0, 0) 0px 0px 10px;\">Due to Softcap, FP gain is raised to the power of ' + format(tmp.fo.debuff, 5) + '!'
     		
         }],
         ["display-text", function(){
 	    if (player.fo.points.gte("2^333") && player.fo.stage.gte(3))
-        return '<span style=\"color: rgb(255, 0, 0); text-shadow: rgb(255, 0, 0) 0px 0px 10px;\">Due to Supercap, The Formula is raised to the power of ' + format(tmp.fo.debuff2, 5) + '!</span><br>Your formula boost would be x' + format(tmp.fo.stage3.root(tmp.fo.debuff2)) + " if the supercap didn't exist."
+        return '<span style=\"color: rgb(255, 0, 0); text-shadow: rgb(255, 0, 0) 0px 0px 10px;\">Due to Supercap, The Formula is raised to the power of ' + format(tmp.fo.debuff2, 5) + '!'
 	}],
 	["display-text", function(){
 	    if (player.fo.points.gte("2^512") && player.fo.stage.gte(3))
