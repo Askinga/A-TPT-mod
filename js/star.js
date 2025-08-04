@@ -33,7 +33,7 @@ addLayer("star", {
         "upgrades",
         "prestige-button",
     ],
-    sizePoints() {
+    Points() {
         return Decimal.log10(player.points.add(1)).div(29000).pow(1.25)
     },
     branches: ["u", "f", "fo"],
@@ -42,7 +42,7 @@ addLayer("star", {
         11: {
             display() { return "Feed the star " + format(player.points) + " points." },
             onClick() { 
-                player.star.pointSize = tmp.star.sizePoints()
+                player.star.pointSize = tmp.star.Points()
                 player.star.pointReq = player.points
             },
             canClick() { return player.points.gte(player.star.pointReq) },
