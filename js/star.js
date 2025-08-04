@@ -63,5 +63,12 @@ addLayer("st", {
             cost: new Decimal(1.075),
             pay(){ return 0 },
         },
+        12: {
+            title: "Big boosts. (92)",
+            description: "xe1000 prestige points, xe500 points and x10000 FB<br>Req: 1.125 km",
+            cost: new Decimal(1.125),
+            pay(){ return 0 },
+            unlocked(){ return hasUpgrade('st', 11) }, 
+        },
     },
 })
