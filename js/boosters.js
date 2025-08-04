@@ -29,6 +29,7 @@ addLayer("i", {
 	if (hasUpgrade('i', 25)) mult = mult.times(50)
 	if (hasUpgrade('i', 31)) mult = mult.times(100)
 	if (hasUpgrade('i', 33)) mult = mult.times(1000)
+	if (hasUpgrade('i', 34)) mult = mult.times(10000)
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
@@ -40,7 +41,8 @@ addLayer("i", {
     
     ],
     layerShown(){return (hasUpgrade('fo', 35) || player.i.unlocked)},
-    effect(){ return player.i.points.add(1).pow(2) },
+    effe
+	    ct(){ return player.i.points.add(1).pow(2) },
     effectDescription(){ return "which is boosting f points by x" + format(layers.i.effect()) },
     branches: ["u", "f", "fo"],
     milestones: {
@@ -138,6 +140,12 @@ addLayer("i", {
 	  description: "x1000 FB.",
 	  cost: new Decimal("5e23"),
 	  unlocked(){ return hasUpgrade('i', 32) },
+	},
+	34: {
+	  title: "The Finale. (89)",
+	  description: "x10000 FB.",
+	  cost: new Decimal("e28"),
+	  unlocked(){ return hasUpgrade('i', 33) },
 	},
     },
 })
