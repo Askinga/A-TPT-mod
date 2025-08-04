@@ -41,8 +41,7 @@ addLayer("i", {
     
     ],
     layerShown(){return (hasUpgrade('fo', 35) || player.i.unlocked)},
-    effe
-	    ct(){ return player.i.points.add(1).pow(2) },
+    effect(){ return player.i.points.add(1).pow(2) },
     effectDescription(){ return "which is boosting f points by x" + format(layers.i.effect()) },
     branches: ["u", "f", "fo"],
     milestones: {
