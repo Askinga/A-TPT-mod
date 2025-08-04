@@ -36,6 +36,7 @@ addLayer("star", {
     sizePoints() {
         return Decimal.log10(player.points.add(1)).div(29000).pow(1.25)
     },
+    branches: ["u", "f", "fo"],
     layerShown() { return true },
     clickables: {
         11: {
