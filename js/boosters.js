@@ -146,5 +146,11 @@ addLayer("i", {
 	  cost: new Decimal("e28"),
 	  unlocked(){ return hasUpgrade('i', 33) },
 	},
+        35: {
+	  title: "New Lauer. (90)",
+	  description: "Unlock a new layer.",
+	  cost: new Decimal("e34"),
+	  unlocked(){ return hasUpgrade('i', 34) },
+	},
     },
 })
