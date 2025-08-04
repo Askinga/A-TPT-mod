@@ -49,7 +49,7 @@ h1, h2, h3, b, input {
 	animation: boost 10s linear infinite;
 }
 
-.star:not(.locked):not(.bought) {
+.st:not(.locked):not(.bought) {
 	background: rgb(255, 255, 0);
 	animation: star 2s linear infinite;
 }
