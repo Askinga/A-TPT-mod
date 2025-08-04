@@ -31,6 +31,7 @@ addLayer("st", {
     canReset() { return (player.points.gte("e29000") && !player.st.unlocked) },
     tabFormat: [
         ["display-text", function() { return "The star is " + format(player.st.points) + "km big, giving a x" + format(layers.st.effect()) + " boost to FP" }],
+        ["display-text", function() { return "You have gotten " + format(player.st.pointSize, 5) + " star size from points" }],
         "blank",
         "clickables",
         "upgrades",
@@ -53,5 +54,13 @@ addLayer("st", {
     },
     update(diff) {
         player.st.points = player.st.pointSize
+    },
+    upgrades: {
+        11: {
+            title: "Lets grow a star!",
+            description: "xe300 points and x100 FB<br>Req: 1.075 km",
+            cost: new Decimal(1.075),
+            pay(){ return 0 },
+        },
     },
 })
