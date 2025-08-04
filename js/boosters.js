@@ -125,5 +125,11 @@ addLayer("i", {
 	  cost: new Decimal("e20"),
 	  unlocked(){ return hasUpgrade('i', 25) },
 	},
+	32: {
+	  title: "First Exponent. (87)",
+	  description: "^1.002 points.",
+	  cost: new Decimal("2.5e23"),
+	  unlocked(){ return hasUpgrade('i', 31) },
+	},
     },
 })
