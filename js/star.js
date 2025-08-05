@@ -77,6 +77,13 @@ addLayer("st", {
             pay(){ return 0 },
             unlocked(){ return hasUpgrade('st', 12) }, 
         },
+	14: {
+            title: "Grow it. (94)",
+            description: "xe750 points<br>Req: 2.400 km",
+            cost: new Decimal(2.400),
+            pay(){ return 0 },
+            unlocked(){ return (hasUpgrade('st', 13) && hasChallenge('st', 11)) }, 
+        },
     },
     challenges: {
     11: {
