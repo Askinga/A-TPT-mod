@@ -139,6 +139,13 @@ addLayer("st", {
             pay(){ return 0 },
             unlocked(){ return hasUpgrade('st', 23) }, 
         },
+	25: {
+            title: "Upgrade 100! (100)",
+            description: "Unlock a new layer. (Soon)<br>Req: 5.300 km",
+            cost: new Decimal(5.300),
+            pay(){ return 0 },
+            unlocked(){ return hasUpgrade('st', 24) }, 
+        },
     },
     challenges: {
     11: {
