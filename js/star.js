@@ -28,7 +28,6 @@ addLayer("st", {
     secBoost() { return player.st.points.add(1).pow(4) },
     effect() { return player.st.points.add(1).pow(5) },
     row: 3, // Row the layer is in on the tree (0 is the first row)
-    resetsNothing() { return true },
     canReset() { return (player.points.gte("e29000") && !player.st.unlocked) },
     tabFormat: [
         ["display-text", function() { return "The star is " + format(player.st.points, 3) + "km big, giving a x" + format(layers.st.effect()) + " boost to FP and a x" + format(tmp.st.secBoost) + " boost to FB" }],
@@ -87,7 +86,6 @@ addLayer("st", {
         canComplete: function() {return player.points.gte("eeee1000")},
         goalDescription: "??? points",
 	rewardDescription: "x10 prestige points and unlock further upgrades",
-	onEnter() { return doReset('i', "true") }
     },
     },
 })
