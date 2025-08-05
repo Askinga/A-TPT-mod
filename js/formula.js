@@ -45,12 +45,12 @@ addLayer("fo", {
 	if (hasUpgrade('i', 12)) mult = mult.times(5)
         mult = mult.times(layers.i.effect())
 	mult = mult.times(layers.st.effect())
-	if (inChallenge('st', 11)) mult = mult.times(0)
         return mult
     },
     gainExp() {
         let exp = new Decimal(1)
         if (player.fo.points.gte("2^67")) exp = exp.times(tmp.fo.debuff)
+	if (inChallenge('st', 11)) exp = exp.times(0.4)
         return exp
     },
     stage1(){
