@@ -36,6 +36,7 @@ addLayer("st", {
         "blank",
         "clickables",
         "upgrades",
+	"challenges",
         "prestige-button",
     ],
     Points() {
