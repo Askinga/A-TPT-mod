@@ -12,10 +12,16 @@ addLayer("f", {
     enemyStartHP: new Decimal(100),
     stage: new Decimal(0),
     coinGet: new Decimal(0),
+    bulkStage: new Decimal(1)
     }},
     autoUpgrade() { return hasUpgrade('i', 12) },
     tooltip(){
 	return "<h3>" + format(player.f.coins) + "</h3> Coins"
+    },
+    bulk(){
+	let b = new Decimal(1)
+	if (hasUpgrade('st', 15)) b = b.add(9)
+	return b
     },
     resetsNothing(){ return true },
     color: "#cc0000",
@@ -286,6 +292,7 @@ addLayer("f", {
 	},
     },
     update(diff) {
+      player.f.bulkStage = tmp.f.bulk
       player.f.enemyStartHP = new Decimal(1.1).pow(player.f.stage.pow(1.2)).times(100)
       player.f.damage = tmp.f.damage
       player.f.coinGet = tmp.f.coin
@@ -294,11 +301,11 @@ addLayer("f", {
         player.f.enemyHP = player.f.enemyStartHP
         player.f.coins = player.f.coins.add(player.f.coinGet)
 	if (player.a.auto8.eq(1)) {
-	    player.f.stage = player.f.stage.add(1)
+	    player.f.stage = player.f.stage.add(player.f.bulkStage)
 	}
       }
       if (player.a.auto8.eq(1)) {
-	player.f.enemyHP = player.f.enemyHP.sub(player.f.damage.times(diff).div(100).times(player.a.auto5))
+	player.f.enemyHP = player.f.enemyHP.sub(player.f.damage.times(diff).div(100).times(tmp.a.auto5))
       }
     },
     buyables: {
