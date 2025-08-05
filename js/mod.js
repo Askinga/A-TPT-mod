@@ -13,15 +13,20 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-  num: "0.0",
-  name: "Literally nothing",
+  num: "1.0.0",
+  name: "The Release",
 };
 
 let changelog = `<h1>Changelog:</h1><br>
-	<h3>v0.0</h3><br>
-		- Added things.<br>
-		- Added stuff.`;
-
+	<h3>v1.0.0</h3><br>
+		- Added the first 100 upgrades.<br>
+		- Added 9 layers.<br>
+                - Added 12 milestones.<br>
+		- Added 14 clickables.<br>
+                - Added 6 buyables.<br>
+		- Added 3 challenges.<br>
+                - Added 8 automations (clickables).<br>
+        `
 let winText = `Congratulations! You have reached the end and beaten this game, but for now...`;
 
 // If you add new functions anywhere inside of a layer, and those functions have an effect when called, add them here.
