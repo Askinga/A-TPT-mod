@@ -179,6 +179,7 @@ addLayer("fo", {
             let base2 = x
             return base1.times(base2)
         },
+	purchaseLimit: 1024,
     },
     12: {
         title: "z increaser",
