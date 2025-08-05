@@ -70,5 +70,12 @@ addLayer("st", {
             pay(){ return 0 },
             unlocked(){ return hasUpgrade('st', 11) }, 
         },
+        13: {
+            title: "Extra Huge. (93)",
+            description: "^1.01 prestige points and unlock a challenge<br>Req: 2.000 km",
+            cost: new Decimal(2),
+            pay(){ return 0 },
+            unlocked(){ return hasUpgrade('st', 12) }, 
+        },
     },
 })
