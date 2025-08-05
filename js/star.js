@@ -105,6 +105,13 @@ addLayer("st", {
             pay(){ return 0 },
             unlocked(){ return hasUpgrade('st', 14) }, 
         },
+	21: {
+            title: "Star Damage (96)",
+            description: "^1.3 damage<br>Req: 3.980 km",
+            cost: new Decimal(3.980),
+            pay(){ return 0 },
+            unlocked(){ return hasUpgrade('st', 15) }, 
+        },
     },
     challenges: {
     11: {
