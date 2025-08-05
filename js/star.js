@@ -34,6 +34,10 @@ addLayer("st", {
     tabFormat: [
         ["display-text", function() { return "The star is " + format(player.st.points, 3) + "km big, giving a x" + format(layers.st.effect()) + " boost to FP and a x" + format(tmp.st.secBoost) + " boost to FB" }],
         ["display-text", function() { return "You have gotten " + format(player.st.pointSize, 5) + " star size from points" }],
+	["display-text", function() {
+	    if (hasUpgrade('st', 15))
+		return "You have gotten " + format(player.st.fpSize, 5) + " star size from f points"
+	}],
         "blank",
         "clickables",
         "upgrades",
@@ -105,12 +109,19 @@ addLayer("st", {
             pay(){ return 0 },
             unlocked(){ return hasUpgrade('st', 14) }, 
         },
-	21: {
+        21: {
             title: "Star Damage (96)",
             description: "^1.3 damage<br>Req: 3.980 km",
             cost: new Decimal(3.980),
             pay(){ return 0 },
             unlocked(){ return hasUpgrade('st', 15) }, 
+        },
+	22: {
+            title: "Star Coins (97)",
+            description: "^1.25 coins<br>Req: 4.050 km",
+            cost: new Decimal(4.050),
+            pay(){ return 0 },
+            unlocked(){ return hasUpgrade('st', 21) }, 
         },
     },
     challenges: {
