@@ -26,15 +26,15 @@ addLayer("achievements", {
     row: "side", // Row the layer is in on the tree (0 is the first row)
     layerShown(){return true},
     tabFormat: [
-      ["display-text", function(){ return "You have " + format(player.achievements.achievements.length) + "/54 achievements, giving you a x" + format(tmp.achievements.boost) + " point boost" }],
+      ["display-text", function(){ return "You have " + format(player.achievements.achievements.length) + "/" + format(Object.keys(this.achievements).length - 2)+" achievements, giving you a x" + format(tmp.achievements.boost) + " point boost" }],
       "blank",
       "achievements"
     ],
     tooltip(){
-      return ''+format(player.achievements.points)+"/54 achievements"
+      return ''+format(player.achievements.points)+"/" + format(Object.keys(this.achievements).length - 2) +" achievements"
     },
     update(diff) {
-      player.achievements.points = player.a.achievements.length
+      player.achievements.points = player.achievements.achievements.length
     },
     achievements: {
       11: {
