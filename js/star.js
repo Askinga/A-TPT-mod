@@ -129,6 +129,7 @@ addLayer("st", {
             cost: new Decimal(4.575),
             pay(){ return 0 },
 	    effect(){ return player.st.points.add(1).pow(1000) },
+	    effectDisplay(){ return "x"+format(upgradeEffect('st', 23)) },
             unlocked(){ return hasUpgrade('st', 22) }, 
         },
     },
