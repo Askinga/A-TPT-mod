@@ -34,7 +34,7 @@ addLayer("achievements", {
       return ''+format(player.achievements.points)+"/" +"54 achievements"
     },
     update(diff) {
-      player.achievements.points = player.achievements.achievements.length
+      player.achievements.points = new Decimal(player.achievements.achievements.length)
     },
     achievements: {
       11: {
