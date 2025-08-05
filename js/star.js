@@ -100,7 +100,7 @@ addLayer("st", {
         },
 	15: {
             title: "Bigger! (95)",
-            description: "You now can feed the star with FP<br>Req: 2.700 km",
+            description: "You now can feed the star with FP and you can bulk defeat stages<br>Req: 2.700 km",
             cost: new Decimal(2.700),
             pay(){ return 0 },
             unlocked(){ return hasUpgrade('st', 14) }, 
