@@ -7,6 +7,8 @@ addLayer("st", {
         points: new Decimal(0),
         pointReq: new Decimal("e29000"),
         pointSize: new Decimal(0),
+	fpReq: new Decimal("e450"),
+        fpSize: new Decimal(0),
     }},
     tooltip(){
         return "The Star"
@@ -41,6 +43,9 @@ addLayer("st", {
     Points() {
         return Decimal.log10(player.points.add(1)).div(29000).pow(1.25)
     },
+    fp() {
+        return Decimal.log10(player.fo.points.add(1)).div(450).pow(1.5)
+    },
     branches: ["u", "f", "fo"],
     layerShown() { return (hasUpgrade('i', 35) || player.st.unlocked) },
     clickables: {
@@ -52,9 +57,18 @@ addLayer("st", {
             },
             canClick() { return player.points.gte(player.st.pointReq) },
         },
+	12: {
+	    unlocked(){ return hasUpgrade('st', 15) },
+            display() { return "Feed the star " + format(player.fo.points) + " f points." },
+            onClick() { 
+                player.st.fpSize = tmp.st.fp
+                player.st.fpReq = player.fo.points
+            },
+            canClick() { return player.fo.points.gte(player.st.fpReq) },
+        },
     },
     update(diff) {
-        player.st.points = player.st.pointSize
+        player.st.points = player.st.pointSize.add(player.st.fpSize)
     },
     upgrades: {
         11: {
@@ -83,6 +97,13 @@ addLayer("st", {
             cost: new Decimal(2.400),
             pay(){ return 0 },
             unlocked(){ return (hasUpgrade('st', 13) && hasChallenge('st', 11)) }, 
+        },
+	15: {
+            title: "Bigger! (95)",
+            description: "You now can feed the star with FP<br>Req: 2.700 km",
+            cost: new Decimal(2.700),
+            pay(){ return 0 },
+            unlocked(){ return hasUpgrade('st', 14) }, 
         },
     },
     challenges: {
