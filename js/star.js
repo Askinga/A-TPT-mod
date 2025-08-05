@@ -132,6 +132,13 @@ addLayer("st", {
 	    effectDisplay(){ return "x"+format(upgradeEffect('st', 23)) },
             unlocked(){ return hasUpgrade('st', 22) }, 
         },
+	24: {
+            title: "Upgrade 100 is near... (99)",
+            description: "xe1000 points<br>Req: 5.000 km",
+            cost: new Decimal(5.000),
+            pay(){ return 0 },
+            unlocked(){ return hasUpgrade('st', 23) }, 
+        },
     },
     challenges: {
     11: {
