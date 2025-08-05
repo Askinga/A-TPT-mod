@@ -81,12 +81,13 @@ addLayer("st", {
     },
     challenges: {
     11: {
-	    unlocked(){ return hasUpgrade('st', 13) },
+	unlocked(){ return hasUpgrade('st', 13) },
         name: "Extreme Downgrade",
         challengeDescription: "^0.1 points, prestige points, ^0.25 SP, ^0.5 UP, ^0.4 FP (Recommended 2.150km star size)",
         canComplete: function() {return player.points.gte("eeee1000")},
         goalDescription: "??? points",
-	    rewardDescription: "x10 prestige points and unlock further upgrades"
+	rewardDescription: "x10 prestige points and unlock further upgrades",
+	onEnter() { return doReset('i', "true") }
     },
     },
 })
