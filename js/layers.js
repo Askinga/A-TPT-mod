@@ -170,6 +170,7 @@ addLayer("p", {
     exp = new Decimal(1);
     if (inChallenge('s', 12)) exp = exp.times(0.75)
     if (hasUpgrade('st', 13)) exp = exp.times(1.01)
+    if (inChallenge('st', 11)) exp = exp.times(0.1)
     return exp
   },
   row: 0, // Row the layer is in on the tree (0 is the first row)
