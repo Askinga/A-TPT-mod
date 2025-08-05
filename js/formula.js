@@ -246,8 +246,20 @@ addLayer("fo", {
             description: "Boost FP based on points",
             cost: new Decimal("5000"),
             unlocked(){ return (player.fo.stage.gte(2) && hasUpgrade('fo', 21)) },
-            effect(){ return player.points.add(1).pow(0.004) },
-            effectDisplay(){ return "x"+format(upgradeEffect(this.layer, this.id)) },
+	    effect() {
+                let expu3 = 0.004
+                let eff = player.points.add(1).pow(expu3)
+                eff = softcap(eff, new Decimal("1e250"), 0.15)
+                return eff
+	    },
+            effectDisplay(){ 
+		let softcapDescription = ""
+                let upgEffect = upgradeEffect(this.layer, this.id)
+                if (upgEffect.gte(new Decimal("1e250")) ) {
+                    softcapDescription = " (Softcapped)"
+		}
+	        return "x" + format(upgEffect) + softcapDescription 
+	    },
         },
         23: {
             title: "FP boost 4 (68)",
