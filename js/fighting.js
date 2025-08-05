@@ -75,6 +75,7 @@ addLayer("f", {
       if (hasUpgrade("f", 14)) dmg = dmg.times(3)
       if (hasMilestone('i', 0)) dmg = dmg.times(10000)
       dmg = dmg.times(buyableEffect('f', 11))
+      if (hasUpgrade('st', 21)) dmg = dmg.pow(1.3)
       return dmg
     },
     branches: ["s", "l", "p"],
