@@ -312,7 +312,7 @@ addLayer("p", {
         return "Boost points based on points.";
       },
 
-      cost: new Decimal(5000),
+      cost: new Decimal(4000),
 
       unlocked() {
         return hasUpgrade("p", 23);
@@ -346,7 +346,7 @@ addLayer("p", {
         return "Add 5 to base point gain.";
       },
 
-      cost: new Decimal(22500),
+      cost: new Decimal(20000),
 
       unlocked() {
         return hasUpgrade("p", 25);
@@ -359,7 +359,7 @@ addLayer("p", {
         return "Boost points based on prestige power.";
       },
 
-      cost: new Decimal("e5"),
+      cost: new Decimal("7.5e4"),
 
       unlocked() {
         return hasUpgrade("p", 31);
@@ -378,7 +378,7 @@ addLayer("p", {
       description() {
         return "Boost prestige points based on points.";
       },
-      cost: new Decimal(400000),
+      cost: new Decimal(300000),
       unlocked() { return hasUpgrade("p", 32)  },
       effect() {
         return player.points.add(1).pow(0.04);
@@ -392,7 +392,7 @@ addLayer("p", {
       description() {
         return "Boost prestige points based on prestige power.";
       },
-      cost: new Decimal(1000000),
+      cost: new Decimal(900000),
       unlocked() { return hasUpgrade("p", 33)  },
       effect() {
         return player.p.prestigePower.add(1).pow(0.1);
@@ -406,7 +406,7 @@ addLayer("p", {
       description() {
         return "Unlock a new Prestige Buyable.";
       },
-      cost: new Decimal("3e6"),
+      cost: new Decimal("2.5e6"),
       unlocked() {
         return hasUpgrade("p", 34);
       },
@@ -416,7 +416,7 @@ addLayer("p", {
       description() {
         return "Unlock Milestones.";
       },
-      cost: new Decimal("e8"),
+      cost: new Decimal("9e7"),
       unlocked() { return hasUpgrade("p", 35)  },
     },
     42: {
@@ -432,7 +432,7 @@ addLayer("p", {
       description() {
         return "x2.5 prestige points.";
       },
-      cost: new Decimal("1.25e9"),
+      cost: new Decimal("1e9"),
       unlocked() { return hasUpgrade("p", 42)  },
     },
     44: {
@@ -440,7 +440,7 @@ addLayer("p", {
       description() {
         return "x2.5 prestige power.";
       },
-      cost: new Decimal("5e9"),
+      cost: new Decimal("4e9"),
       unlocked() { return hasUpgrade("p", 43)  },
     },
     45: {
