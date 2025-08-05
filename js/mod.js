@@ -3,7 +3,7 @@ let modInfo = {
   author: "Askinga/Sanas",
   pointsName: "points",
   modFiles: ["layers.js", "tree.js", "automation.js", "levels.js", "super.js", "fighting.js", "ultra.js", "formula.js", "boosters.js",
-  "star.js"
+  "star.js", "achievements.js"
   ],
   discordName: "",
   discordLink: "",
@@ -76,6 +76,7 @@ function getPointGen() {
   if (hasUpgrade('i', 32)) gain = gain.pow(1.002)
   if (hasUpgrade('st', 11)) gain = gain.times("e300")
   if (hasUpgrade('st', 12)) gain = gain.times("e500")
+  gain = gain.times(tmp.achievements.boost)
   if (inChallenge('st', 11)) gain = gain.pow(0.1)
   if (hasChallenge('st', 11)) gain = gain.times("e400")
   if (hasUpgrade('st', 14)) gain = gain.times("e750")
