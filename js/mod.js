@@ -74,6 +74,7 @@ function getPointGen() {
   if (inChallenge('st', 11)) gain = gain.pow(0.1)
   if (hasChallenge('st', 11)) gain = gain.times("e400")
   if (hasUpgrade('st', 14)) gain = gain.times("e750")
+  if (hasUpgrade('st', 24)) gain = gain.times("e1000")
   if (inChallenge('s', 12)) gain = gain.pow(0.5)
   return gain;
 }
