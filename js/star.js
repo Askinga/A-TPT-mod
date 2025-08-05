@@ -123,6 +123,14 @@ addLayer("st", {
             pay(){ return 0 },
             unlocked(){ return hasUpgrade('st', 21) }, 
         },
+	23: {
+            title: "Insanity (98)",
+            description: "Boost coins based on star size (after exponent)<br>Req: 4.575 km",
+            cost: new Decimal(4.575),
+            pay(){ return 0 },
+	    effect(){ return player.st.points.add(1).pow(1000) },
+            unlocked(){ return hasUpgrade('st', 22) }, 
+        },
     },
     challenges: {
     11: {
