@@ -45,6 +45,7 @@ addLayer("fo", {
 	if (hasUpgrade('i', 12)) mult = mult.times(5)
         mult = mult.times(layers.i.effect())
 	mult = mult.times(layers.st.effect())
+	if (hasChallenge("st", 11)) mult = mult.times("e10")
         return mult
     },
     gainExp() {
