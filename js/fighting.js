@@ -243,7 +243,7 @@ addLayer("f", {
 	31: {
 	  title: "Coin boost 2 (46)",
 	  description: "Boost coins based on SP",
-	  cost: new Decimal(75000),
+	  cost: new Decimal(70000),
 	  currencyDisplayName: "Coins",
 	  currencyInternalName: "coins",
 	  currencyLayer: "f",
@@ -254,7 +254,7 @@ addLayer("f", {
 	32: {
 	  title: "Synergy (47)",
 	  description: "Boost coins based on points, and boost points based on coins",
-	  cost: new Decimal(500000),
+	  cost: new Decimal(2500000),
 	  currencyDisplayName: "Coins",
 	  currencyInternalName: "coins",
 	  currencyLayer: "f",
@@ -265,7 +265,7 @@ addLayer("f", {
 	33: {
 	  title: "Synergy 2 (48)",
 	  description: "Boost coins based on PP, and boost PP based on coins",
-	  cost: new Decimal(2000000),
+	  cost: new Decimal(1000000),
 	  currencyDisplayName: "Coins",
 	  currencyInternalName: "coins",
 	  currencyLayer: "f",
@@ -276,7 +276,7 @@ addLayer("f", {
 	34: {
 	  title: "Coin Coin (49)",
 	  description: "Boost coins based on coins",
-	  cost: new Decimal(10000000),
+	  cost: new Decimal(5000000),
 	  currencyDisplayName: "Coins",
 	  currencyInternalName: "coins",
 	  currencyLayer: "f",
@@ -287,7 +287,7 @@ addLayer("f", {
 	35: {
 	  title: "New Layer (50)",
 	  description: "Unlock a new layer",
-	  cost: new Decimal(100000000),
+	  cost: new Decimal(40000000),
 	  currencyDisplayName: "Coins",
 	  currencyInternalName: "coins",
 	  currencyLayer: "f",
