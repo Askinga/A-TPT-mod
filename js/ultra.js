@@ -116,7 +116,7 @@ addLayer("u", {
 	23: {
 	  title: "UP boost (58)",
 	  description: "Boost UP based on UP.",
-	  cost: new Decimal(1500),
+	  cost: new Decimal(1000),
 	  effect(){ return player.u.points.add(1).pow(0.1) },
 	  effectDisplay(){ return "x"+format(upgradeEffect('u', 23)) },
 	  unlocked() { return hasUpgrade('u', 22) },
@@ -124,7 +124,7 @@ addLayer("u", {
 	24: {
 	  title: "thats crazy (59)",
 	  description: "x5 UP",
-	  cost: new Decimal(2400),
+	  cost: new Decimal(2000),
 	  unlocked() { return hasUpgrade('u', 23) },
 	},
 	25: {
