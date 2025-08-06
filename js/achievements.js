@@ -185,7 +185,7 @@ addLayer("achievements", {
       56: {
         name: "Ach. 30",
         done() { return player.fo.unlocked },
-        tooltip: "Unlock the Formula"
+        tooltip: "Unlock the Formula (Reward: x3 UP)"
       },
       61: {
         name: "Ach. 31",
