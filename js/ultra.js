@@ -31,6 +31,7 @@ addLayer("u", {
 	if (hasUpgrade('fo', 24)) mult = mult.times(upgradeEffect('fo', 24))
 	if (hasMilestone('i', 2)) mult = mult.times(7)
 	if (hasUpgrade('i', 11)) mult = mult.times(3)
+	if (hasAchievement('achievements', 56)) mult = mult.times(3)
         return mult
     },
     syn3() {
