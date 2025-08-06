@@ -254,7 +254,7 @@ addLayer("f", {
 	32: {
 	  title: "Synergy (47)",
 	  description: "Boost coins based on points, and boost points based on coins",
-	  cost: new Decimal(2500000),
+	  cost: new Decimal(250000),
 	  currencyDisplayName: "Coins",
 	  currencyInternalName: "coins",
 	  currencyLayer: "f",
