@@ -92,7 +92,7 @@ addLayer("u", {
 	15: {
 	  title: "Level Insanity (55)",
 	  description: "Boost UP based on levels and +0.2 level effect base.",
-	  cost: new Decimal(250),
+	  cost: new Decimal(125),
 	  effect(){ return player.l.points.add(1).pow(0.2) },
 	  effectDisplay(){ return "x"+format(upgradeEffect('u', 15)) },
 	  unlocked() { return hasUpgrade('u', 14) },
@@ -100,7 +100,7 @@ addLayer("u", {
 	21: {
 	  title: "Fighting Buff (56)",
 	  description: "Boost damage based on UP.",
-	  cost: new Decimal(500),
+	  cost: new Decimal(400),
 	  effect(){ return player.u.points.add(1).pow(0.6) },
 	  effectDisplay(){ return "x"+format(upgradeEffect('u', 21)) },
 	  unlocked() { return hasUpgrade('u', 15) },
@@ -108,7 +108,7 @@ addLayer("u", {
 	22: {
 	  title: "SP boost (57)",
 	  description: "Boost SP based on UP.",
-	  cost: new Decimal(1000),
+	  cost: new Decimal(700),
 	  effect(){ return player.u.points.add(1).pow(0.4) },
 	  effectDisplay(){ return "x"+format(upgradeEffect('u', 22)) },
 	  unlocked() { return hasUpgrade('u', 21) },
@@ -116,7 +116,7 @@ addLayer("u", {
 	23: {
 	  title: "UP boost (58)",
 	  description: "Boost UP based on UP.",
-	  cost: new Decimal(2000),
+	  cost: new Decimal(1500),
 	  effect(){ return player.u.points.add(1).pow(0.1) },
 	  effectDisplay(){ return "x"+format(upgradeEffect('u', 23)) },
 	  unlocked() { return hasUpgrade('u', 22) },
@@ -124,7 +124,7 @@ addLayer("u", {
 	24: {
 	  title: "thats crazy (59)",
 	  description: "x5 UP",
-	  cost: new Decimal(3000),
+	  cost: new Decimal(2400),
 	  unlocked() { return hasUpgrade('u', 23) },
 	},
 	25: {
