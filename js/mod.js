@@ -19,7 +19,7 @@ let VERSION = {
 
 let changelog = `<h1>Changelog:</h1><br>
     <h3>v1.0.0.1</h3><br>
-	    - Renamed the game to Prestige Layers Tree (old name was A TPT mod?)<br>
+	    - Renamed the game to Prestige Layers Tree (old name was A TPT mod?) (for galaxy)<br>
 	<h1>v1.0.0</h1><br>
 		- Added the first 100 upgrades.<br>
 		- Added 9 layers.<br>
