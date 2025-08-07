@@ -1,5 +1,5 @@
 let modInfo = {
-  name: "A TPT mod?",
+  name: "Prestige Layers Tree",
   author: "Askinga/Sanas",
   pointsName: "points",
   modFiles: ["layers.js", "tree.js", "automation.js", "levels.js", "super.js", "fighting.js", "ultra.js", "formula.js", "boosters.js",
@@ -13,12 +13,14 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-  num: "1.0.0",
+  num: "1.0.0.1",
   name: "The Release",
 };
 
 let changelog = `<h1>Changelog:</h1><br>
-	<h3>v1.0.0</h3><br>
+    <h3>v1.0.0.1</h3><br>
+	    - Renamed the game to Prestige Layers Tree (old name was A TPT mod?)<br>
+	<h1>v1.0.0</h1><br>
 		- Added the first 100 upgrades.<br>
 		- Added 9 layers.<br>
                 - Added 12 milestones.<br>
