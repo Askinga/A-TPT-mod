@@ -14,6 +14,7 @@ addLayer("a", {
       auto6: new Decimal(0),
       auto7: new Decimal(0),
       auto8: new Decimal(0),
+      auto9: new Decimal(0),
       lost: new Decimal(0),
     };
   },
@@ -262,7 +263,7 @@ addLayer("a", {
           } else {
             or = 'ON'
           }
-          return format(tmp.a.auto5) + "% Damage to Enemy per second. and defeating a Enemy increases the Enemy Stage by 1.<br>Cost: 1e400 AP per second.<br><h2>" + or 
+          return format(tmp.a.auto5) + "% Damage to Enemy per second.<br>Cost: 1e400 AP per second.<br><h2>" + or 
         },
         canClick(){ return player.a.points.gte("e400") },      
         onClick(){
@@ -270,6 +271,26 @@ addLayer("a", {
             player.a.auto8 = new Decimal(1)
           } else {
             player.a.auto8 = new Decimal(0)
+          }
+        },
+    },
+    33: {
+        unlocked(){ return hasUpgrade('fo', 33) },
+        display() {
+          let or = 'OFF'
+          if (player.a.auto9.eq(0)) {
+            or = 'OFF'
+          } else {
+            or = 'ON'
+          }
+          return "Defeating a Enemy increases the Enemy Stage by 1.<br>Cost: 1e500 AP per second.<br><h2>" + or 
+        },
+        canClick(){ return player.a.points.gte("e500") },      
+        onClick(){
+          if (player.a.auto9.eq(0)) {
+            player.a.auto9 = new Decimal(1)
+          } else {
+            player.a.auto9 = new Decimal(0)
           }
         },
     },
@@ -287,6 +308,7 @@ addLayer("a", {
           player.a.auto6 = new Decimal(0)
           player.a.auto7 = new Decimal(0)
           player.a.auto8 = new Decimal(0)
+          player.a.auto9 = new Decimal(0)
       }
       
       let spend = new Decimal(0)
@@ -298,6 +320,7 @@ addLayer("a", {
       if (player.a.auto6.eq(1)) spend = spend.add(1e50)
       if (player.a.auto7.eq(1)) spend = spend.add(1e125)
       if (player.a.auto8.eq(1)) spend = spend.add("e400")
+      if (player.a.auto9.eq(1)) spend = spend.add("e500")
       player.a.lost = spend
       spend = spend.times(diff)
       player.a.points = player.a.points.sub(spend)
