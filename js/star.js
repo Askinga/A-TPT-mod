@@ -77,8 +77,8 @@ addLayer("st", {
     upgrades: {
         11: {
             title: "Lets grow a star! (91)",
-            description: "xe300 points and x100 FB<br>Req: 1.075 km",
-            cost: new Decimal(1.075),
+            description: "xe300 points and x100 FB<br>Req: 1.070 km",
+            cost: new Decimal(1.070),
         },
         12: {
             title: "Big boosts. (92)",
@@ -88,8 +88,8 @@ addLayer("st", {
         },
         13: {
             title: "Extra Huge. (93)",
-            description: "^1.01 prestige points and unlock a challenge<br>Req: 1.950 km",
-            cost: new Decimal(1.950),
+            description: "^1.01 prestige points and unlock a challenge<br>Req: 1.945 km",
+            cost: new Decimal(1.945),
             unlocked(){ return hasUpgrade('st', 12) }, 
         },
 	14: {
@@ -106,20 +106,20 @@ addLayer("st", {
         },
         21: {
             title: "Star Damage (96)",
-            description: "^1.3 damage<br>Req: 3.980 km",
-            cost: new Decimal(3.980),
+            description: "^1.3 damage<br>Req: 3.975 km",
+            cost: new Decimal(3.975),
             unlocked(){ return hasUpgrade('st', 15) }, 
         },
 	22: {
             title: "Star Coins (97)",
-            description: "^1.25 coins<br>Req: 4.050 km",
-            cost: new Decimal(4.050),
+            description: "^1.25 coins<br>Req: 4.045 km",
+            cost: new Decimal(4.045),
             unlocked(){ return hasUpgrade('st', 21) }, 
         },
 	23: {
             title: "Insanity (98)",
-            description: "Boost coins based on star size (after exponent)<br>Req: 4.575 km",
-		    cost: new Decimal(4.575),
+            description: "Boost coins based on star size (after exponent)<br>Req: 4.570 km",
+		    cost: new Decimal(4.570),
 	    effect(){ return player.st.points.add(1).pow(1000) },
 	    effectDisplay(){ return "x"+format(upgradeEffect('st', 23)) },
             unlocked(){ return hasUpgrade('st', 22) }, 
@@ -132,8 +132,8 @@ addLayer("st", {
         },
 	25: {
             title: "Upgrade 100! (100)",
-            description: "Unlock a new layer. (Soon)<br>Req: 5.300 km",
-            cost: new Decimal(5.300),
+            description: "Unlock a new layer. (Soon)<br>Req: 5.295 km",
+            cost: new Decimal(5.295),
             unlocked(){ return hasUpgrade('st', 24) }, 
         },
     },
