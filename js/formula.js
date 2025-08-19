@@ -306,7 +306,7 @@ addLayer("fo", {
         },
         33: {
             title: "Fighting Automation plz! (73)",
-            description: "Unlock a new automation",
+            description: "Unlock 2 new automations",
             cost: new Decimal("2.5e9"),
             unlocked(){ return (player.fo.stage.gte(3) && hasUpgrade('fo', 32)) },
         },
