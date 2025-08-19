@@ -13,11 +13,15 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-  num: "1.0.0.1",
+  num: "1.0.1",
   name: "The Release",
 };
 
 let changelog = `<h1>Changelog:</h1><br>
+    <h3>v1.0.1</h3><br>
+	    - Fixed a bug where you can buy star upgrades without actually reaching the requirement.<br>
+	    - Splitted Fighting Automation<br>
+	    - Balanced the Star layer<br>
     <h3>v1.0.0.1</h3><br>
 	    - Renamed the game to Prestige Layers Tree (old name was A TPT mod?) (for galaxy)<br>
 	<h1>v1.0.0</h1><br>
