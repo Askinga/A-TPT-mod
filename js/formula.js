@@ -22,6 +22,16 @@ addLayer("fo", {
     onPrestige(){
         player.u.points = new Decimal(0)
     },
+	automate(){
+		if (hasMilestone('stb', 1)) {
+		if (canBuyBuyable('fo', 11)) {
+        buyBuyable('fo', 11)
+		}
+		if (canBuyBuyable('fo', 12)) {
+        buyBuyable('fo', 12)
+		}
+		}
+	},
     color: "#0000ff",
     requires: new Decimal(10000),
     resource: "f points",
