@@ -1,0 +1,32 @@
+addLayer("stb", {
+    name: "star boosters", // This is optional, only used in a few places, If absent it just uses the layer id.
+    symbol: "SB", // This appears on the layer's node. Default is the id with the first letter capitalized
+    position: 2, // Horizontal position within a row. By default it uses the layer id and sorts in alphabetical order
+    startData() { return {
+        unlocked: false,
+		points: new Decimal(0),
+    }},
+    color: "#f0ff8f",
+    requires: new Decimal(5.300), // Can be a function that takes requirement increases into account
+    resource: "star boosters", // Name of prestige currency
+    baseResource: "star size", // Name of resource prestige is based on
+    baseAmount() {return player.st.points}, // Get the current amount of baseResource
+    type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
+    base: 2.25, // Prestige currency base
+    exponent: 1.1, // Prestige currency exponent
+    gainMult() { // Calculate the multiplier for main currency from bonuses
+        mult = new Decimal(1)
+        return mult
+    },
+    gainExp() { // Calculate the exponent on main currency from bonuses
+        return new Decimal(1)
+    },
+    row: 0, // Row the layer is in on the tree (0 is the first row)
+    hotkeys: [
+        {key: "t", description: "T: Reset for star boosters", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
+    ],
+    layerShown(){return (hasUpgrade('st', 25) || player.stb.unlocked)},
+    effect(){ return new Decimal(2).pow(player.stb.points) },
+    effectDescription(){ return "which is increasing the size of the Star by x" + format(layers.stb.effect()) },
+    branches: ["u", "f", "fo"],
+})
