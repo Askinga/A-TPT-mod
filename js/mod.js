@@ -90,6 +90,7 @@ function getPointGen() {
   if (hasMilestone('stb', 0)) gain = gain.times("e500")
   if (hasUpgrade('st', 31)) gain = gain.times("e1500")
   if (hasUpgrade('st', 32)) gain = gain.times("e2000")
+  if (hasUpgrade('st', 33)) gain = gain.times("e2500")
   if (inChallenge('s', 12)) gain = gain.pow(0.5)
   return gain;
 }
