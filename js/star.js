@@ -39,7 +39,7 @@ addLayer("st", {
 		return "You have gotten " + format(player.st.fpSize, 5) + " star size from f points"
 	}],
 	["display-text", function() {
-	    if player.stb.unlocked
+	    if (player.stb.unlocked)
 		return "Star Boosters are giving x" + format(layers.stb.effect()) + " star size"
 	}],
         "blank",
