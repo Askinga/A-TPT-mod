@@ -311,8 +311,10 @@ addLayer("f", {
 	player.f.enemyHP = player.f.enemyHP.sub(player.f.damage.times(diff).div(100).times(tmp.a.auto5))
       }
 	  if (hasMilestone('stb', 0)) {
-		  player.f.stage = player.f.damage.add(1).log(1.1).add(1).root(1.2)
+		  player.f.stage = player.f.damage.add(1).log(1.1).add(1).root(1.2).floor()
 		  player.f.coins = player.f.coins.add(player.f.coinGet.times(diff))
+		  player.f.enemyStartHP = new Decimal(1.1).pow(player.f.stage.pow(1.2)).times(100)
+		  player.f.enemyHP = player.f.enemyStartHP
 	  },
     },
     buyables: {
