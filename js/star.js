@@ -158,6 +158,12 @@ addLayer("st", {
             cost: new Decimal(56.750),
             unlocked(){ return (hasUpgrade('st', 32)) }, 
         },
+	34: {
+            title: "Star Extension 4 (104)",
+            description: "xe3000 Points.<br>Req: 62.200 km",
+            cost: new Decimal(62.200),
+            unlocked(){ return (hasUpgrade('st', 33)) }, 
+        },
     },
     challenges: {
     11: {
