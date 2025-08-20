@@ -29,4 +29,11 @@ addLayer("stb", {
     effect(){ return new Decimal(2).pow(player.stb.points) },
     effectDescription(){ return "which is increasing the size of the Star by x" + format(layers.stb.effect()) },
     branches: ["u", "f", "fo"],
+	milestones: {
+    0: {
+        requirementDescription: "FIGHTING IS VERY PAINFUL! (1 SB) (m13)",
+        effectDescription: "Automatically sets your stage to the max you can fight and generate 100% of coins per second, but disable automation 9.",
+        done() { return player.stb.points.gte(1) }
+    },
+	},
 })
