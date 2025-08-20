@@ -303,13 +303,17 @@ addLayer("f", {
       if (player.f.enemyHP.lte(0)) {
         player.f.enemyHP = player.f.enemyStartHP
         player.f.coins = player.f.coins.add(player.f.coinGet)
-	if (player.a.auto9.eq(1)) {
+	if (player.a.auto9.eq(1) && !hasMilestone('stb', 0)) {
 	    player.f.stage = player.f.stage.add(player.f.bulkStage)
 	}
       }
       if (player.a.auto8.eq(1)) {
 	player.f.enemyHP = player.f.enemyHP.sub(player.f.damage.times(diff).div(100).times(tmp.a.auto5))
       }
+	  if (hasMilestone('stb', 0)) {
+		  player.f.stage = player.f.damage.add(1).log(1.1).add(1).root(1.2)
+		  player.f.coins = player.f.coins.add(player.f.coinGet.times(diff))
+	  },
     },
     buyables: {
     11: {
