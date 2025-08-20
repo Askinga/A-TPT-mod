@@ -315,7 +315,7 @@ addLayer("f", {
 		  player.f.coins = player.f.coins.add(player.f.coinGet.times(diff))
 		  player.f.enemyStartHP = new Decimal(1.1).pow(player.f.stage.pow(1.2)).times(100)
 		  player.f.enemyHP = player.f.enemyStartHP
-	  },
+	  }
     },
     buyables: {
     11: {
