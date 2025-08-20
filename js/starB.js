@@ -12,7 +12,7 @@ addLayer("stb", {
     baseResource: "star size", // Name of resource prestige is based on
     baseAmount() {return player.st.points}, // Get the current amount of baseResource
     type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-    base: 2.25, // Prestige currency base
+    base: 2.145, // Prestige currency base
     exponent: 1.1, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
