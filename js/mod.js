@@ -3,7 +3,7 @@ let modInfo = {
   author: "Askinga/Sanas",
   pointsName: "points",
   modFiles: ["layers.js", "tree.js", "automation.js", "levels.js", "super.js", "fighting.js", "ultra.js", "formula.js", "boosters.js",
-  "star.js", "achievements.js"
+  "star.js", "achievements.js", "starB.js"
   ],
   discordName: "",
   discordLink: "",
