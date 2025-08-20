@@ -38,6 +38,10 @@ addLayer("st", {
 	    if (hasUpgrade('st', 15))
 		return "You have gotten " + format(player.st.fpSize, 5) + " star size from f points"
 	}],
+	["display-text", function() {
+	    if player.stb.unlocked
+		return "Star Boosters are giving x" + format(layers.stb.effect()) + " star size"
+	}],
         "blank",
         "clickables",
         "upgrades",
@@ -72,7 +76,7 @@ addLayer("st", {
         },
     },
     update(diff) {
-        player.st.points = player.st.pointSize.add(player.st.fpSize)
+        player.st.points = player.st.pointSize.add(player.st.fpSize).times(layers.stb.effect())
     },
     upgrades: {
         11: {
