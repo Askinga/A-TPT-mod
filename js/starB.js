@@ -32,8 +32,13 @@ addLayer("stb", {
 	milestones: {
     0: {
         requirementDescription: "FIGHTING IS VERY PAINFUL! (1 SB) (m13)",
-        effectDescription: "Automatically sets your stage to the max you can fight and generate 100% of coins per second, but disable automation 9.",
+        effectDescription: "Automatically sets your stage to the max you can fight and generate 100% of coins per second, but disable automation 9. And xe500 points",
         done() { return player.stb.points.gte(1) }
+    },
+	1: {
+        requirementDescription: "Star Extension! (2 SB) (m14)",
+        effectDescription: "Extend Star Upgrades.",
+        done() { return player.stb.points.gte(2) }
     },
 	},
 })
