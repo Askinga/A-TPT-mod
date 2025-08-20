@@ -37,7 +37,7 @@ addLayer("stb", {
     },
 	1: {
         requirementDescription: "Star Extension! (2 SB) (m14)",
-        effectDescription: "Extend Star Upgrades.",
+        effectDescription: "Extend Star Upgrades. And automatically buy formula buyables",
         done() { return player.stb.points.gte(2) }
     },
 	},
