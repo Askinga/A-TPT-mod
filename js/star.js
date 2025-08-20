@@ -146,6 +146,12 @@ addLayer("st", {
             cost: new Decimal(23.450),
             unlocked(){ return (hasUpgrade('st', 25) && hasMilestone('stb', 1)) }, 
         },
+    32: {
+            title: "Star Extension 2 (102)",
+            description: "xe2000 Points.<br>Req: 25.150 km",
+            cost: new Decimal(25.150),
+            unlocked(){ return (hasUpgrade('st', 31)) }, 
+        },
     },
     challenges: {
     11: {
