@@ -170,6 +170,12 @@ addLayer("st", {
             cost: new Decimal(143.300),
             unlocked(){ return (hasUpgrade('st', 34)) }, 
         },
+	41: {
+            title: "Star Extension 6 (106)",
+            description: "x1e20 FP.<br>Req: 168.650 km",
+            cost: new Decimal(168.650),
+            unlocked(){ return (hasUpgrade('st', 35)) }, 
+        },
     },
     challenges: {
     11: {
