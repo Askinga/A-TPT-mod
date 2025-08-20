@@ -92,6 +92,7 @@ function getPointGen() {
   if (hasUpgrade('st', 32)) gain = gain.times("e2000")
   if (hasUpgrade('st', 33)) gain = gain.times("e2500")
   if (hasUpgrade('st', 34)) gain = gain.times("e3000")
+  if (hasUpgrade('st', 35)) gain = gain.times("e4000")
   if (inChallenge('s', 12)) gain = gain.pow(0.5)
   return gain;
 }
