@@ -74,6 +74,7 @@ addLayer("p", {
     mult = mult.times(layers.s.effect())
     if (hasUpgrade('st', 12)) mult = mult.times("e1000")
     if (hasUpgrade('st', 44)) mult = mult.times("e10000")
+    if (hasUpgrade("supernova", 31)) mult = mult.times(upgradeEffect("supernova", 31));
     return mult;
   },
   autoUpgrade(){ return player.a.auto3.eq(1) },
