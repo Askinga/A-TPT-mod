@@ -71,6 +71,11 @@ addLayer("supernova", {
         effectDescription: "Keep ALL Pre-Supernova Automations and unlock Energy",
         done() { return player.supernova.points.gte(2) }
     },
+	2: {
+        requirementDescription: "Energy Extension 1 (Supernova 3) (m17)",
+        effectDescription: "Extend Energy Upgrades",
+        done() { return player.supernova.points.gte(3) }
+    },
 	},
 	upgrades: {
 		11: {
@@ -124,6 +129,18 @@ addLayer("supernova", {
 			currencyInternalName: "superEnergy",
 			currencyLayer: "supernova"
 		},
+		21: {
+			title: "Energy Points (116)",
+			description: "Boost energy based on points",
+			cost: new Decimal(1250),
+			unlocked(){ return (hasUpgrade('supernova', 15) && hasMilestone('supernova', 2)) },
+			effect(){ return new Decimal(1.1).pow(player.points.add(1).log(10).div(100000).add(1)) },
+			effectDisplay(){ return "x"+format(upgradeEffect('supernova', 15)) },
+			currencyDisplayName: "Energy",
+			currencyInternalName: "superEnergy",
+			currencyLayer: "supernova",
+			tooltip(){ return "1.1<sup>((log<sub>10</sub>(points+1))/100000)+1</sup>"
+		},
 	},
 	update(diff) {
 		let gain = new Decimal(0)
@@ -131,7 +148,8 @@ addLayer("supernova", {
 		if (hasUpgrade('supernova', 11)) gain = gain.times(2)
 		if (hasUpgrade('supernova', 12)) gain = gain.times(3)
 		if (hasUpgrade('supernova', 14)) gain = gain.times(upgradeEffect('supernova', 14))
-
+		if (hasUpgrade('supernova', 21)) gain = gain.times(upgradeEffect('supernova', 21))
+		
 		player.supernova.superEGain = gain
 		gain = gain.times(diff)
 		player.supernova.superEnergy = player.supernova.superEnergy.add(gain)
