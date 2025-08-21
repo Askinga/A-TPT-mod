@@ -73,7 +73,7 @@ addLayer("supernova", {
     },
 	2: {
         requirementDescription: "Energy Extension 1 (Supernova 3) (m17)",
-        effectDescription: "Extend Energy Upgrades",
+        effectDescription: "Extend Energy Upgrades and autobuy FB and Star upgrades",
         done() { return player.supernova.points.gte(3) }
     },
 	},
