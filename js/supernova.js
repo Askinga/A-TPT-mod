@@ -72,7 +72,7 @@ addLayer("supernova", {
 	},
 	upgrades: {
 		11: {
-			title: "Supernova.",
+			title: "Supernova. (111)",
 			description: "2x energy, xe3000 points",
 			cost: new Decimal(10),
 			currencyDisplayName: "Energy",
@@ -80,7 +80,7 @@ addLayer("supernova", {
 			currencyLayer: "supernova"
 		},
 		12: {
-			title: "Energetic",
+			title: "Energetic (112)",
 			description: "3x energy",
 			cost: new Decimal(25),
 			unlocked(){ return hasUpgrade('supernova', 11) },
@@ -89,7 +89,7 @@ addLayer("supernova", {
 			currencyLayer: "supernova"
 		},
 		13: {
-			title: "Feed the star energy",
+			title: "Feed the star energy (113)",
 			description: "Boost star size based on energy",
 			cost: new Decimal(30),
 			unlocked(){ return hasUpgrade('supernova', 12) },
