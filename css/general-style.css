@@ -54,6 +54,11 @@ h1, h2, h3, b, input {
 	animation: star 2s linear infinite;
 }
 
+.supernova:not(.locked):not(.bought) {
+	background: rgb(255, 255, 0);
+	animation: supernova 5s linear infinite;
+}
+
 @keyframes formula {
 	0% {
 		background: rgb(0, 0, 255);
@@ -101,4 +106,22 @@ h1, h2, h3, b, input {
     100% {
 	    background: rgb(255, 255, 0);
     }
+}
+
+@keyframes supernova {
+    0% {
+	    background: rgb(255, 255, 0);
+	}
+	25% {
+	    background: rgb(255, 130, 0);
+	}
+	50% {
+	    background: rgb(255, 0, 0);
+	}
+	75% {
+	    background: rgb(0, 0, 0);
+	}
+	100% {
+	    background: rgb(255, 255, 0);
+	}
 }
