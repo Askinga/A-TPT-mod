@@ -5,6 +5,8 @@ addLayer("supernova", {
     startData() { return {
         unlocked: false,
 		points: new Decimal(0),
+		superEnergy: new Decimal(0),
+		superEGain: new Decimal(0),
     }},
     color: "#ffee00",
     requires(){ 
@@ -28,6 +30,28 @@ addLayer("supernova", {
     hotkeys: [
         {key: "n", description: "N: Supernova", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
+	tabFormat: {
+		"Main": {
+			content: [
+			"main-display",
+			"prestige-button",
+			"resource-display",
+			"blank",
+			"milestones",
+			],
+		},
+		"Energy": {
+			unlocked(){ return hasMilestone('supernova', 1) },
+			content: [
+				"main-display",
+				"prestige-button",.
+				"blank",
+				["display-text", function() { return 'You have <span style=" color: rgb(255, 130, 0); text-shadow: rgb(255, 130, 0) 0px 0px 10px"><h2>' + format(player.supernova.energy) + "</h2></span> Energy<br>(" + format(player.supernova.superEGain) + "/s)" }],
+				"blank",
+				"upgrades"
+			],
+		},
+	},
     layerShown(){return (hasUpgrade('st', 45) || player.supernova.unlocked)},
     branches: ["i", "st", "stb"],
 	effect(){ return new Decimal(1e10).pow(player.supernova.points) },
@@ -40,5 +64,18 @@ addLayer("supernova", {
         effectDescription: "xe5000 points and increase star booster base +0.05",
         done() { return player.supernova.points.gte(1) }
     },
+	1: {
+        requirementDescription: "Supernova Automation (Supernova 2) (m16)",
+        effectDescription: "Keep ALL Pre-Supernova Automations and unlock Energy",
+        done() { return player.supernova.points.gte(2) }
+    },
+	},
+	update(diff) {
+		let gain = new Decimal(0)
+		if (hasMilestone('supernova', 1)) gain = gain.add(1)
+
+		player.supernova.superEGain = gain
+		gain = gain.times(diff)
+		player.supernova.supernovaEnergy = player.supernova.supernovaEnergy.add(gain)
 	},
 })
