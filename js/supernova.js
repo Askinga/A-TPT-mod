@@ -152,6 +152,18 @@ addLayer("supernova", {
 			currencyInternalName: "superEnergy",
 			currencyLayer: "supernova"
 		},
+		23: {
+			title: "Energy Prestige (118)",
+			description: "Boost energy based on PP",
+			cost: new Decimal(3000),
+			unlocked(){ return (hasUpgrade('supernova', 22)) },
+			effect(){ return new Decimal(1.1).pow(player.p.points.add(1).log(10).div(100000).add(1)) },
+			effectDisplay(){ return "x"+format(upgradeEffect('supernova', 23)) },
+			currencyDisplayName: "Energy",
+			currencyInternalName: "superEnergy",
+			currencyLayer: "supernova",
+			tooltip(){ return "1.1<sup>((log<sub>10</sub>(PP+1))/100000)+1</sup>" },
+		},
 	},
 	update(diff) {
 		let gain = new Decimal(0)
@@ -161,6 +173,7 @@ addLayer("supernova", {
 		if (hasUpgrade('supernova', 14)) gain = gain.times(upgradeEffect('supernova', 14))
 		if (hasUpgrade('supernova', 21)) gain = gain.times(upgradeEffect('supernova', 21))
 		if (hasUpgrade('supernova', 22)) gain = gain.times(upgradeEffect('supernova', 22))
+		if (hasUpgrade('supernova', 23)) gain = gain.times(upgradeEffect('supernova', 23))
 		
 		player.supernova.superEGain = gain
 		gain = gain.times(diff)
