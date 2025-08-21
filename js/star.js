@@ -13,6 +13,7 @@ addLayer("st", {
     tooltip(){
         return "The Star"
     },
+	autoUpgrade(){ return hasMilestone('supernova', 2) },
 	upgradeEffect(){
 		if (hasUpgrade('supernova', 13)) {
 			let eff = new Decimal(1)
