@@ -189,7 +189,7 @@ addLayer("st", {
             description: "Boost coins based on star size.<br>Req: 391.000 km",
             cost: new Decimal(391.000),
 		    effect(){ return player.st.points.add(1).log(10).log(10).add(1).pow(0.3) },
-	        effectDisplay(){ return "x"+format(upgradeEffect('st', 43)) },
+	        effectDisplay(){ return "^"+format(upgradeEffect('st', 43)) },
             unlocked(){ return (hasUpgrade('st', 42)) }, 
         },
     },
