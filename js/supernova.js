@@ -135,7 +135,7 @@ addLayer("supernova", {
 			cost: new Decimal(1250),
 			unlocked(){ return (hasUpgrade('supernova', 15) && hasMilestone('supernova', 2)) },
 			effect(){ return new Decimal(1.1).pow(player.points.add(1).log(10).div(100000).add(1)) },
-			effectDisplay(){ return "x"+format(upgradeEffect('supernova', 15)) },
+			effectDisplay(){ return "x"+format(upgradeEffect('supernova', 21)) },
 			currencyDisplayName: "Energy",
 			currencyInternalName: "superEnergy",
 			currencyLayer: "supernova",
