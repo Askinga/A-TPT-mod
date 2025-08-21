@@ -175,6 +175,17 @@ addLayer("supernova", {
 			currencyInternalName: "superEnergy",
 			currencyLayer: "supernova"
 		},
+		25: {
+			title: "Point Booster (120)",
+			description: "Boost points based on supernovas",
+			cost: new Decimal(7500),
+			unlocked(){ return hasUpgrade('supernova', 24) },
+			effect(){ return new Decimal("e4000").pow(player.supernova.points) },
+			effectDisplay(){ return "x"+format(upgradeEffect('supernova', 25)) },
+			currencyDisplayName: "Energy",
+			currencyInternalName: "superEnergy",
+			currencyLayer: "supernova"
+		},
 	},
 	update(diff) {
 		let gain = new Decimal(0)
