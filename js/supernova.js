@@ -26,5 +26,5 @@ addLayer("supernova", {
         {key: "n", description: "N: Supernova", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     layerShown(){return (hasUpgrade('st', 45) || player.supernova.unlocked)},
-    
+    branches: ["i", "st", "stb"],
 })
