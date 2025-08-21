@@ -73,6 +73,7 @@ addLayer("p", {
     if (hasUpgrade("u", 13)) mult = mult.times(tmp.u.syn3)
     mult = mult.times(layers.s.effect())
     if (hasUpgrade('st', 12)) mult = mult.times("e1000")
+    if (hasUpgrade('st', 44)) mult = mult.times("e10000")
     return mult;
   },
   autoUpgrade(){ return player.a.auto3.eq(1) },
