@@ -34,6 +34,7 @@ addLayer("i", {
 	if (hasUpgrade('st', 12)) mult = mult.times(10000)
 	mult = mult.times(tmp.st.secBoost)
 	if (hasChallenge("st", 11)) mult = mult.times("20000")
+	mult = mult.times(layers.supernova.effect())
         return mult
     },
     gainExp() { // Calculate the exponent on main currency from bonuses
