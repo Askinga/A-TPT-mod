@@ -27,6 +27,10 @@ addLayer("supernova", {
     ],
     layerShown(){return (hasUpgrade('st', 45) || player.supernova.unlocked)},
     branches: ["i", "st", "stb"],
+	effect(){ return new Decimal(1e10).pow(player.supernova.points) },
+	effectDescription(){
+		return "which is boosting Formula Boosters by x" + format(layers.supernova.effect)
+	},
 	milestones: {
     0: {
         requirementDescription: "Hard Reset? (Supernova 1) (m15)",
