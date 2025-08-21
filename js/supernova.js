@@ -70,6 +70,36 @@ addLayer("supernova", {
         done() { return player.supernova.points.gte(2) }
     },
 	},
+	upgrades: {
+		11: {
+			title: "Supernova.",
+			description: "2x energy, xe3000 points",
+			cost: new Decimal(10),
+			currencyDisplayName: "Energy",
+			currencyInternalName: "superEnergy",
+			currencyLayer: "supernova"
+		},
+		12: {
+			title: "Energetic",
+			description: "3x energy",
+			cost: new Decimal(25),
+			unlocked(){ return hasUpgrade('supernova', 11) },
+			currencyDisplayName: "Energy",
+			currencyInternalName: "superEnergy",
+			currencyLayer: "supernova"
+		},
+		13: {
+			title: "Feed the star energy",
+			description: "Boost star size based on energy",
+			cost: new Decimal(30),
+			unlocked(){ return hasUpgrade('supernova', 12) },
+			effect(){ return player.supernova.superEnergy.add(1).pow(0.25) },
+			effectDisplay(){ return "x"+format(upgradeEffect('supernova', 13)) },
+			currencyDisplayName: "Energy",
+			currencyInternalName: "superEnergy",
+			currencyLayer: "supernova"
+		},
+	},
 	update(diff) {
 		let gain = new Decimal(0)
 		if (hasMilestone('supernova', 1)) gain = gain.add(1)
