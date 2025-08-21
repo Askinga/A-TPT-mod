@@ -14,7 +14,7 @@ addLayer("f", {
     coinGet: new Decimal(0),
     bulkStage: new Decimal(1)
     }},
-    autoUpgrade() { return hasUpgrade('i', 12) },
+    autoUpgrade() { return (hasUpgrade('i', 12) || hasMilestone('supernova', 1)) },
     tooltip(){
 	return "<h3>" + format(player.f.coins) + "</h3> Coins"
     },
