@@ -190,12 +190,21 @@ addLayer("st", {
             cost: new Decimal(391.000),
 		    effect(){ 
 				if(player.st.points.gte(10)) {
-				return player.st.points.add(1).log(10).log(10).pow(0.3).add(1).sub(0.658) 
+				let eff = player.st.points.add(1).log(10).log(10).pow(0.3).add(1).sub(0.658) 
+				eff = softcap(eff, new Decimal(1.2), 0.4)
+				return eff
 				} else {
 					return new Decimal(1)
 				}
 			},
-	        effectDisplay(){ return "^"+format(upgradeEffect('st', 43)) },
+	        effectDisplay(){ 
+				let softcapDescription = ""
+                let upgEffect = upgradeEffect(this.layer, this.id)
+                if (upgEffect.gte(new Decimal(1.2)) ) {
+                    softcapDescription = " (Softcapped)"
+				}
+				return "^"+format(upgradeEffect('st', 43)) + softcapDescription
+			},
             unlocked(){ return (hasUpgrade('st', 42)) }, 
         },
 	44: {
@@ -203,6 +212,12 @@ addLayer("st", {
             description: "x1e10000 PP.<br>Req: 432.500 km",
             cost: new Decimal(432.500),
             unlocked(){ return (hasUpgrade('st', 43)) }, 
+        },
+	45: {
+            title: "Star Extension 10 (110)",
+            description: "x1e10000 points and unlock Supernova.<br>Req: 1,155 km",
+            cost: new Decimal(1155),
+            unlocked(){ return (hasUpgrade('st', 44)) }, 
         },
     },
     challenges: {
