@@ -13,6 +13,15 @@ addLayer("st", {
     tooltip(){
         return "The Star"
     },
+	upgradeEffect(){
+		if (hasUpgrade('supernova', 13)) {
+			let eff = new Decimal(1)
+			if (hasUpgrade('supernova', 13)) eff = eff.times(upgradeEffect('supernova', 13))
+			return eff
+		} else {
+			return new Decimal(1)
+		}
+	},
     color: "#ffff00",
     requires: new Decimal("e29000"), // Can be a function that takes requirement increases into account
     resource: "star size", // Name of prestige currency
@@ -41,6 +50,10 @@ addLayer("st", {
 	["display-text", function() {
 	    if (player.stb.unlocked)
 		return "Star Boosters are giving x" + format(layers.stb.effect()) + " star size"
+	}],
+	["display-text", function() {
+	    if (hasUpgrade('supernova', 13))
+		return "Supernova Upgrade 3 is giving x" + format(upgradeEffect('supernova', 13)) + " star size"
 	}],
         "blank",
         "clickables",
@@ -76,7 +89,7 @@ addLayer("st", {
         },
     },
     update(diff) {
-        player.st.points = player.st.pointSize.add(player.st.fpSize).times(layers.stb.effect())
+        player.st.points = player.st.pointSize.add(player.st.fpSize).times(layers.stb.effect()).times(tmp.st.upgradeEffect)
     },
     upgrades: {
         11: {
