@@ -34,7 +34,7 @@ addLayer("supernova", {
 	milestones: {
     0: {
         requirementDescription: "Hard Reset? (Supernova 1) (m15)",
-        effectDescription: "xe5000 points",
+        effectDescription: "xe5000 points and increase star booster base +0.05",
         done() { return player.supernova.points.gte(1) }
     },
 	},
