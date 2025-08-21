@@ -10,10 +10,10 @@ addLayer("fo", {
         z: new Decimal(1),
 	fos: new Decimal(0),
     }},
-    autoUpgrade() { return hasUpgrade('i', 12) },
+    autoUpgrade() { return (hasUpgrade('i', 12) || hasMilestone('supernova', 1)) },
     passiveGeneration() {
         let p = new Decimal(0)
-        if (hasMilestone('i', 1)) p = p.add(0.15)
+        if (hasMilestone('i', 1) || hasMilestone('supernova', 1)) p = p.add(0.15)
         return p
     },
     tooltip(){
@@ -23,7 +23,7 @@ addLayer("fo", {
         player.u.points = new Decimal(0)
     },
 	automate(){
-		if (hasMilestone('stb', 1)) {
+		if (hasMilestone('stb', 1) || hasMilestone('supernova', 1)) {
 		if (canBuyBuyable('fo', 11)) {
         buyBuyable('fo', 11)
 		}
