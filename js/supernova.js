@@ -29,7 +29,7 @@ addLayer("supernova", {
     branches: ["i", "st", "stb"],
 	effect(){ return new Decimal(1e10).pow(player.supernova.points) },
 	effectDescription(){
-		return "which is boosting Formula Boosters by x" + format(layers.supernova.effect)
+		return "which is boosting Formula Boosters by x" + format(layers.supernova.effect())
 	},
 	milestones: {
     0: {
