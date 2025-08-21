@@ -106,7 +106,7 @@ addLayer("supernova", {
 			cost: new Decimal(125),
 			unlocked(){ return hasUpgrade('supernova', 13) },
 			effect(){ return player.supernova.superEnergy.add(1).pow(0.1) },
-			effectDisplay(){ return "x"+format(upgradeEffect('supernova', 14) },
+			effectDisplay(){ return "x"+format(upgradeEffect('supernova', 14)) },
 			currencyDisplayName: "Energy",
 			currencyInternalName: "superEnergy",
 			currencyLayer: "supernova"
