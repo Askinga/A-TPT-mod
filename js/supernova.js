@@ -7,13 +7,17 @@ addLayer("supernova", {
 		points: new Decimal(0),
     }},
     color: "#ffee00",
-    requires: new Decimal(3000), // Can be a function that takes requirement increases into account
+    requires(){ 
+		let req = new Decimal(3000) 
+		if (player.suoernova.points.eq(1)) req = new Decimal(8500)
+		return req
+	}, // Can be a function that takes requirement increases into account
     resource: "Supernova", // Name of prestige currency
     baseResource: "star size", // Name of resource prestige is based on
     baseAmount() {return player.st.points}, // Get the current amount of baseResource
     type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-    exponent: 1.15, // Prestige currency exponent
-    base: 3,
+    exponent: 1, // Prestige currency exponent
+    base: 1,
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
         return mult
