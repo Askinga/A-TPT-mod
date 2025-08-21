@@ -96,6 +96,7 @@ function getPointGen() {
   if (hasUpgrade("st", 42)) gain = gain.times(upgradeEffect("st", 42));
   if (hasUpgrade('st', 45)) gain = gain.times("e10000")
   if (hasMilestone('supernova', 0)) gain = gain.times("e5000")
+  if (hasUpgrade('supernova', 11)) gain = gain.times("e3000")
   if (inChallenge('s', 12)) gain = gain.pow(0.5)
   return gain;
 }
