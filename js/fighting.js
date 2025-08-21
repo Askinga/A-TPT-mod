@@ -51,6 +51,7 @@ addLayer("f", {
       if (hasUpgrade('i', 11)) c = c.times(5)
       if (hasUpgrade('st', 22)) c = c.pow(1.25)
       if (hasUpgrade('st', 23)) c = c.times(upgradeEffect('st', 23))
+	  if (hasUpgrade('st', 43)) c = c.pow(upgradeEffect('st', 43))
       return c
     },
     syn1() {
