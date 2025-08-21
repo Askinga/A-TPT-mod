@@ -44,9 +44,9 @@ addLayer("supernova", {
 			unlocked(){ return hasMilestone('supernova', 1) },
 			content: [
 				"main-display",
-				"prestige-button",.
+				"prestige-button",
 				"blank",
-				["display-text", function() { return 'You have <span style=" color: rgb(255, 130, 0); text-shadow: rgb(255, 130, 0) 0px 0px 10px"><h2>' + format(player.supernova.energy) + "</h2></span> Energy<br>(" + format(player.supernova.superEGain) + "/s)" }],
+				["display-text", function() { return 'You have <span style=" color: rgb(255, 130, 0); text-shadow: rgb(255, 130, 0) 0px 0px 10px"><h2>' + format(player.supernova.superEnergy) + "</h2></span> Energy<br>(" + format(player.supernova.superEGain) + "/s)" }],
 				"blank",
 				"upgrades"
 			],
@@ -76,6 +76,6 @@ addLayer("supernova", {
 
 		player.supernova.superEGain = gain
 		gain = gain.times(diff)
-		player.supernova.supernovaEnergy = player.supernova.supernovaEnergy.add(gain)
+		player.supernova.superEnergy = player.supernova.superEnergy.add(gain)
 	},
 })
