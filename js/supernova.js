@@ -13,7 +13,8 @@ addLayer("supernova", {
 		let req = new Decimal(3000) 
 		if (player.supernova.points.eq(1)) req = new Decimal(8500)
 		if (player.supernova.points.eq(2)) req = new Decimal(5e7)
-		if (player.supernova.points.eq(3)) req = new Decimal("eeeeeeee10")
+		if (player.supernova.points.eq(3)) req = new Decimal(7.5e8)
+		if (player.supernova.points.eq(4)) req = new Decimal("eeeeeeeee10")
 		return req
 	}, // Can be a function that takes requirement increases into account
     resource: "Supernova", // Name of prestige currency
@@ -69,12 +70,26 @@ addLayer("supernova", {
 	1: {
         requirementDescription: "Supernova Automation (Supernova 2) (m16)",
         effectDescription: "Keep ALL Pre-Supernova Automations and unlock Energy",
-        done() { return player.supernova.points.gte(2) }
+        done() { return player.supernova.points.gte(2) },
+		unlocked(){ return hasMilestone('supernova', 0) },
     },
 	2: {
         requirementDescription: "Energy Extension 1 (Supernova 3) (m17)",
         effectDescription: "Extend Energy Upgrades and autobuy FB and Star upgrades",
-        done() { return player.supernova.points.gte(3) }
+        done() { return player.supernova.points.gte(3) },
+		unlocked(){ return hasMilestone('supernova', 1) },
+    },
+	3: {
+        requirementDescription: "Energy Extension 2 (Supernova 4) (m18)",
+        effectDescription: "Extend Energy Upgrades and Formula Stage is always 3",
+        done() { return player.supernova.points.gte(4) },
+		unlocked(){ return hasMilestone('supernova', 2) },
+    },
+	4: {
+        requirementDescription: "Supernova Extension (Supernova ?) (m19)",
+        effectDescription: "soon",
+        done() { return player.supernova.points.gte("eeeee10") },
+		unlocked(){ return hasMilestone('supernova', 3) },
     },
 	},
 	upgrades: {
@@ -200,5 +215,8 @@ addLayer("supernova", {
 		player.supernova.superEGain = gain
 		gain = gain.times(diff)
 		player.supernova.superEnergy = player.supernova.superEnergy.add(gain)
+		if (hasMilestone('supernova', 3)) {
+			player.fo.stage = new Decimal(3)
+		}
 	},
 })
