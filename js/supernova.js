@@ -164,6 +164,17 @@ addLayer("supernova", {
 			currencyLayer: "supernova",
 			tooltip(){ return "1.1<sup>((log<sub>10</sub>(PP+1))/100000)+1</sup>" },
 		},
+		24: {
+			title: "Energized Points (119)",
+			description: "Boost points based on energy",
+			cost: new Decimal(5000),
+			unlocked(){ return hasUpgrade('supernova', 23) },
+			effect(){ return player.supernova.superEnergy.add(1).pow(5000) },
+			effectDisplay(){ return "x"+format(upgradeEffect('supernova', 24)) },
+			currencyDisplayName: "Energy",
+			currencyInternalName: "superEnergy",
+			currencyLayer: "supernova"
+		},
 	},
 	update(diff) {
 		let gain = new Decimal(0)
