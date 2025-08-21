@@ -99,6 +99,7 @@ function getPointGen() {
   if (hasUpgrade('supernova', 11)) gain = gain.times("e3000")
   if (hasUpgrade("supernova", 24)) gain = gain.times(upgradeEffect("supernova", 24));
   if (hasUpgrade("supernova", 25)) gain = gain.times(upgradeEffect("supernova", 25));
+  if (hasUpgrade("supernova", 33)) gain = gain.times(upgradeEffect("supernova", 33));
   if (inChallenge('s', 12)) gain = gain.pow(0.5)
   return gain;
 }
