@@ -17,6 +17,7 @@ addLayer("st", {
 		if (hasUpgrade('supernova', 13)) {
 			let eff = new Decimal(1)
 			if (hasUpgrade('supernova', 13)) eff = eff.times(upgradeEffect('supernova', 13))
+			if (hasUpgrade('supernova', 15)) eff = eff.times(upgradeEffect('supernova', 15))
 			return eff
 		} else {
 			return new Decimal(1)
@@ -54,6 +55,10 @@ addLayer("st", {
 	["display-text", function() {
 	    if (hasUpgrade('supernova', 13))
 		return "Supernova Upgrade 3 is giving x" + format(upgradeEffect('supernova', 13)) + " star size"
+	}],
+	["display-text", function() {
+	    if (hasUpgrade('supernova', 15))
+		return "Supernova Upgrade 5 is giving x" + format(upgradeEffect('supernova', 15)) + " star size"
 	}],
         "blank",
         "clickables",
