@@ -12,12 +12,31 @@ addLayer("stb", {
     baseResource: "star size", // Name of resource prestige is based on
     baseAmount() {return player.st.points}, // Get the current amount of baseResource
     type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-    base: 2.145, // Prestige currency base
+    base(){ 
+		let b = new Decimal(2.145) // Prestige currency base
+		if (player.stb.points.gte(14)) b = b.add(player.stb.points.sub(13).times(new Decimal(0.005).times(player.stb.points.sub(13))))
+		return b
+	},
     exponent: 1.1, // Prestige currency exponent
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
         return mult
     },
+	tabFormat: [
+		"main-display",
+		"prestige-button",
+		"resource-display",
+		"blank",
+		["display-text", function() {
+	    if (player.stb.points.gte(10))
+		return "Star Booster scaling starts at 14!"
+	    }],
+		["display-text", function() {
+		return "Star booster base is " + format(tmp.stb.base)
+     	}],
+		"blank",
+		"milestones"
+	],
     gainExp() { // Calculate the exponent on main currency from bonuses
         return new Decimal(1)
     },
