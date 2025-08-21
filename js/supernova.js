@@ -201,6 +201,17 @@ addLayer("supernova", {
 			currencyInternalName: "superEnergy",
 			currencyLayer: "supernova"
 		},
+		31: {
+			title: "Size Increaser (121)",
+			description: "Boost PP based on supernovas",
+			cost: new Decimal(10000),
+			unlocked(){ return (hasUpgrade('supernova', 25) && hasMilestone('supernova', 3)) },
+			effect(){ return new Decimal("e4000").pow(player.supernova.points) },
+			effectDisplay(){ return "x"+format(upgradeEffect('supernova', 31)) },
+			currencyDisplayName: "Energy",
+			currencyInternalName: "superEnergy",
+			currencyLayer: "supernova"
+		},
 	},
 	update(diff) {
 		let gain = new Decimal(0)
