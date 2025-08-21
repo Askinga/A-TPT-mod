@@ -12,7 +12,7 @@ addLayer("supernova", {
     baseResource: "star size", // Name of resource prestige is based on
     baseAmount() {return player.st.points}, // Get the current amount of baseResource
     type: "static", // normal: cost to gain currency depends on amount gained. static: cost depends on how much you already have
-    exponent: 1, // Prestige currency exponent
+    exponent: 1.15, // Prestige currency exponent
     base: 3,
     gainMult() { // Calculate the multiplier for main currency from bonuses
         mult = new Decimal(1)
@@ -27,4 +27,11 @@ addLayer("supernova", {
     ],
     layerShown(){return (hasUpgrade('st', 45) || player.supernova.unlocked)},
     branches: ["i", "st", "stb"],
+	milestones: {
+    0: {
+        requirementDescription: "Hard Reset? (Supernova 1) (m15)",
+        effectDescription: "xe5000 points",
+        done() { return player.supernova.points.gte(1) }
+    },
+	},
 })
