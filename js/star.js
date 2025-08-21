@@ -192,6 +192,12 @@ addLayer("st", {
 	        effectDisplay(){ return "^"+format(upgradeEffect('st', 43)) },
             unlocked(){ return (hasUpgrade('st', 42)) }, 
         },
+	44: {
+            title: "Star Extension 9 (109)",
+            description: "x1e10000 PP.<br>Req: 432.500 km",
+            cost: new Decimal(432.500),
+            unlocked(){ return (hasUpgrade('st', 43)) }, 
+        },
     },
     challenges: {
     11: {
