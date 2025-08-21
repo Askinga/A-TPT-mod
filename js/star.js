@@ -188,7 +188,13 @@ addLayer("st", {
             title: "Star Extension 8 (108)",
             description: "Boost coins based on star size.<br>Req: 391.000 km",
             cost: new Decimal(391.000),
-		    effect(){ return player.st.points.add(1).log(10).log(10).pow(0.3).add(1).sub(0.658) },
+		    effect(){ 
+				if(player.st.points.gte(10)) {
+				return player.st.points.add(1).log(10).log(10).pow(0.3).add(1).sub(0.658) 
+				} else {
+					return new Decimal(1)
+				}
+			},
 	        effectDisplay(){ return "^"+format(upgradeEffect('st', 43)) },
             unlocked(){ return (hasUpgrade('st', 42)) }, 
         },
