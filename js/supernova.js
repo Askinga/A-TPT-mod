@@ -139,7 +139,7 @@ addLayer("supernova", {
 			currencyDisplayName: "Energy",
 			currencyInternalName: "superEnergy",
 			currencyLayer: "supernova",
-			tooltip(){ return "1.1<sup>((log<sub>10</sub>(points+1))/100000)+1</sup>"
+			tooltip(){ return "1.1<sup>((log<sub>10</sub>(points+1))/100000)+1</sup>" },
 		},
 	},
 	update(diff) {
