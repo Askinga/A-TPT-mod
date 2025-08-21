@@ -9,7 +9,7 @@ addLayer("supernova", {
     color: "#ffee00",
     requires(){ 
 		let req = new Decimal(3000) 
-		if (player.suoernova.points.eq(1)) req = new Decimal(8500)
+		if (player.supernova.points.eq(1)) req = new Decimal(8500)
 		return req
 	}, // Can be a function that takes requirement increases into account
     resource: "Supernova", // Name of prestige currency
