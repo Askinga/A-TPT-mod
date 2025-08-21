@@ -176,6 +176,14 @@ addLayer("st", {
             cost: new Decimal(168.650),
             unlocked(){ return (hasUpgrade('st', 35)) }, 
         },
+	42: {
+            title: "Star Extension 7 (107)",
+            description: "Boost points based on star size.<br>Req: 174.750km km",
+            cost: new Decimal(174.750),
+		    effect(){ return player.st.points.add(1).pow(1250) },
+	        effectDisplay(){ return "x"+format(upgradeEffect('st', 42)) },
+            unlocked(){ return (hasUpgrade('st', 41)) }, 
+        },
     },
     challenges: {
     11: {
