@@ -26,7 +26,11 @@ addLayer("stb", {
         {key: "t", description: "T: Reset for star boosters", onPress(){if (canReset(this.layer)) doReset(this.layer)}},
     ],
     layerShown(){return (hasUpgrade('st', 25) || player.stb.unlocked)},
-    effect(){ return new Decimal(2).pow(player.stb.points) },
+    effect(){ 
+		let base = new Decimal(2)
+		if (hasMilestone('supernova', 0)) base = base.add(0.05)
+		return new Decimal(base).pow(player.stb.points) 
+	},
     effectDescription(){ return "which is increasing the size of the Star by x" + format(layers.stb.effect()) },
     branches: ["u", "f", "fo"],
 	milestones: {
