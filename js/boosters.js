@@ -8,10 +8,11 @@ addLayer("i", {
     }},
     passiveGeneration(){
 	let p = new Decimal(0)
-	if (hasUpgrade('i', 13)) p = p.add(0.1)
+	if (hasUpgrade('i', 13) || hasMilestone('supernova', 1)) p = p.add(0.1)
 	if (hasUpgrade('i', 21)) p = p.times(10)
 	return p
     },
+	autoUpgrade(){ return hasMilestone('supernova', 2) },
     color: "#ff0000",
     requires: new Decimal("1e12"), // Can be a function that takes requirement increases into account
     resource: "formula boosters", // Name of prestige currency
