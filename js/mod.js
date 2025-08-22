@@ -13,11 +13,16 @@ let modInfo = {
 
 // Set your version in num and name
 let VERSION = {
-  num: "1.0.1",
-  name: "The Release",
+  num: "1.1.0",
+  name: "Supernova Part 1",
 };
 
 let changelog = `<h1>Changelog:</h1><br>
+    <h2>v1.1.0</h2><br>
+	    - Added 2 new layers<br>
+	    - Added 25 upgrades<br>
+	    - Added 7 milestones<br>
+	    - Added a new sub-currency<br>
     <h3>v1.0.1</h3><br>
 	    - Fixed a bug where you can buy star upgrades without actually reaching the requirement.<br>
 	    - Splitted Fighting Automation<br>
