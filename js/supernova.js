@@ -243,6 +243,15 @@ addLayer("supernova", {
 			currencyLayer: "supernova",
 			unlocked(){ return hasUpgrade('supernova', 33) }
 		},
+		35: {
+			title: "Insane Energy. (125)",
+			description: "10x energy, xe30000 points",
+			cost: new Decimal(150000),
+			currencyDisplayName: "Energy",
+			currencyInternalName: "superEnergy",
+			currencyLayer: "supernova",
+			unlocked(){ return hasUpgrade('supernova', 34) }
+		},
 	},
 	update(diff) {
 		let gain = new Decimal(0)
@@ -254,6 +263,7 @@ addLayer("supernova", {
 		if (hasUpgrade('supernova', 22)) gain = gain.times(upgradeEffect('supernova', 22))
 		if (hasUpgrade('supernova', 23)) gain = gain.times(upgradeEffect('supernova', 23))
 		if (hasUpgrade('supernova', 32)) gain = gain.times(upgradeEffect('supernova', 32))
+		if (hasUpgrade('supernova', 35)) gain = gain.times(10)
 		
 		player.supernova.superEGain = gain
 		gain = gain.times(diff)
