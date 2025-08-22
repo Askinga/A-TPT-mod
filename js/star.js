@@ -155,7 +155,7 @@ addLayer("st", {
         },
 	25: {
             title: "Upgrade 100! (100)",
-            description: "Unlock a new layer. (Soon)<br>Req: 5.295 km",
+            description: "Unlock a new layer.<br>Req: 5.295 km",
             cost: new Decimal(5.295),
             unlocked(){ return hasUpgrade('st', 24) }, 
         },
