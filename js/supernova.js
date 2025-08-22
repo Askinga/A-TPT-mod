@@ -234,6 +234,15 @@ addLayer("supernova", {
 			currencyInternalName: "superEnergy",
 			currencyLayer: "supernova"
 		},
+		34: {
+			title: "Supernova. (124)",
+			description: "xe25000 points",
+			cost: new Decimal(100000),
+			currencyDisplayName: "Energy",
+			currencyInternalName: "superEnergy",
+			currencyLayer: "supernova",
+			unlocked(){ return hasUpgrade('supernova', 33) }
+		},
 	},
 	update(diff) {
 		let gain = new Decimal(0)
