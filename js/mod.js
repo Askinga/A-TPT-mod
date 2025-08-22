@@ -22,6 +22,7 @@ let changelog = `<h1>Changelog:</h1><br>
 	    - Added 2 new layers<br>
 	    - Added 25 upgrades<br>
 	    - Added 7 milestones<br>
+	    - Added 12 achievements<br>
 	    - Added a new sub-currency<br>
     <h3>v1.0.1</h3><br>
 	    - Fixed a bug where you can buy star upgrades without actually reaching the requirement.<br>
