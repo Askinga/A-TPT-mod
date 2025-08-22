@@ -235,7 +235,7 @@ addLayer("supernova", {
 			currencyLayer: "supernova"
 		},
 		34: {
-			title: "Supernova. (124)",
+			title: "The Finals of v1.1.0 (124)",
 			description: "xe25000 points",
 			cost: new Decimal(100000),
 			currencyDisplayName: "Energy",
