@@ -121,7 +121,7 @@ var displayThings = [];
 
 // Determines when the game "ends"
 function isEndgame() {
-  return hasUpgrade('st', 25);
+  return player.supernova.points.gte(5);
 }
 
 // Less important things beyond this point!
