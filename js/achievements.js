@@ -26,12 +26,12 @@ addLayer("achievements", {
     row: "side", // Row the layer is in on the tree (0 is the first row)
     layerShown(){return true},
     tabFormat: [
-      ["display-text", function(){ return "You have " + format(player.achievements.achievements.length) + "/" + "54 achievements, giving you a x" + format(tmp.achievements.boost) + " point boost" }],
+      ["display-text", function(){ return "You have " + format(player.achievements.achievements.length) + "/" + "66 achievements, giving you a x" + format(tmp.achievements.boost) + " point boost" }],
       "blank",
       "achievements"
     ],
     tooltip(){
-      return ''+format(player.achievements.points)+"/" +"54 achievements"
+      return ''+format(player.achievements.points)+"/" +"66 achievements"
     },
     update(diff) {
       player.achievements.points = new Decimal(player.achievements.achievements.length)
@@ -306,6 +306,66 @@ addLayer("achievements", {
         name: "Ach. 54",
         done() { return hasUpgrade('st', 25) },
         tooltip: "Buy Upgrade 100!"
+      },
+	  101: {
+        name: "Ach. 55",
+        done() { return player.stb.points.gte(1) },
+        tooltip: "Reach 1 Star Booster"
+      },
+	  102: {
+        name: "Ach. 56",
+        done() { return player.stb.points.gte(3) },
+        tooltip: "Reach 3 Star Boosters"
+      },
+	  103: {
+        name: "Ach. 57",
+        done() { return player.stb.points.gte(4) },
+        tooltip: "Reach 4 Star Boosters"
+      },
+	  104: {
+        name: "Ach. 58",
+        done() { return player.stb.points.gte(5) },
+        tooltip: "Reach 5 Star Boosters"
+      },
+	  105: {
+        name: "Ach. 59",
+        done() { return player.stb.points.gte(7) },
+        tooltip: "Reach 7 Star Boosters"
+      },
+	  106: {
+        name: "Ach. 60",
+        done() { return player.supernova.unlocked },
+        tooltip: "Explode your star into a supernova"
+      },
+	  111: {
+        name: "Ach. 61",
+        done() { return player.supernova.points.gte(2) },
+        tooltip: "Explode your star into a supernova again"
+      },
+	  112: {
+        name: "Ach. 62",
+        done() { return hasUpgrade('supernova', 13) },
+        tooltip: "Buy Energy Upgrade 3"
+      },
+	  113: {
+        name: "Ach. 63",
+        done() { return player.supernova.points.gte(3) },
+        tooltip: "Explode your star into a supernova yet again"
+      },
+	  114: {
+        name: "Ach. 64",
+        done() { return hasUpgrade('supernova', 23) },
+        tooltip: "Buy Energy Upgrade 8"
+      },
+	  115: {
+        name: "Ach. 65",
+        done() { return player.supernova.points.gte(4) },
+        tooltip: "Explode your star into a supernova yet again"
+      },
+	  116: {
+        name: "Ach. 66",
+        done() { return player.supernova.points.gte(5) },
+        tooltip: "Explode your star into a supernova yet again"
       },
     },
 })
